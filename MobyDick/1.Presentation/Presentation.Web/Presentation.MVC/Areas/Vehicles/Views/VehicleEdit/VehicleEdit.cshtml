@@ -1,0 +1,111 @@
+﻿@model Presentation.MVC.Models.VehicleUpdateModels
+
+@{
+    ViewBag.Title = "Administración de Vehículos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function SendData() {
+    }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imgCar')
+                .attr('src', e.target.result);
+                document.getElementById('ExistImage').value = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function RemovePicture() {
+        $('#imgCar').attr('src', '../Content/css/Images/default_car.jpg');
+        document.getElementById('ExistImage').value ='false';
+    }
+
+    $(function () {
+        $("#divAcordeon").accordion({
+            //beforeActivate: function( event, ui ) {
+            //    var activePan = $("#divAcordeon").accordion( "option", "active" );
+            //    $(".ui-accordion-content:eq(" + activePan + ")").validate();
+            //    if (!$(".ui-accordion-content:eq(" + activePan + ")").valid("#frm")) {
+            //        alert("No OKA");
+            //    }
+            //    else{
+            //        alert("oka");
+            //    }
+            //}
+        });        
+    });
+       
+    //Lista de safeties para el vehículo en cuestión (variable para que funcione el select personalizado).
+    var safetiesCar = @(Html.Raw(Json.Encode(this.Model.Vehicle.Safeties)));
+</script>
+
+<h1>
+    @ViewBag.Title
+</h1>
+<section class="content_box">
+    <h2>Editar Vehículo
+    </h2>
+
+    @using (Html.BeginForm("EditVehicle", "VehicleEdit", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div id="divAcordeon">
+            <h3>Datos Generales</h3>
+            <div>
+                @Html.Label("Marca: ")
+                @Html.DropDownListFor(m => m.Vehicle.IDMake, new SelectList(Model.makes, "IDMake", "Name"))<br />
+                          
+                @Html.HiddenFor(model=>model.Vehicle.IDVehicle)
+                @Html.Label("Modelo: ")
+                @Html.EditorFor(model => model.Vehicle.Name)
+                @Html.ValidationMessageFor(model => model.Vehicle.Name)<br />
+                            
+                @Html.Label("Año: ")
+                @Html.TextBoxFor(model => model.Vehicle.Model, htmlAttributes: new { @class = "required" })
+                @Html.ValidationMessageFor(model => model.Vehicle.Model)<br />
+
+                @Html.Label("Precio: ")
+                @Html.TextBoxFor(model => model.Vehicle.Price)
+                @Html.ValidationMessageFor(model => model.Vehicle.Price)<br />
+            
+                @Html.Label("Imagen: ")     
+                @Html.HiddenFor(m=>m.ExistImage)       
+                @Html.MDImageLoader(@Model.ImageCode)
+            </div>
+
+            <h3>Seguridad</h3>
+            <div>                
+                
+                @Html.Label("Dispositivos de Seguridad: ")                 
+                @Html.ListBoxFor(m=>m.Vehicle.Safeties, new MultiSelectList(Model.safeties,"IDSafety","Description"))
+                @Html.MDSelectBox(Model.safeties)
+            </div>
+
+            <h3>Equipamento</h3>
+            <div>
+                <div class="labeled_checkbox">
+                    @Html.CheckBoxFor(m => m.Vehicle.Equipment.Air)<span>Aire</span><br /><br />
+                    @Html.CheckBoxFor(m => m.Vehicle.Equipment.Alarm)<span>Alarma</span><br /><br />
+                    @Html.CheckBoxFor(m => m.Vehicle.Equipment.Locking)<span>Locking</span><br /><br />
+                    @Html.CheckBoxFor(m => m.Vehicle.Equipment.Stereo)<span>Stereo</span><br /><br />
+                </div>
+                @Html.Label("Otros Dispositivos: ")<br />
+
+                @Html.EditorFor(model => model.Vehicle.Equipment.Others)
+                @Html.ValidationMessageFor(model => model.Vehicle.Equipment.Others)<br />
+            </div>
+        </div>
+        <input type="submit" value="Editar" />
+        <a class="btn_secundario" href="../Home">Volver</a>
+    }
+        
+</section>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<layerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="9739ed31-b42b-4d4a-95d8-39c68e4f6882" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/LayerDesigner">
+  <layers>
+    <layer Id="f9721e1d-7312-4956-8d13-4f76cb2b0239" name="1.Presentation">
+      <references>
+        <reference Id="d8e32df9-76f8-4d3a-b70a-78608d0b1b09" name="1.Presentation">
+          <ArtifactNode Label="1.Presentation" Category="SolutionFolder" Id="(Assembly=../../1.Presentation)" />
+          <ExpandedNode Id="(Assembly=Presentation.AppTelerik)" Label="Presentation.AppTelerik.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Presentation.Console)" Label="Presentation.Console.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Moby)" Label="Moby.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Presentation.AppWPF)" Label="Presentation.AppWPF.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Presentation.Resources)" Label="Presentation.Resources.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Presentation.ServiceDistribution)" Label="Presentation.ServiceDistribution.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=MobyDickDev)" Label="MobyDickDev.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Presentation.Mobile)" Label="Presentation.Mobile.dll" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.dll" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="cc68fbdb-e191-4883-9a8b-4ec874065ab8" name="Application1">
+          <ArtifactNode Label="Application" Category="SolutionFolder" Id="(Assembly=../../1.Presentation/Application)" />
+          <ExpandedNode Id="(Assembly=Presentation.AppTelerik)" Label="Presentation.AppTelerik.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Presentation.Console)" Label="Presentation.Console.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Moby)" Label="Moby.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+          <ExpandedNode Id="(Assembly=Presentation.AppWPF)" Label="Presentation.AppWPF.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+        <reference Id="9a6e347b-2917-47cf-a8da-aa346567fa4c" name="Presentation.AppForm">
+          <ArtifactNode Label="Presentation.AppForm" Category="CodeSchema_Project" Id="(Assembly=../../1.Presentation/Presentation.Application/Presentation.Form/Presentation.AppForm.csproj)" />
+          <ExpandedNode Id="(Assembly=Moby)" Label="Moby.exe" Category="CodeSchema_Assembly">
+            <Category Ref="FileSystem.Category.FileOfType.exe" />
+            <LinkCategory Ref="Produces" />
+            <LinkCategory Ref="Represents" />
+          </ExpandedNode>
+        </reference>
+      </references>
+    </layer>
+  </layers>
+</layerModel>

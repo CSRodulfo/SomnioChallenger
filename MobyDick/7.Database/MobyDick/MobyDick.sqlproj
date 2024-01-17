@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>MobyDick</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{9ceb5bb5-3c30-4498-92e4-cd71c997b23d}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureDatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>MobyDick</RootNamespace>
+    <AssemblyName>MobyDick</AssemblyName>
+    <ModelCollation>1033,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>True</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AI</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <IncludeSchemaNameInFileName>True</IncludeSchemaNameInFileName>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <GenerateCreateScript>True</GenerateCreateScript>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- VS10 without SP1 will not have VisualStudioVersion set, so do that here -->
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- Default to the v10.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">10.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="Compare" />
+    <Folder Include="Snapshots" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="dbo\Synonyms\" />
+    <Folder Include="Scripts" />
+    <Folder Include="Scripts\MobyDick" />
+    <Folder Include="Scripts\MobyDick\1.0 to 1.1" />
+    <Folder Include="Scripts\MobyDick\1.1 to 1.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Views\dbo.UserInRoles.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_UsersInRoles.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_Roles.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_OAuthMembership.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_MenuModule.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_MenuInRoles.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_MenuInBehavior.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_Menu.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_Membership.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_Behavior.sql" />
+    <Build Include="dbo\Tables\dbo.Users.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_RoleInBehavior.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_File.sql" />
+    <Build Include="Security\md.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_Company.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_Resources.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_Culture.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_Logging.sql" />
+    <Build Include="dbo\Tables\dbo.webpages_Checkpoint.sql" />
+    <None Include="Scripts\MobyDick\1.0 to 1.1\1.Update MobyDick 05-06-2015.sql" />
+    <None Include="Scripts\MobyDick\1.0 to 1.1\2.Update MobyDick 10-06-2015.sql" />
+    <None Include="Scripts\MobyDick\1.0 to 1.1\3.Update MobyDick 16-06-2015.sql" />
+    <None Include="Scripts\MobyDick\1.0 to 1.1\4.Update MobyDick 01-07-2015.sql" />
+    <None Include="Scripts\MobyDick\1.0 to 1.1\5.Update MobyDick 17-07-2015.sql" />
+    <None Include="Scripts\MobyDick\1.1 to 1.2\1.Update MobyDick 27-07-2015.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Compare\DBMobydick_ProjectMobyDick.scmp" />
+    <None Include="Snapshots\MobyDick_20130520_03-10-23.dacpac" />
+    <None Include="MobyDick.publish.xml" />
+    <None Include="Compare\Copy of DBMobydick_ProjectMobyDick.scmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <SqlCmdVariable Include="MobyDick">
+      <DefaultValue>groupmobydick-db</DefaultValue>
+      <Value>$(SqlCmdVar__5)</Value>
+    </SqlCmdVariable>
+    <SqlCmdVariable Include="OtherServer">
+      <DefaultValue>groupmobydick-server.database.windows.net,1433</DefaultValue>
+      <Value>$(SqlCmdVar__6)</Value>
+    </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Scripts\0.Pasaje Resources.sql" />
+  </ItemGroup>
+</Project>

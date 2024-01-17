@@ -1,0 +1,285 @@
+﻿@{
+    ViewBag.Title = "Plugins";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-xs-12 panel-search">
+<div class="row">
+        <div class="col-md-12 panel-header">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Modelo de ejemplo de mensaje de Error</h4>
+    </div>
+</div>
+
+    <div class="col-xs-12 panel-button">        
+        <div class="col-md-4">
+        <div class="form-group">
+            <a href="javascript:openError();" class="btn_secundario">Ver Mensaje de Error</a>
+        </div>
+    </div>
+        <div class="col-md-4">
+        <div class="form-group">
+            <a href="javascript:openAlert();" class="btn_secundario">Ver Mensaje de Alerta</a>
+        </div>
+    </div>
+        <div class="col-md-4">
+        <div class="form-group">
+            <a href="javascript:openPopup();" class="btn_secundario">Ver Mensaje Pop-up</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Modelo de ejemplo de Controles</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            @Html.Label("Fecha (datepicker)")
+                @Html.DateLoader("datepicker")
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            @Html.Label("input (autocomplete)")
+            @Html.TextBox("autocomplete")
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Modelo de ejemplo de Succes</h4>
+    </div>
+</div>
+
+    <div class="col-xs-12 panel-button">
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="javascript:enviarRetornoMsjError();" class="btn_secundario">JSON Error</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="javascript:enviarRetornoMsjSuccess();" class="btn_secundario">JSON Success</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="javascript:enviarRetornoJsonMessage();" class="btn_secundario">Error x Json Menssage</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="javascript:enviarRetornoError();" class="btn_secundario">JSON Error sin Mensaje</a>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+            <a href="javascript:enviarRetornoSuccess();" class="btn_secundario">JSON Success sin Mensaje</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Modelo de Multipes Archivos</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <form id="pluploadForm">
+            @*<div id="pluploadForm">
+                </div>*@
+        </form>
+    </div>
+</div>
+
+    <div class="col-xs-12 panel-button">
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            @Html.MDGoBackButton()
+        </div>
+    </div>
+</div>
+    </div>
+@Scripts.Render("~/bundles/plupload")
+@Styles.Render("~/Content/plupload")
+@Scripts.Render(string.Format("~/bundles/plupload.{0}", HttpContext.Current.Response.Cookies["_culture"].Value))
+
+
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#datepicker").datepicker();
+        var availableTags = [
+            "ActionScript",
+            "AppleScript",
+            "Asp",
+            "BASIC",
+            "C",
+            "C++",
+            "Clojure",
+            "COBOL",
+            "ColdFusion",
+            "Erlang",
+            "Fortran",
+            "Groovy",
+            "Haskell",
+            "Java",
+            "JavaScript",
+            "Lisp",
+            "Perl",
+            "PHP",
+            "Python",
+            "Ruby",
+            "Scala",
+            "Scheme"
+        ];
+        $("#autocomplete").autocomplete({
+            source: availableTags
+        });
+    });
+
+    function openError() {
+        $.MDmessage({
+            title: "Error",
+            buttons: {
+                "No": function () {
+                    alert("Función 1");
+                },
+                "Si": function () {
+                    alert("Función 2");
+                }
+            },
+            message: "Éste es un mensaje de error de prueba. Lo valores están por default a excepción de éste texto",
+        });
+    };
+
+    function openPopup() {
+        $.MDmessage({
+            //btnok:false,
+            messageType: "popup",
+            name: "popupCustom",
+            content: '@Url.Action("PartialAbout", "Home")',
+        });
+    };
+
+    function openAlert() {
+        $.MDmessage({
+            messageType: "alert",
+            name: "alerto",
+            buttons: {
+                "No": function () {
+                    alert("Función 1");
+                },
+                "Si": function () {
+                    alert("Función 2");
+                }
+            },
+            title: "Alerta",
+            message: "Éste es un mensaje de alerta de prueba. Lo valores están por default a excepción de éste texto",
+            btnokText: "Ok"
+        });
+    };
+
+    function enviarRetornoMsjError() {
+        enviarPruebaJSONResponse('@Url.Action("AboutErrorResponse", "Home")');
+    }
+
+    function enviarRetornoMsjSuccess() {
+        enviarPruebaJSONResponse('@Url.Action("AboutSuccessResponse", "Home")');
+    }
+
+    function enviarRetornoSuccess() {
+        enviarPruebaJSONResponse('@Url.Action("AboutSuccessNoMessage", "Home")');
+    }
+
+    function enviarRetornoError() {
+        enviarPruebaJSONResponse('@Url.Action("AboutErrorNoMessage", "Home")');
+    }
+
+    function enviarRetornoJsonMessage() {
+        enviarPruebaJSONResponse('@Url.Action("AboutJsonMessage", "Home")');
+    }
+
+    function enviarPruebaJSONResponse(action) {
+        $.ajax({
+            url: action,
+            type: "POST",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                ExecuteMessagesSuccess(data,
+                    function () { alert("Comportamiento adicional success"); },
+                    function () { alert("Comportamiento adicional error") }
+                    );
+            }
+        });
+    }
+
+    $(function () {
+        // Setup html5 version
+        $("#pluploadForm").pluploadQueue({
+            // General settings
+            runtimes: 'html5,flash,silverlight,html4',
+            url: "/home/upload",
+
+            chunk_size: '1mb',
+            rename: true,
+            dragdrop: true,
+
+            filters: {
+                // Maximum file size
+                max_file_size: '10mb',
+                // Specify what files to browse for
+                mime_types: [
+                    { title: "Image files", extensions: "jpg,gif,png" },
+                    { title: "Zip files", extensions: "zip" }
+                ]
+            },
+
+            // Resize images on clientside if we can
+            resize: {
+                width: 200,
+                height: 200,
+                quality: 90,
+                crop: true // crop to exact dimensions
+            },
+
+
+            // Flash settings
+            flash_swf_url: '/plupload/js/Moxie.swf',
+
+            // Silverlight settings
+            silverlight_xap_url: '/plupload/js/Moxie.xap'
+        });
+    });
+
+    $(function () {
+        $('.uk-input').bind(UKEventType.FileUploaded, function (evt) {
+            console.log(evt.response);
+        });
+    });
+</script>
+

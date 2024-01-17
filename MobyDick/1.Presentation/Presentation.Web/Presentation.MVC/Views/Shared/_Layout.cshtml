@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - MobyDick</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/smartMenus")
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/MobyDickGrid")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/jqgrid")
+    @Scripts.Render("~/bundles/validate")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/mobydick")
+    @Scripts.Render("~/bundles/Plugins")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Site")
+    @Scripts.Render("~/bundles/MobyDickGrid")
+    @Scripts.Render("~/bundles/MobyDickFancyTree")
+    @Scripts.Render("~/bundles/smartMenus")
+    @Scripts.Render("~/bundles/globalization")
+
+    @if (System.Web.HttpContext.Current.Request.Cookies["_culture"] != null)
+    {
+        @Scripts.Render(string.Format("~/bundles/Globalize.{0}", System.Web.HttpContext.Current.Request.Cookies["_culture"].Value))
+    }
+    else
+    {
+        @Scripts.Render(string.Format("~/bundles/Globalize.{0}", Presentation.MVC.Common.CultureHelper.GetImplementedCulture(System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant())))
+    }
+</head>
+<body>
+
+    @Html.Action("NavigationHeader", "Navigation", new { area = "" })
+
+    <div class="container-fluid">
+        <div class="menu-hor-body row">
+            <div class="container-fluid col-sm-12">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        @Html.Action("NavigationMenu", "Navigation", new { area = "" })
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        @if (Request.IsAuthenticated)
+        {
+            <text>
+                <div class="row">
+                    <div class="contenedor-body col-sm-12">
+                        <div class="menu-lateral-body col-sm-4 col-md-3 col-lg-2">
+                            <div class="menu-lat panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                @Html.Action("NavigationMenuVertical", "Navigation", new { area = "" })
+                            </div>
+                        </div>
+
+                        <div class="col-sm-8 col-md-9 col-lg-10" id="body-wrapper">
+                            <!--Camino de Migajas
+                            <div class="row">
+                                <ul class="navigation-guide">
+                                    @Html.Action("GetNavigationTitle", "Navigation", new { area = "" })
+                                </ul>
+                            </div>-->
+                            <div class="container-fluid">
+                                <div class="row">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </text>
+        }
+        else
+        {
+            <text>
+                <div class="col-sm-12" id="body-wrapper">
+                    <div class="container-fluid">
+                        <div class="row">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </text>
+        }
+
+    </div>
+
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1" id="footer_content_wrapper">
+                    <p>Mobydick &copy; 2015</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+    $(function () {
+        //Agrego la Clase para estilizar todos los controles a boostrap
+        $("input[type='text'], input[type='password'], input[type='email'], select").not(".ui-pg-selbox,.ui-pg-input").addClass('form-control');
+        $("input[type='button'], input[type='submit']").addClass('btn btn-primary');
+        $(".btn_secundario").addClass('btn btn-primary');
+        $(".button_ui").addClass('btn btn-primary');
+
+        setBodyHeight();
+        $(window).resize(setBodyHeight);
+
+        @if (TempData["TempMessage"] != null && TempData["ErrorCompleto"] != null)
+        {
+            <text>MostrarMensajeConError('@Html.Raw(TempData["TempMessage"])', '@Html.Raw(TempData["ErrorCompleto"])');</text>
+        }
+        else if (TempData["TempMessage"] != null)
+        {
+            <text>MostrarMensaje('@Html.Raw(TempData["TempMessage"])');</text>
+        }
+    });
+
+    function setBodyHeight() {
+        $("#body-wrapper").css("min-height", $(window).innerHeight() - $("header").height() - $("footer").height() + "px");
+    }
+
+</script>

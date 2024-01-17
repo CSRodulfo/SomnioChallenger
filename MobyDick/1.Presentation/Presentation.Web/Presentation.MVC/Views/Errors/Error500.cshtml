@@ -1,0 +1,23 @@
+﻿@model Presentation.MVC.Models.RegisterModel
+@{
+    ViewBag.Title = "Error 500";
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h3>@ViewBag.Title</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 center-block ">
+            <h4>Error interno en la operación solicitada</h4>
+        </div>
+    </div>
+
+    <div>
+        <img src="@Url.Content("~/Content/Images/login/error500.png")" />
+    </div>
+</div>

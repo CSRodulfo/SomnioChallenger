@@ -1,0 +1,12 @@
+﻿@model ICollection<Application.MainModule.Administration.RolesManagement.DTOMenuForTitle>
+@if (@Model != null && @Model.Count > 0)
+{
+    foreach (var menuItem in Model)
+    {
+        <li>@Html.ActionLink(menuItem.Name, menuItem.Action, menuItem.Controller, new { Area = menuItem.Area }, new { ID = menuItem.Id })</li>
+    }
+}
+else
+{
+    <li>@Html.ActionLink("Link","#")</li>
+}     

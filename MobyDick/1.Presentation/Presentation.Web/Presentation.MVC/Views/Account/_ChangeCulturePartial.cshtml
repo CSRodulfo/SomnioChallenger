@@ -1,0 +1,28 @@
+﻿@model Presentation.MVC.Models.LocalCultureModel
+
+@using (Html.BeginForm("SetCulture", "Account"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+        @Html.HiddenFor(m => m.UserId)
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.LabelFor(m => m.IdCulture)
+                @Html.DropDownListFor(m => m.IdCulture, new SelectList(Model.Cultures, "IdCulture", "Description", Model.IdCulture), "Seleccionar...")
+                @Html.ValidationMessageFor(m => m.IdCulture)
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-button">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.ActionButtonSubmit(MBAdministration.Users.Resources.ChangeLanguage)
+                </div>
+            </div>
+        </div>
+    </div>
+}

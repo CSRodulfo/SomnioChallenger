@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1B83EFF2-1CA7-4862-BD2E-1CE58B4BEC3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Application.MainModule</RootNamespace>
+    <AssemblyName>Application.MainModule</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>$(SolutionDir)packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>$(SolutionDir)packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.0.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPPlus.4.0.4\lib\net20\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlusEnumerable, Version=1.3.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPPlusEnumerable.1.3.4.0\lib\net45\EPPlusEnumerable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration\Authorization\IAuthorization\IManagerMenu.cs" />
+    <Compile Include="Administration\Authorization\ManagerMenu.cs" />
+    <Compile Include="Administration\CompanyManagement\DTOAdapters\AdapterCompany.cs" />
+    <Compile Include="Administration\CompanyManagement\DTO\DTOCompany.cs" />
+    <Compile Include="Administration\CompanyManagement\Interfaces\IServiceCompany.cs" />
+    <Compile Include="Administration\CompanyManagement\ServiceCompany.cs" />
+    <Compile Include="Administration\Culture\DTOAdapters\AdapterCulture.cs" />
+    <Compile Include="Administration\Culture\DTO\DTOCulture.cs" />
+    <Compile Include="Administration\Culture\Interfaces\IServiceCulture.cs" />
+    <Compile Include="Administration\Culture\ServiceCulture.cs" />
+    <Compile Include="Administration\FileManagement\DTOAdapter\DTOAdapterFile.cs" />
+    <Compile Include="Administration\FileManagement\DTO\DTOFile.cs" />
+    <Compile Include="Administration\FileManagement\Interfaces\IServiceFile.cs" />
+    <Compile Include="Administration\FileManagement\ServiceFile.cs" />
+    <Compile Include="Administration\Resource\DTOAdapters\AdapterResource.cs" />
+    <Compile Include="Administration\Resource\DTO\DTOResource.cs" />
+    <Compile Include="Administration\Resource\Interfaces\IServiceResource.cs" />
+    <Compile Include="Administration\Resource\ServiceResource.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterMenu.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterMenuesForEdit.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterMenuesForInsert.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterMenuesForTreeEdit.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterMenuForAuthorization.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterMenuForList.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterRoleForAuthorization.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterRoles.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterRoleForMenues.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterMenuesForRole.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterRoleForList.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterRoleForUsers.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterUserForExportList.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterUser.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterUserForEdit.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterUserForRoles.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterUserForSelect.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterUserForSelectList.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOMenuesForEdit.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOMenuesForInsert.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOMenuesForTreeEdit.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOMenuForAuthorization.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOMenuForList.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTORoleForAuthorization.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTORoleForList.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOMenuesForRole.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTORoleForMenues.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOMenu.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTORoles.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTORoleForUsers.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOUserForEdit.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOUserForRoles.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOUserForSelect.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOUserForSelectListItem.cs" />
+    <Compile Include="Administration\RolesManagement\Interfaces\IRolesValidation.cs" />
+    <Compile Include="Administration\RolesManagement\Interfaces\IServiceMenues.cs" />
+    <Compile Include="Administration\RolesManagement\Interfaces\IServiceUsers.cs" />
+    <Compile Include="Administration\RolesManagement\Interfaces\IServiceRolesManagement.cs" />
+    <Compile Include="Administration\RolesManagement\ServiceMenues.cs" />
+    <Compile Include="Administration\RolesManagement\ServiceRolesManagement.cs" />
+    <Compile Include="Administration\RolesManagement\ServiceUsers.cs" />
+    <Compile Include="Behavior\Message\Message.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterMenuForDisplay.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterMenuForTitle.cs" />
+    <Compile Include="Administration\RolesManagement\DTOAdapters\AdapterRolesForDisplay.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTORolesForDisplay.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOMenuForTitle.cs" />
+    <Compile Include="Administration\RolesManagement\DTO\DTOMenuForDisplay.cs" />
+    <Compile Include="Administration\User\DTO\DTOUserExportList.cs" />
+    <Compile Include="Administration\User\DTO\DTOUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Administration\Authentication\DTO\DTO.cs" />
+    <Compile Include="Administration\Authentication\ISecurityMembership.cs" />
+    <Compile Include="Administration\Authentication\ISecurityRoles.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\4.Domain\Domain.Core\Domain.Core.csproj">
+      <Project>{9130241C-0C27-4895-A7BF-AA35B389ACBB}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Domain.Entities\Domain.Entities.csproj">
+      <Project>{C915FE64-1556-4710-B79E-BA55EE5D1CC8}</Project>
+      <Name>Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Domain.Resources\Domain.Resources.csproj">
+      <Project>{21b7ac5a-6e55-4695-96dd-b2fc9aad3ee7}</Project>
+      <Name>Domain.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Domain\Domain.csproj">
+      <Project>{0F972E0D-A750-4D73-B759-3A0ABA8E4B29}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\5.Infrastructure\Infrastructure.Cross.Security\Infrastructure.Cross.Security.csproj">
+      <Project>{C3A98305-8834-4772-B183-29F7C0B786E5}</Project>
+      <Name>Infrastructure.Cross.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\5.Infrastructure\Infrastructure.Data\Infrastructure.Data.csproj">
+      <Project>{06B9563D-CB93-42A9-A242-BF6D8D877CC5}</Project>
+      <Name>Infrastructure.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="key.snk" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+</Project>

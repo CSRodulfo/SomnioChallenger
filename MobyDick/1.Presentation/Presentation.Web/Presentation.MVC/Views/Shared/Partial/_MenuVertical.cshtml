@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Application.MainModule.Administration.RolesManagement.DTOMenuForDisplay>
+
+@ShowTree(Model)
+
+@helper ShowTree(IEnumerable<Application.MainModule.Administration.RolesManagement.DTOMenuForDisplay> Menues)
+{
+    foreach (var item in Menues)
+    {
+        if (item.subMenues != null && item.subMenues.Any())
+        {
+            <div class="menu-lat-btn panel panel-default">
+                <div class="menu-lat-panel panel-heading" role="tab" id="heading@(item.Name)">                    
+                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse@(item.Name)" aria-expanded="false"
+                       aria-controls="collapse@(item.Name)"><span class="icono" style="background-position: @(item.Axis_X)px @(item.Axis_Y)px;"></span>
+                        @item.Name
+                    </a>
+                </div>
+                <div id="collapse@(item.Name)" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading@(item.Name)">
+                    <div class="panel-body">
+                        @ShowTree(item.subMenues)
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="menu-lat-btn panel panel-default">
+                <div class="menu-lat-panel panel-heading" role="tab" id="heading@(item.Name)">
+                    <a href="@Url.Action(item.Action, item.Controller, new { Area = item.Area })" id="@item.Id" class="menu-single">
+                        <span class="icono icon-vertical" style="background-position: @(item.Axis_X)px @(item.Axis_Y)px;"></span>
+                        @item.Name
+                    </a>
+                </div>
+            </div>
+        }
+    }
+
+
+
+}

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0F972E0D-A750-4D73-B759-3A0ABA8E4B29}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration\IRepositoryBehavior.cs" />
+    <Compile Include="Administration\IRepositoryCheckpoint.cs" />
+    <Compile Include="Administration\IRepositoryFile.cs" />
+    <Compile Include="Administration\IRepositoryMembership.cs" />
+    <Compile Include="Administration\IRepositoryMenu.cs" />
+    <Compile Include="Administration\Partial\IRepositoryCheckpoint.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\IRepositoryCompany.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\IRepositoryCompany.cs" />
+    <Compile Include="Administration\IRepositoryRoles.cs" />
+    <Compile Include="Administration\IRepositoryUsers.cs" />
+    <Compile Include="Administration\Partial\IRepositoryBehavior.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\IRepositoryCulture.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\IRepositoryFile.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\IRepositoryMembership.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\IRepositoryMenu.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\IRepositoryMenuModule.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\IRepositoryResources.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\IRepositoryRoleInBehavior.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\IRepositoryRoles.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\IRepositoryUsers.cs">
+      <DependentUpon>IRepository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepositoryTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Core\Domain.Core.csproj">
+      <Project>{9130241C-0C27-4895-A7BF-AA35B389ACBB}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Entities\Domain.Entities.csproj">
+      <Project>{C915FE64-1556-4710-B79E-BA55EE5D1CC8}</Project>
+      <Name>Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain.Resources\Domain.Resources.csproj">
+      <Project>{21b7ac5a-6e55-4695-96dd-b2fc9aad3ee7}</Project>
+      <Name>Domain.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Repository\Partial\IRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Administration\Partial\IRepository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

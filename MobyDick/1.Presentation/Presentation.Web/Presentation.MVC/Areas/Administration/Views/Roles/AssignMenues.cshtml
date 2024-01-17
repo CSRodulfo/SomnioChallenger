@@ -1,0 +1,113 @@
+﻿@model Presentation.MVC.Areas.Administration.Models.AsignacionMenuesModels
+@{
+    ViewBag.Title = MBAdministration.Roles.Resources.RolAdministration;
+    ViewBag.Subtitle = MBAdministration.Roles.Resources.RolMenuAdministration;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>@ViewBag.SubTitle @Html.ValueFor(m => m.rol.RoleName)</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+
+                <div class="trees" id="tree"></div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <h4>@MBAdministration.Menues.Resources.Description</h4>
+                <div id="descriptionContainer" class="framed-box" style="min-height: 50px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @using (Html.BeginForm("AssignMenues", "Roles", FormMethod.Post, new { enctype = "multipart/form-data", id = "formRoles" }))
+    {
+        <div class="panel-button">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.HiddenFor(m => m.rol.RoleId)
+                        @Html.HiddenFor(m => m.selectedKeys, new { id = "selectedKeys" })
+
+                        @Html.ActionButtonSave("SaveRole()")
+                        @Html.ActionButtonBack("List", "Roles")
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<script>
+    var hasDataChanged = false;
+    $(document).ready(function () {
+        window.onbeforeunload = confirmLeave;
+        loadTree();
+    });
+
+    function confirmLeave() {
+        if (hasDataChanged) {
+            return LeaveMessage;
+        }
+    }
+
+    function loadTree() {
+
+        var treeData = @Html.Raw(Json.Encode(Model.dataTree));
+
+        $(function () {
+            $("#tree").MobyDickFancyTree({
+                checkbox: true,
+                source: treeData,
+                dblclick: function (event, data) {
+                    data.node.toggleSelected();
+                },
+                focus: function (event, data) {
+                    $("#descriptionContainer").text(data.node.data.menuDescription);
+                },
+                keydown: function (node, event) {
+                    if (event.which == 32) {
+                        node.toggleSelect();
+                        return false;
+                    }
+                },
+                select: function (event, data) {
+                    hasDataChanged = true;
+                    if (!data.node.selected) {
+                        data.node.visit(function (childNode) {
+                            childNode.setSelected(false);
+                        });
+                    }
+                    else {
+                        if(data.node.parent)
+                            data.node.parent.setSelected(true);
+                    }
+                }
+            });
+        });
+    };
+
+    function SaveRole() {
+        var SelectedKeys = $.map($("#tree").fancytree("getTree").getSelectedNodes(), function (node) {
+            return node.key;
+        });
+        $("#selectedKeys").val(JSON.stringify(SelectedKeys));
+        hasDataChanged = false;
+        $("#formRoles").submit();
+    };
+
+    var paramFromView = {
+        LeaveMessage: '@MBAdministration.Menues.Resources.LeaveMenu'
+    }
+</script>

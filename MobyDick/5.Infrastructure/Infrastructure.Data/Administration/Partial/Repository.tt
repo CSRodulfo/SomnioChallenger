@@ -1,0 +1,218 @@
+﻿<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ include file="EF.Utility.CS.ttinclude"#><#@
+ output extension="\.cs"#><#
+
+// Formatting helper for code
+CodeGenerationTools code = new CodeGenerationTools(this);
+
+// object for creating entity information
+MetadataLoader loader = new MetadataLoader(this);
+ 
+const string inputFile = @"../../../../5.Infrastructure/Infrastructure.Data/Model.edmx";
+
+// Meta data information for the conceptual model
+EdmItemCollection ItemCollection = loader.CreateEdmItemCollection(inputFile);
+
+// Suggested namespace
+string namespaceName = code.VsNamespaceSuggestion();
+
+List<string> processList = new List<string>() {"Repository","Company", "Culture","File", "Membership","webpages_OAuthMembership", "null","Menu","MenuModule","Behavior", "RoleInBehavior","Roles","sysdiagrams","Users","Resources", "Checkpoint"};
+
+// File generator according to different section
+EntityFrameworkTemplateFileManager fileManager = 
+            EntityFrameworkTemplateFileManager.Create(this);
+    
+
+// Loop through each entity type
+foreach (EntityType entity in 
+            ItemCollection.GetItems<EntityType>().OrderBy(e => e.Name))
+{
+	if (processList.Exists(npl => npl == entity.Name))
+    {
+
+    // File name for data annotation file
+    string fileName = "Repository"+ entity.Name + ".cs";
+    
+    // Check for file existence, If it does not
+    // exist create new file for data annotation
+    if (!DoesFileExist(fileName))
+    {    
+        // Header for file
+        WriteHeader(fileManager);
+        
+        // Create new file
+        fileManager.StartNewFile(fileName);    
+
+        // Add namespaces into file
+        //BeginNamespace(namespaceName, code);
+#>
+namespace Infrastructure.Data.Administration
+{
+	using Domain.Entities;
+	using Domain.Entities.Libraries;
+	using Domain.Administration;
+	using Domain.Resources.Libraries.PagedData;
+	using Infrastructure.Data.Core;
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Text;
+
+	/// <summary>
+	/// Repository<#=code.Escape(entity)#>
+	/// </summary>
+
+	public partial class Repository<#=code.Escape(entity)#> : Repository<<#=code.Escape(entity)#>>, IRepository<#=code.Escape(entity)#>
+		{
+			public Repository<#=code.Escape(entity)#>(IQueriableUnitOfWork UnitOfWork)
+				: base(UnitOfWork)
+			{
+			}
+		}
+<#
+    // End namespace
+    EndNamespace(namespaceName);
+    }
+    else
+    {
+        // Write with original file
+        fileManager.StartNewFile(fileName);
+        this.Write(OutputFile(fileName));
+    }
+}
+}
+fileManager.Process();
+
+#>
+<#+
+
+// Write display name data annotation
+void WriteDisplayName(EdmProperty edmProperty) {
+    string displayName = edmProperty.Name;
+    
+    // Check for property name
+    if (!string.IsNullOrEmpty(displayName)) 
+    {
+        // Generate user friendly name
+        displayName = GetFriendlyName(edmProperty.Name);
+        
+        // Populate actual string to be written
+        string displayAttribute = 
+          string.Format("[DisplayName(\"{0}\")]", displayName);
+#>
+    <#=displayAttribute#>
+<#+
+    }
+}
+
+//add required attribute
+void WriteRequiredAttribute(EdmProperty edmProperty) {
+    
+    // Check for required property
+    if (!edmProperty.Nullable) 
+    {
+      WriteLine("{0}[Required(ErrorMessage = \"{1} is required\")]",
+         CodeRegion.GetIndent(1),GetFriendlyName(edmProperty.Name));
+    }
+}
+
+// Write max string length
+void WriteStringLengthAttribute(EdmProperty edmProperty) { 
+    
+    // Object for retrieving additional information from property 
+    Facet maxLengthfacet;
+    
+    // Try to get max length from property
+    if (edmProperty.TypeUsage.Facets.TryGetValue("MaxLength", true, out maxLengthfacet)) 
+    {
+        // Max length for property
+        double lengthAttribute;
+        
+        // Try to parse max length value
+        if (double.TryParse(maxLengthfacet.Value.ToString(), out lengthAttribute)) 
+        {
+            // Generate actual string for attribute
+            WriteLine("{0}[MaxLength({1}, ErrorMessage = \"{2} cannot " + 
+              "be longer than {1} characters\")]",
+              CodeRegion.GetIndent(1),lengthAttribute,GetFriendlyName(edmProperty.Name));
+        }
+    }
+}
+
+// Initialize header
+void WriteHeader(EntityFrameworkTemplateFileManager fileManager, params string[] extraUsings)
+{
+    fileManager.StartHeader();
+#><#=String.Join(String.Empty, extraUsings.Select(u => "using " + u + 
+                     ";" + Environment.NewLine).ToArray())#>
+<#+ 
+    fileManager.EndBlock();
+}
+
+// Add namespace
+void BeginNamespace(string namespaceName, CodeGenerationTools code)
+{
+    // Generate region
+    CodeRegion region = new CodeRegion(this);
+
+    // Check for namespace value
+    if (!String.IsNullOrEmpty(namespaceName))
+    {
+#>
+
+namespace <#=code.EscapeNamespace(namespaceName)#>
+{
+<#+
+        // Add indent
+        PushIndent(CodeRegion.GetIndent(1));
+    }
+}
+
+// End namespace
+void EndNamespace(string namespaceName)
+{
+    if (!String.IsNullOrEmpty(namespaceName))
+    {
+        PopIndent();
+#>
+}
+<#+
+    }
+}
+
+#>
+<#+
+
+// Check for file existence
+bool DoesFileExist(string filename)
+{            
+    return File.Exists(Path.Combine(GetCurrentDirectory(),filename));    
+}
+
+// Get current  folder directory
+string GetCurrentDirectory()
+{
+    return System.IO.Path.GetDirectoryName(Host.TemplateFile);
+}
+
+// Get content of file name
+string OutputFile(string filename)
+{
+    using(StreamReader sr = 
+      new StreamReader(Path.Combine(GetCurrentDirectory(),filename)))
+    {
+        return sr.ReadToEnd();
+    }
+}
+
+// Get friendly name for property names
+string GetFriendlyName(string value)
+{
+return Regex.Replace(value,
+            "([A-Z]+)", " $1",
+            RegexOptions.Compiled).Trim();
+}
+#>

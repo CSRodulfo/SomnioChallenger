@@ -1,0 +1,120 @@
+﻿@model Presentation.MVC.Models.UsersList
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = MBAdministration.Users.Resources.UserAdministration;
+    ViewBag.SubTitle = MBAdministration.Users.Resources.UserList;
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>@ViewBag.SubTitle</h4>
+        </div>
+    </div>
+    @using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data", id = "exportForm" }))
+    {
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-button">
+            <div class="row">
+                <div class="col-md-12 search">
+                    <div class="form-group">
+                        @Html.ActionButtonSearch(new { id = "filter"})
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <table id="MobyDickGrid"></table>
+                <div id="MobyDickPager"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel-button">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.ActionButtonHome()
+                @Html.ActionButtonNew(new { id = "add" })
+                @Html.ActionButtonEdit(new { id = "edit" })
+                @Html.ActionButtonDelete(new { id = "delete" })
+                @Html.ActionButtonGeneric(MBAdministration.Users.Resources.BtnAssign, new { id = "BtnAssign" })
+                @Html.ActionButtonGeneric(MBAdministration.Users.Resources.BtnReset, new { id = "BtnReset" })
+                @*@Html.ActionButtonExport(new { id = "export" })*@
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>
+    $("#BtnAssign").click(function () {
+        var url = '@Url.Action("AssignRoles", "Users", new { UserId = "_id_" })';
+        var UserId = $("#MobyDickGrid").jqGrid('getGridParam', 'selrow');
+
+        if (UserId == null) {
+            MostrarMensaje(paramFromView.selectFieldMessage);
+        }
+        else {
+            location.href = url.replace('_id_', UserId);
+        }
+    });
+
+    $("#BtnReset").click(function () {
+        var url = '@Url.Action("ResetPassword", "Users", new { UserId = "_id_" })';
+        var UserId = $("#MobyDickGrid").jqGrid('getGridParam', 'selrow');
+
+        if (UserId == null) {
+            MostrarMensaje(paramFromView.selectFieldMessage);
+        }
+        else {
+            location.href = url.replace('_id_', UserId);
+        }
+    });
+
+    var nGrid;
+
+    $(function () {
+        $('#@Html.IdFor(m => m.UserName)').focus();
+
+        nGrid = $('body').MobyDickGrid({
+            listUrl: '@Url.Action("LoadUsers", "Users")',
+            colNames: [paramFromView.UserName, paramFromView.FirsNameLastName, paramFromView.Email],
+            colAlign: [ 'center', 'center', 'center'],
+            colIndex: [ 'UserName', 'FirstName', 'Email'],
+            addUrl: '@Url.Action("Insert", "Users")',
+            editUrl: '@Url.Action("Edit", "Users")',
+            deleteUrl: '@Url.Action("Delete", "Users")',
+            exportUrl: '@Url.Action("Export", "Users")',
+            exportForm: 'exportForm',
+            sortname: 'UserName',
+            gridData: function () {
+                return {
+                    UserName: function () { return $('#@Html.IdFor(m => m.UserName)').val() }
+                };
+            }
+        });
+    });
+
+    var paramFromView = {
+        UserName: '@MBAdministration.Users.Resources.UserName',
+        FirsNameLastName: '@MBAdministration.Users.Resources.FirstAndLastName',
+        Email: '@MBAdministration.Users.Resources.Email',
+        selectFieldMessage: '@Default.Resources.selectFieldMessage'
+        }
+</script>

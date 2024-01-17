@@ -1,0 +1,55 @@
+﻿@model Presentation.MVC.Models.LoginModel
+@{
+    ViewBag.Title = "Ingresar";
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>¿Qué es Mobydick?</h1>
+            <h4>@ViewBag.Title</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+            {
+                <div class="form-group">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)<br />
+
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)<br />
+
+                    @Html.LabelFor(m => m.RememberMe)
+                    @Html.CheckBoxFor(m => m.RememberMe)<br /><br />
+
+                    <div class="panel-button">
+                        <input type="submit" value="Aceptar" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-7 col-md-offset-1 col-xs-offset-0">
+            <br />
+            <p>
+                El éxito reside en la simpleza: Simple, sencillo y rápido. Aplicaciones pequeñas y soluciones a gran escala. De código abierto y con toda la documentación necesaria. Ejemplos y herramientas para ayudarte en tu desarrollo.
+            </p>
+            <p>
+                El mismo equipo que lo desarrolló y mantiene es quien brinda el soporte y las capacitaciones. El código se documenta a medida que se desarrolla y constantemente se incluye documentación complementaria, ayuda, laboratorios, manuales y ejemplos sobre como utilizar MD.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        document.getElementById("UserName").focus();
+    });
+</script>

@@ -1,0 +1,17 @@
+﻿<Window x:Class="Presentation.AppWPF.Area.Administration.Security.View.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Login" Height="350" Width="450" Icon="/Presentation.AppWPF;component/favicon.ico" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.AppWorkspaceColorKey}}"/>
+        </Grid.Background>
+        <Image HorizontalAlignment="Left" Height="80" Margin="33,10,0,0" VerticalAlignment="Top" Width="375" Source="/Presentation.AppWPF;component/Images/logo.png"/>
+        <Label Content="Usuario" HorizontalAlignment="Left" Height="32" Margin="33,117,0,0" VerticalAlignment="Top" Width="79"/>
+        <Label Content="Password" HorizontalAlignment="Left" Height="31" Margin="33,163,0,0" VerticalAlignment="Top" Width="79"/>
+        <TextBox x:Name="txtUser" HorizontalAlignment="Left" Height="32" Margin="117,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="281"/>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="31" Margin="117,163,0,0" VerticalAlignment="Top" Width="281" PasswordChar="*"/>
+        <Button x:Name="btnSignIn" Content="Ingresar..." HorizontalAlignment="Left" Height="28" Margin="117,210,0,0" VerticalAlignment="Top" Width="281" Click="btnSignIn_Click"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,8 @@
+﻿<Window x:Class="Presentation.AppWPF.Area.Administration.Generic.View.Generic"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Generic" Height="600" Width="600">
+    <Grid>
+        
+    </Grid>
+</Window>

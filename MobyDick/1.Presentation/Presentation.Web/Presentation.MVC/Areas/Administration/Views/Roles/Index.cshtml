@@ -1,0 +1,146 @@
+﻿@model Presentation.MVC.Areas.Administration.Models.ManageRolesViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>Administración de Roles</h4>
+        </div>
+    </div>
+
+    <section class="content_box">
+
+        <div class="col-md-4">
+
+            @using (Html.BeginForm("", "", FormMethod.Get, new { id = "Formulario" }))
+            {
+                <fieldset>
+                    @Html.Label("Nombre del Rol")
+                    @Html.TextBox("RoleName")<br />
+                </fieldset>
+
+                <div class="panel-button">
+                    <input id="add-role" type="button" value="Agregar" />
+                </div>
+            }
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            <fieldset>
+                <div class="col-md-4 col-md-offset-2 col-xs-offset-0">
+                    @Html.Label("Roles")
+                    @Html.ListBox("Roles", Model.Roles, new { height = "120px", width = "200px" })<br />
+
+                    <ol id="selectable">
+                        @foreach (var item in Model.Roles)
+                        {
+                            <li class="ui-widget-content">@item.Text </li>
+                        }
+                    </ol><br />
+                </div>
+
+                <div class="col-md-6">
+                    <div class="col-md-12">
+                        @Html.Label("Get Users In Role")
+                        @Html.DropDownList("RolesList", Model.Roles, "[Select Role]")<br />
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="panel-button">
+                <input id="Cerrar" type="button" value="Cerrar" />
+            </div>
+        }
+    </section>
+</div>
+
+<script>
+    /***********************************************
+    * Begin Add Role Functions
+    ***********************************************/
+    $("#add-role").click(function () {
+
+        var isValid = $('#form2').valid();
+        if (isValid) {
+            $("#ProgressDialog").dialog("open");
+            $.ajax({
+                url: '@Url.Action("CreateRole", "Roles")',
+                dataType: 'json',
+                type: 'POST',
+                data: { roleName: $("#RoleName").val() },
+                success: OnCreateRoleSuccess,
+                error: OnCreateRoleError,
+                complete: function () {
+                    $("#ProgressDialog").dialog("close");
+                }
+            });
+        }
+    });
+
+    function OnCreateRoleSuccess(data) {
+        if (data.Success) {
+            $("#RoleName").val("");
+            GetAllRoles("Roles");
+            GetAllRoles("RolesList");
+        }
+        $("#SuccessContainer").html(data.PartialView);
+        $("#SuccessDialog").dialog("open");
+    }
+
+    function OnCreateRoleError(xhr, status, error) {
+        $("#SuccessContainer").html(error);
+        $("#SuccessDialog").dialog("open");
+    }
+
+
+    /***********************************************
+    * Visualización
+    ***********************************************/
+
+    function GetAllRoles(selectObject) {
+        $.ajax({
+            url: '@Url.Action("GetAllRoles", "Roles")',
+            dataType: 'json',
+            type: 'GET',
+            success: function (data) {
+                var rolesList = $("#" + selectObject);
+                rolesList.loadSelect(data);
+            }
+        });
+    }
+
+    $(function () {
+        $("#selectable").selectable();
+    });
+
+    (function ($) {
+        $.fn.emptySelect = function () {
+            return this.each(function () {
+                if (this.tagName == 'SELECT') this.options.length = 0;
+            });
+        }
+
+        $.fn.loadSelect = function (optionsDataArray) {
+            return this.emptySelect().each(function () {
+                if (this.tagName == 'SELECT') {
+                    $.each(optionsDataArray, function (index, optionData) {
+                        var option = new Option(optionData.caption,
+                                  optionData.value);
+                        if ($.browser.msie) {
+                            selectElement.add(option);
+                        }
+                        else {
+                            selectElement.add(option, null);
+                        }
+                    });
+                }
+            });
+        }
+
+    })(jQuery);
+</script>

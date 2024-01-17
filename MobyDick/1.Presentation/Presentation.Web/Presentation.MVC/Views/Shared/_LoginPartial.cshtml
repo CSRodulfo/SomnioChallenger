@@ -1,0 +1,32 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <text>
+        <a href="#" class="dropdown-toggle accountMenu loggedMenu" data-toggle="dropdown" role="button" aria-expanded="false">
+            <div class="avatar">
+                @*<img src="@Url.Content("~/Content/Images/william.jpg")" />*@
+                <img src="@Url.Action("LogoUser", "Navigation", new { Area = "", userName = User.Identity.Name })" />
+            </div>
+        </a>
+        <!--<span onclick="javascript: void (0);" class="accountMenu loggedMenu">a</span>-->
+
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                @Html.ActionLink(User.Identity.Name, "Manage", "Account", new { Area = "" }, htmlAttributes: new { @class = "username", title = "Manage" })
+            </li>
+            <li>
+                <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
+            </li>
+        </ul>
+
+    </text>
+}
+else
+{
+    <li>@Html.ActionLink("Login", "Login", "Account", new { Area = "" }, htmlAttributes: new { id = "loginLink" })</li>
+    <li>@Html.ActionLink("Registrarse", "Register", "Account", new { Area = "" }, htmlAttributes: new { id = "registerLink" })</li>
+}
+
+@using (Html.BeginForm("LogOff", "Account", new { Area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+{
+    @Html.AntiForgeryToken()
+}

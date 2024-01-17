@@ -1,0 +1,155 @@
+﻿@model Presentation.MVC.Models.CompanyModel
+@{
+    ViewBag.Title = MBAdministration.Company.Resources.CompanyAdministration;
+    ViewBag.SubTitle = MBAdministration.Company.Resources.EditCompany;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>@ViewBag.SubTitle</h4>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Edit", "Company", FormMethod.Post, new { id = "form", enctype = "multipart/form-data" }))
+    {
+        @Html.HiddenFor(m => m.IdCompany)
+        @Html.HiddenFor(m => m.IdFile)
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label("Logo: ")
+                    <input id="input-700" name="UploadFile" type="file" class="file-loading">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name)
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CUIT)
+                    @Html.TextBoxFor(m => m.CUIT)
+                    @Html.ValidationMessageFor(m => m.CUIT)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Address)
+                    @Html.TextBoxFor(m => m.Address)
+                    @Html.ValidationMessageFor(m => m.Address)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Number)
+                    @Html.TextBoxFor(m => m.Number)
+                    @Html.ValidationMessageFor(m => m.Number)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.State)
+                    @Html.TextBoxFor(m => m.State)
+                    @Html.ValidationMessageFor(m => m.State)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Country)
+                    @Html.TextBoxFor(m => m.Country)
+                    @Html.ValidationMessageFor(m => m.Country)
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-button">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.ActionButtonSave(new { id = "edit", name = "Register" })
+                        @Html.ActionButtonHome()
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    $(function () {
+        $("#edit").click(function () {
+            if (!$('#form').valid()) {
+                return
+            }
+
+            var formData = $('#form').serialize();
+            var files = $("#input-700").get(0).files
+
+            var data = new FormData();
+            for (i = 0; i < files.length; i++) {
+                data.append("file", files[i]);
+            }
+
+            data.append("dto", formData);
+
+            $.ajax({
+                url: '@Url.Action("Edit", "Company")',
+                type: 'POST',
+                data: data,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (returndata) {
+                    location.href = "@Url.Action("Edit", "Company")"
+                },
+                error: function () {
+                    MostrarMensaje(result.PartialView)
+                }
+            });
+
+        });
+
+    })
+
+
+    $("#input-700").fileinput({
+        initialPreview: [
+        "<img src='@Url.Action("GetFile", "Company", new { Area = "Administration" , id = Model.IdCompany})' class='file-preview-image' alt='User' title='User'>",
+        ],
+        overwriteInitial: true,
+        browseClass: "btn btn-success",
+        browseLabel: ResourcesFileInput.browseLabel,
+        browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: '<i class="glyphicon glyphicon-trash"></i>',
+        uploadClass: "btn btn-info",
+        uploadLabel: "Upload",
+        uploadIcon: '<i class="glyphicon glyphicon-upload"></i>',
+        browseClass: "btn btn-primary btn-block",
+        showCaption: false,
+        showRemove: false,
+
+        maxFileSize: 200,
+        maxFileCount: 1,
+        previewFileType: "image",
+        allowedFileTypes: ["image"],
+
+        showUpload: false
+    });
+</script>

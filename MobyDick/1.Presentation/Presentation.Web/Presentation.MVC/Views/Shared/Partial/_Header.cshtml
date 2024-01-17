@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "_Header";
+}
+
+<header>
+    <nav class="navbar navbar-default col-sm-12">
+        <div class="container-fluid">
+
+            <div class="navbar-header col-xs-4">
+                <a class="navbar-brand" href="#"><img src="@Url.Content("~/Content/Images/logo.png")" alt="logo"></a>
+            </div>
+
+            <!--Cajoncitos del header
+            <div class="navbar-header col-sm-9 ">
+                <div class="center-block">
+                    <a href="@Url.Action("Contact", "Home")">
+                        <div class="header-box">
+                            <p>Contacto</p>
+                        </div>
+                    </a>
+
+                    <a href="@Url.Action("Contact", "Home")">
+                        <div class="header-box">
+                            <p>Otra cosa</p>
+                        </div>
+                    </a>
+
+                    <a href="@Url.Action("Contact", "Home")">
+                        <div class="header-box">
+                            <p>Otra cosa</p>
+                        </div>
+                    </a>
+                </div>
+            </div>-->
+
+            <div class="col-xs-4 col-sm-2 pull-right user-icon">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        @Html.Partial("_LoginPartial")
+                    </li>
+                </ul>
+            </div>
+
+            @Html.Partial("_BrandUserPartial")
+
+        </div>
+    </nav>
+</header>
+

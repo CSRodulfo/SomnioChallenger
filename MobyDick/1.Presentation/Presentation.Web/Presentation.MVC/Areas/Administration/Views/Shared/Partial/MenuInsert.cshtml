@@ -1,0 +1,71 @@
+﻿@model Presentation.MVC.Models.MenuInsertModels
+@{
+    ViewBag.SubTitle = MBAdministration.Menues.Resources.AddMenu;
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>@ViewBag.SubTitle</h4>
+        </div>
+    </div>
+    
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.EditorFor(m => m.Name)
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IDParentMenu)
+                    @Html.DropDownListFor(m => m.IDParentMenu, new SelectList(Model.AllMenues, "IDMenu", "Name"))
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description)
+                    @Html.TextBoxFor(m => m.Description)
+                    @Html.ValidationMessageFor(m => m.Description)<br />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Action)
+                    @Html.EditorFor(m => m.Action)
+                    @Html.ValidationMessageFor(m => m.Action)<br />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Controller)
+                    @Html.EditorFor(m => m.Controller)
+                    @Html.ValidationMessageFor(m => m.Controller)<br />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Area)
+                    @Html.EditorFor(m => m.Area)
+                    @Html.ValidationMessageFor(m => m.Area)<br />
+                </div>
+            </div>
+
+            <div class="panel-button">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.ActionButtonSave()
+                        @Html.ActionButtonBack("List", "Menues")
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

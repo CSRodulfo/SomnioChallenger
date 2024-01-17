@@ -1,0 +1,9 @@
+﻿{
+  "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
+  "webJobName": "SchudeleJobs",
+  "startTime": "2015-09-09T23:30:00-03:00",
+  "endTime": "2016-12-02T00:00:00-03:00",
+  "jobRecurrenceFrequency": "Minute",
+  "interval": 1,
+  "runMode": "Scheduled"
+}

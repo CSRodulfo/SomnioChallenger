@@ -1,0 +1,52 @@
+﻿@model Presentation.MVC.Models.CheckpointInsertModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = MBAdministration.Checkpoints.Resources.CheckpointAdministration;
+    ViewBag.SubTitle = MBAdministration.Checkpoints.Resources.NewCheckpoint;
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>@ViewBag.SubTitle</h4>
+        </div>
+    </div>
+
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Code)
+                    @Html.EditorFor(m => m.Code)
+                    @Html.ValidationMessageFor(m => m.Code)
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description)
+                    @Html.TextBoxFor(m => m.Description)
+                    @Html.ValidationMessageFor(m => m.Description)
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IPService)
+                    @Html.EditorFor(m => m.IPService)
+                    @Html.ValidationMessageFor(m => m.IPService)
+                </div>
+            </div>
+            <div class="panel-button">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.ActionButtonBack("List", "Checkpoints")
+                        @Html.ActionButtonSave()
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,242 @@
+﻿@model Presentation.MVC.Models.MenuesListModel
+@{
+    ViewBag.Title = MBAdministration.Menues.Resources.MenuAdministration;
+    ViewBag.Description= MBAdministration.Menues.Resources.Description;
+    ViewBag.AssignedRoles= MBAdministration.Menues.Resources.AssignedRoles;
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>
+                @ViewBag.Title
+            </h1>
+        </div>
+    </div>
+
+    <div class="panel-content">
+        <div class="row">
+            <input type="hidden" value="" id="tree_selected_id">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="trees" id="tree"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <h4>@ViewBag.Description</h4>
+                        <div id="descriptionContainer" class="framed-box" style="min-height: 50px;">
+                        </div>
+                        <h4>@ViewBag.AssignedRoles</h4>
+                        <div id="assignedRolesContainer" class="framed-box" style="min-height: 50px;">
+                            <ul></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-button">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @if (Model.IsUserDeveloper)
+                    {
+                        @Html.Partial("Partial/_DeveloperEditButtons")
+                    }
+                    @Html.ActionButtonSave("enviarJSON()")
+                    @Html.ActionButtonHome()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var hasDataChanged = false;
+    $(document).ready(function () {
+        window.onbeforeunload = confirmLeave;
+        loadTree();
+    });
+
+    function confirmLeave() {
+        if (hasDataChanged) {
+            return paramFromView.LeaveMessage;
+        }
+    }
+
+    function loadTree() {
+        var treeData = @Html.Raw(Json.Encode(Model.DataTree));
+
+
+        $("#tree").MobyDickFancyTree({
+            extensions: ["dnd", "edit"],
+            checkbox: false, //Checkbox por cada nodo
+            source: treeData, //Origen de datos
+            autoActivate: true, //Activar al hacer foco
+            keyboard: false, //Navegación por teclado
+            click: function (event, data) {
+                //Editar el nombre al shift+click
+                if (event.shiftKey) {
+                    editNode(data.node);
+                    return false;
+                }
+            },
+            dblclick: function (event, data) {
+                //Editar nombre al dobleclick
+                editNode(data.node);
+                return false;
+            },
+            activate: function (event, data) {
+                var node = data.node;
+                $("#tree_selected_id").val(node.key);
+
+                $("#descriptionContainer").text(node.data.menuDescription);
+
+                var ul = $("#assignedRolesContainer ul");
+                ul.html("");
+                $.each(node.data.assignedRoles, function (idx, elem) {
+                    ul.append("<li>" + elem + "</li>")
+                })
+                return true;
+            },
+            dnd: { //Configuración de drag and drop
+                autoExpandMS: 400,
+                preventRecursiveMoves: true,
+                preventVoidMoves: true,
+                dragStart: function(node, data) {
+                    //Necesario devolver true para habilitar el draggeo.
+                    return true;
+                },
+                dragEnter: function(node, data) {
+                    return true;
+                },
+                dragDrop: function(node, data) {
+                    data.otherNode.moveTo(node, data.hitMode);
+
+                    //Si se suelta el elemento dentro de otro se expande al padre para permitir visualizarlo.
+                    if(data.hitMode == 'over')
+                        node.setExpanded();
+
+                    hasDataChanged = true;
+                }
+            }
+        });
+    }
+
+    function editNode(node) {
+        var prevTitle = node.title;
+
+        $(".fancytree-title", node.span).html("<input id='editNode' value='" + prevTitle + "'>");
+        $("input#editNode")
+                .focus()
+                .keydown(function (event) {
+                    switch (event.which) {
+                        case 27: // [esc]
+                            // discard changes on [esc]
+                            $("input#editNode").val(prevTitle);
+                            $(this).blur();
+                            break;
+                        case 13: // [enter]
+                            // simulate blur to accept new value
+                            $(this).blur();
+                            break;
+                    }
+                }).blur(function (event) {
+                    var title = $("input#editNode").val();
+                    node.setTitle(title);
+                    node.focus();
+                }).change(function () {
+                    hasDataChanged = true;
+                }).select();
+    }
+
+    function enviarJSON() {
+        var treeData2 = $("#tree").fancytree("getRootNode").getChildren();
+        var treeData = getChildrenStructure(treeData2);
+        treeData = JSON.stringify(treeData);
+        $.ajax({
+            url: '@Url.Action("TreeEdit", "Menues")',
+            data: treeData,
+            type: "POST",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                if (data != true) {
+                    MostrarError(data.PartialView);
+                }
+                else {
+                    hasDataChanged = false;
+                    location.reload();
+                }
+            }
+        });
+    }
+
+    function getChildrenStructure(treeData) {
+        var struct = new Array();
+        if (treeData != null && treeData.length > 0) {
+            for (var i = 0; i < treeData.length; i++) {
+                struct[i] = getChildStructure(treeData[i]);
+            }
+        }
+        return struct;
+    }
+
+    function getChildStructure(node) {
+        var rv = new Object();
+
+        rv.key = node.key;
+        rv.title = node.title;
+        rv.children = getChildrenStructure(node.children);
+
+        return rv;
+    }
+
+    function DeleteMenu(IDMenu) {
+        MostrarConfirm(paramFromView.DeleteMessage,
+            function(){
+                var id = IDMenu;
+                $.ajax({
+                    url: '@Url.Action("Delete", "Menues")',
+                    data: '{"id":' + id + '}',
+                    type: "POST",
+                    async: false,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        if (data != true) {
+                            MostrarError(data.PartialView);
+                        }
+                        else {
+                            location.reload();
+                        }
+                    }
+                });
+            },
+            function(){ closeMessage('MDConfirmModal'); });
+    }
+
+    function DeleteTreeNode(key) {
+        $("#tree_selected_id").val("");
+
+        //LIMPIO LOS LABELS DE DETALLES
+        $("#descriptionContainer").text("");
+        $("#assignedRolesContainer ul").html("");
+
+        $("#tree").fancytree("getRootNode").visit(function (node) {
+            if (node.key == key){
+                node.remove();
+                return false;
+            }
+        });
+    }
+
+    var paramFromView = {
+        DeleteMessage: '@MBAdministration.Menues.Resources.DeleteMenu',
+        LeaveMessage: '@MBAdministration.Menues.Resources.LeaveMenu'
+    }
+</script>

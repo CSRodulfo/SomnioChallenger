@@ -1,0 +1,47 @@
+﻿.span.required:after {
+    color: red;
+    content: ' *';
+}
+
+.field-validation-error {
+    .rounded(2px);
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px 8px;
+    display: block;
+    position: absolute;
+    margin-top: -2px;
+    z-index: 1000;
+}
+
+    .field-validation-error::after {
+        background: url(../Images/icon_arrow.png) no-repeat center center;
+        display: block;
+        content: "";
+        height: 10px;
+        width: 13px;
+        position: absolute;
+        top: -9px;
+        left: 6px;
+    }
+
+    .input-validation-error {
+        border: 1px solid red !important;
+    }
+
+.field-validation-valid {
+    display: none;
+}
+
+.validation-summary-errors ul {
+    list-style: none;
+    padding: 0 10px;
+    border: 1px solid #ffbebe;
+    background: url(../Images/error_bk.png);
+    .rounded(3px);
+}
+
+    .validation-summary-errors ul li {
+        padding: 8px 0;
+        color: #f72929;
+    }

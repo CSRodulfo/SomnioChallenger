@@ -1,0 +1,23 @@
+﻿@model Presentation.MVC.Models.RegisterModel
+@{
+    ViewBag.Title = "Error 403";
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h3>@ViewBag.Title</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 center-block ">
+            <h4>El usuario a ingresado al sitio, pero no tiene los permisos o privilegios necesarios para poder realizar la operación solicitada</h4>
+        </div>
+    </div>
+
+    <div>
+        <img src="@Url.Content("~/Content/Images/login/error 403.png")" />
+    </div>
+</div>

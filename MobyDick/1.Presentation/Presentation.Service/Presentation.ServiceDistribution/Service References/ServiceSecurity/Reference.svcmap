@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="22c2d430-d1b2-4d58-96d4-0302da6d4cdd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8288/MobyDickWS/ServiceSecurityProvider.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceMembershipProvider1.wsdl" MetadataType="Wsdl" ID="43532130-5a6f-4fb3-91a7-526fbba399a7" SourceId="1" SourceUrl="http://localhost:8288/MobyDickWS/ServiceSecurityProvider.svc?wsdl" />
+    <MetadataFile FileName="ServiceSecurityProvider3.xsd" MetadataType="Schema" ID="288727f6-cf0d-4a96-bc08-98a786b3f239" SourceId="1" SourceUrl="http://localhost:8288/MobyDickWS/ServiceSecurityProvider.svc?xsd=xsd1" />
+    <MetadataFile FileName="ServiceSecurityProvider31.xsd" MetadataType="Schema" ID="f51dd6e9-b62f-4543-ab2d-d295e8ff6f94" SourceId="1" SourceUrl="http://localhost:8288/MobyDickWS/ServiceSecurityProvider.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceSecurityProvider1.disco" MetadataType="Disco" ID="00be7730-60db-424d-b8f5-7852fa020fd3" SourceId="1" SourceUrl="http://localhost:8288/MobyDickWS/ServiceSecurityProvider.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,42 @@
+﻿@model Application.MainModule.Administration.RolesManagement.DTO.DTOUserForSelect
+
+@using Application.MainModule.Administration.RolesManagement.DTO
+
+@{
+    ViewBag.Title = "Administración de usuarios";
+}
+
+<div class="col-md-12 paneles">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>Consultar usuario</h4>
+        </div>
+    </div>
+
+    <div class="content_box">
+        <form>
+            <div class="form_group">
+                <fieldset>
+                    @Html.Label("Nombre ")
+                    @Html.TextBoxFor(m => m.FirstName, htmlAttributes: new { disabled = "disabled" })<br />
+
+                    @Html.Label("Apellido ")
+                    @Html.TextBoxFor(m => m.LastName, htmlAttributes: new { disabled = "disabled" })<br />
+
+                    @Html.Label("Nombre de usuario ")
+                    @Html.TextBoxFor(m => m.UserName, htmlAttributes: new { disabled = "disabled" })<br />
+                    <br />
+                    <h3>Roles asignados:</h3>
+                    <ul>
+                        @foreach (DTORoleForUsers dtoRole in @Model.Roles)
+                        {
+                            <li>@dtoRole.RoleName</li>
+                        }
+                    </ul>
+                </fieldset>
+            </div>
+            @Html.MDGoBackButton(Url.Action("List"))
+        </form>
+    </div>
+</div>

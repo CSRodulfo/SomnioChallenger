@@ -1,0 +1,37 @@
+﻿
+
+@Html.ActionButtonNew("addRecord()")
+@Html.ActionButtonEdit("editRecord()")
+@Html.ActionButtonDelete("deleteRecord()")
+
+<script type="text/javascript">
+    function addRecord() {
+        location.href = '@Url.Action("Insert")';
+    }
+
+    function editRecord() {
+        var id = $("#tree_selected_id").val();
+        if (id) {
+            var link_edit = "@Url.Action("Edit", "Menues", new { id = "_menuId_" })";
+            link_edit = link_edit.replace("_menuId_", id);
+            location.href = link_edit;
+        }
+        else {
+            MostrarMensaje(partialParamFromView.selectMenuMessage);
+        }
+    }
+
+    function deleteRecord() {
+        var id = $("#tree_selected_id").val();
+        if (id) {
+            DeleteMenu(id);
+        }
+        else {
+            MostrarMensaje(partialParamFromView.selectMenuMessage);
+        }
+    }
+
+    var partialParamFromView = {
+        selectMenuMessage: '@MBAdministration.Menues.Resources.SelectMenu'
+    }
+</script>

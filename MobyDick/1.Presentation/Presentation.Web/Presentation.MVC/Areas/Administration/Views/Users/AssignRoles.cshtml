@@ -1,0 +1,77 @@
+﻿@model Presentation.MVC.Areas.Administration.Models.AsignacionRolesModels
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = MBAdministration.Users.Resources.AssignRoles;
+    ViewBag.SubTitle = string.Format(MBAdministration.Users.Resources.AssignRolesForUser, Html.ValueFor(m => m.user.UserName));
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>@ViewBag.SubTitle</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="trees" id="tree"></div>
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("AssignRoles", "Users", FormMethod.Post, new { enctype = "multipart/form-data", id = "formUsers" }))
+    {
+        <div class="panel-button">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.HiddenFor(m => m.user.UserId)
+                        @Html.HiddenFor(m => m.selectedKeys, new { id = "selectedKeys" })
+
+                        @Html.ActionButtonSave("SaveUser()")
+                        @Html.ActionButtonBack("List", "Users")
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<script>
+    $(document).ready(function ()
+    {
+        loadTree();
+    });
+
+    function loadTree() {
+
+        var treeData= @Html.Raw(@Json.Encode(Model.dataTree));
+
+        $(function(){
+            $("#tree").MobyDickFancyTree({
+                checkbox: true,
+                source: treeData,
+                dblclick: function(event, data) {
+                    data.node.toggleSelected();
+                },
+                keydown: function(event, node) {
+                    if( event.which == 32 ) {
+                        node.toggleSelected();
+                        return false;
+                    }
+                }
+            });
+        });
+    };
+
+    function SaveUser(){
+        var SelectedKeys = $.map($("#tree").fancytree("getTree").getSelectedNodes(), function(node){
+            return node.key;
+        });
+        $("#selectedKeys").val(JSON.stringify(SelectedKeys));
+        $("#formUsers").submit();
+    };
+</script>

@@ -1,0 +1,108 @@
+.ui-jqgrid.ui-widget.ui-widget-content.ui-corner-all {
+	overflow: hidden !important;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+    width: 100% !important;
+}
+
+.ui-jqgrid-pager, 
+.ui-jqgrid-view > .ui-jqgrid-hdiv, 
+.ui-jqgrid-view > .ui-jqgrid-bdiv {
+	overflow: hidden !important;
+    width: 100% !important;
+}
+
+.ui-jqgrid-view {
+	/*margin-left: -1px;*/
+    width: 100% !important;
+}
+
+.ui-jqgrid-btable,
+.ui-jqgrid-htable {
+	width: 100% !important;
+    table-layout: auto !important;
+}
+
+.ui-jqgrid-hbox {
+	width: 98.5% !important;
+	padding-right: 0 !important;
+}
+
+.ui-jqgrid-labels th {
+    font-weight: bold !important;
+}
+
+.ui-jqgrid-labels th,
+.ui-jqgrid-bdiv tr:not(.jqgfirstrow) td {
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+    text-indent: 5px;
+    height: 35px !important;
+}
+
+.ui-search-table tr td {
+	padding-top: 4px !important;
+	padding-bottom: 4px !important;
+}
+
+.ui-pager-control > .ui-pg-table {
+	margin: 4px -10px 0 5px !important;
+	width: 99% !important;
+}
+
+.ui-state-default.ui-jqgrid-pager {
+	height: 35px !important;
+    width: 100% !important;
+}
+
+.jqgrow.ui-widget-content.ui-state-highlight {
+	/*background: #D0E5E5;  Cambiar al color que mejor quede.*/ 
+    border-color: #AAAAAA;
+}
+
+.ui-search-toolbar {
+    height: 29px;
+}
+
+.ui-pg-input {
+    width: auto !important;
+    height: auto !important;
+}
+
+.ui-pg-selbox {
+    width: 50px !important;
+    line-height: normal !important;
+    height: auto !important;
+}
+
+.ui-jqgrid-pager {
+    background: #dedede;
+}
+
+.ui-jqgrid-titlebar {
+    line-height: 24px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.ui-jqgrid tr.ui-row-ltr td:last-child {
+    border-right: none;
+}
+
+.ui-search-toolbar input {
+    padding: 3px !important;
+    margin: 3px !important;
+}
+
+.ui-jqgrid-bdiv {
+    min-height: 235px;
+}
+
+.ui-jqgrid .ui-jqgrid-bdiv {
+    overflow-y: scroll !important;
+}
+
+.table-fixed-important {
+    table-layout: fixed !important;
+}

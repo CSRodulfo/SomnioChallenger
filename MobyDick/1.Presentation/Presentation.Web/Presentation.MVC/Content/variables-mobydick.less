@@ -1,0 +1,116 @@
+﻿@brand-color: #B00F0F;
+@brand-color1: darken(@brand-color, 5%);
+@font-color: #555555;
+@zindex-navbar: 1000;
+@font-family: 'Droid Sans';
+@color-base:    #8b8787;
+@color-light0: lighten(@color-base, 45%);
+@color-light:   #c7c0c0;
+@color-light1:  fade(lighten(@color-base, 40%),80%);
+@color-light2:  fade(lighten(@color-base, 20%),80%);
+@color-dark:    #3e3e3e;
+@color-dark1:   fade(darken(@color-base, 40%),80%);
+@color-dark2:   fade(darken(@color-base, 20%),80%);
+@color-btn: #CACCD0;
+@color-btn-font: #303A44;
+@none: 0px;
+//@back-img: url(Images/08.png) no-repeat;
+
+.btn-menu-lat{
+  background-color: @color-dark1;
+  &:hover {
+    background-color: @color-base;
+  }
+}
+
+.btn-menu-hor{
+    background-color: @color-base;
+  &:hover {
+    background-color: @color-light;
+  }
+}
+
+.icono{
+    background: url(Images/iconos-light.png);
+    background-size: 915px;
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    border-radius: 16px;
+    vertical-align: middle;    
+}
+
+.icono-hover{
+    background: url(Images/iconos.png);
+    background-size: 915px;
+}
+
+.glyphicon-icon{
+    background: url(Images/glyphicons-halflings.png);    
+    background-size: 701px;
+    display: inline-block;
+    width: 30px;
+    height: 33px;
+}
+
+.back-body{
+    background: @color-dark1;
+    background-position: -400px -1100px;
+}
+
+.paneles{
+    border: 1px solid @color-light1;
+    //border-bottom: 1px solid @brand-color1;
+    border-radius: 3px;
+    margin: 10px @none;
+    background: @color-light0;
+    color: @color-dark;
+    box-shadow: 1px 3px 10px rgba(77,77,77,0.6);
+    padding-bottom: 5px;
+}
+
+@color-grad1: fade(lighten(@brand-color1, 5%),80%);
+@color-grad2: lighten(@brand-color1, 8%);
+
+.panel-header{
+    background: @brand-color1;
+    background: -moz-linear-gradient(left, @brand-color1 0%, @color-grad1 50%, @color-grad2 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, @brand-color1), color-stop(50%, @color-grad1), color-stop(100%, @color-grad2));
+    background: -webkit-linear-gradient(left, @brand-color1 0%, @color-grad1 50%, @color-grad2 100%);
+    background: -o-linear-gradient(left, @brand-color1 0%, @color-grad1 50%, @color-grad2 100%);
+    background: -ms-linear-gradient(left, @brand-color1 0%, @color-grad1 50%, @color-grad2 100%);
+    background: linear-gradient(to right, @brand-color1 0%, @color-grad1 50%, @color-grad2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8f0021', endColorstr='#d81313', GradientType=1 );
+    color: @color-light0;
+    margin-bottom: 5px;
+    border-radius: 3px 3px 0px 0px;
+    border: 1px solid lighten(@brand-color1, 30%);
+}
+
+.panel-header-app{
+    background: @brand-color1;
+    background: -moz-linear-gradient(left, @brand-color1 0%, @color-grad1 50%, @color-grad2 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, @brand-color1), color-stop(50%, @color-grad1), color-stop(100%, @color-grad2));
+    background: -webkit-linear-gradient(left, @brand-color1 0%, @color-grad1 50%, @color-grad2 100%);
+    background: -o-linear-gradient(left, @brand-color1 0%, @color-grad1 50%, @color-grad2 100%);
+    background: -ms-linear-gradient(left, @brand-color1 0%, @color-grad1 50%, @color-grad2 100%);
+    background: linear-gradient(to right, @brand-color1 0%, @color-grad1 50%, @color-grad2 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8f0021', endColorstr='#d81313', GradientType=1 );
+    color: @color-light0;    
+    border-radius: 3px 3px 0px 0px;
+    border: 1px solid @color-light0 !important;
+}
+
+.avatar{
+    position: relative;  
+    border-radius: 500px;
+    display: inline-block;
+    width: 60px;
+    img{
+            vertical-align: middle;
+            width: 100%;
+            border-radius: 10px;
+            max-height: 52px;
+            max-width: 52px;
+    }
+}

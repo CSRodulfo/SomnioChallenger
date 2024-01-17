@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Contacto";
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>
+                @ViewBag.Title
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <h4>Teléfono</h4>
+                <p>
+                    @Html.Label("Teléfono/Fax:")  <br />
+                    <span>4381-2450</span>
+                </p>
+            </div>
+        </div>
+    
+        <div class="col-md-4">
+            <div class="form-group">
+                <h4>Email</h4>
+                <p>
+                    @Html.Label("Información:") <br />
+                    <a href="mailto:Información@example.com">info@MobyDick.com.ar</a>
+                </p>
+            </div>
+        </div>
+    
+        <div class="col-md-4">
+            <div class="form-group">
+                <h4>Dirección</h4>
+                <p>
+                    @Html.DateLoader("datepicker")
+                    Av Belgrano 158 1° Piso Oficina BC"<br />
+                    Ciudad Autonoma de Buenos Aires, Argentina
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-button">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.MDGoBackButton()
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#datepicker").datepicker();
+        var availableTags = [
+            "ActionScript",
+            "AppleScript",
+            "Asp",
+            "BASIC",
+            "C",
+            "C++",
+            "Clojure",
+            "COBOL",
+            "ColdFusion",
+            "Erlang",
+            "Fortran",
+            "Groovy",
+            "Haskell",
+            "Java",
+            "JavaScript",
+            "Lisp",
+            "Perl",
+            "PHP",
+            "Python",
+            "Ruby",
+            "Scala",
+            "Scheme"
+        ];
+        
+    });
+
+    
+</script>

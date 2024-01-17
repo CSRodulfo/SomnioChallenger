@@ -1,0 +1,317 @@
+﻿@import "variables-mobydick.less";
+
+//Header
+
+.contenedor-body{
+  .back-body;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.navbar-default {
+  background: @brand-color;
+  margin-bottom: @none;
+      .user-icon{
+          margin-right: -1%;
+          .navbar-nav{
+              margin: 1.5px -15px;
+              li,
+              li.open{
+                &:hover,
+                &:active,
+                &:focus,
+                &:visited{
+                    background-color: fade(darken(@brand-color1, 5%),20%)!important;
+                }
+                  a.dropdown-toggle,
+                  a.dropdown-toggle.highlighted{
+                    &:hover,
+                    &:active,
+                    &:focus,
+                    &:visited{
+                        background-color: fade(darken(@brand-color1, 5%),20%)!important;                                               
+                    }
+                    padding-top: 5px;
+                    padding-bottom: 5px; 
+                    div.avatar{
+                        .avatar;
+                    }
+                }
+              }
+          }            
+            .navbar-nav .open .dropdown-menu{
+                padding: 0px;
+                background: @color-light;
+                color: @color-dark;
+                border-radius: 0px;
+                    li{
+                        &:hover{
+                            background-color: @color-light1;
+                        }
+                    }
+            }        
+    }
+    .client{        
+        margin-left: 4%!important;
+        img{
+            max-height: 45px;
+            max-width: 110px;
+            float: right;
+        }
+    }
+}
+
+@media (max-width: 470px){
+    .navbar-default{
+        .client{        
+            margin-left: 10%!important;
+            margin-right: -10%;
+        }
+        .navbar-header{
+            .navbar-brand{
+                margin-left: -25%;
+            }
+            
+        }
+    }
+}
+
+@media (min-width: 595px) and (max-width: 768px){
+    .user-icon{
+          .navbar-nav{
+              li{
+                  a.dropdown-toggle{
+                    margin-left: 37%;
+                }
+              }
+          }
+     }  
+}
+
+@media (min-width: 992px){
+    .navbar-default{
+        .client{        
+            margin-right: -8%;
+        }        
+    }
+}
+
+//FIN Header
+
+
+//Menu vertical
+.menu-lat a{
+  width: 100%;
+  display: block;
+  padding: 15px;
+}
+
+.menu-lateral-body{    
+    .menu-lat.panel-group {
+      margin-right: -15px;
+      margin-left: -15px;
+
+      // Tighten up margin so it's only between panels
+      .menu-lat-btn{
+            &:first-child{
+            border-top: 1px solid @color-light;
+            border-radius: @none; 
+            }
+            &:last-child{
+            border-radius: @none; 
+            }
+        
+            .btn-menu-lat;
+            margin: @none;  
+            border-radius: @none;  
+            border: @none;
+            border-bottom: 1px solid @color-light;
+
+            .menu-lat-panel{
+                .btn-menu-lat;
+                min-height: 60px;    
+                padding: @none;
+            } 
+            
+            span.icono{                
+                .icono;
+            } 
+
+            a:hover{
+                color: @color-dark;        
+                text-decoration: none;
+                span.icono{
+                    .icono-hover;
+                }
+            }   
+             
+            .panel-body{
+                .menu-lat-panel{
+                    background-color: @color-base;
+                    &:hover{
+                        background-color: @color-light1;
+                    }
+                }
+
+                .menu-lat-btn{
+                    border-radius: @none;
+                    border-bottom: 1px solid @color-base;
+                }
+
+                a{
+                    color: @color-light;
+                    &:hover{
+                        color: @color-dark;
+                    }
+                }
+            }
+      }
+ }
+  
+
+  .panel {
+    margin-bottom: @none;
+    border-radius: @none; 
+       
+      a{
+        color: @color-light;
+        text-decoration: none;
+       }
+
+    + .panel.panel-default {
+        margin: @none;
+    }
+  }
+}
+
+.menu-lat-btn .panel-body {
+  padding: @none;
+}
+
+.icon-vertical{
+    margin-right: 5px;
+    margin-left: -5px;
+}
+
+@media (max-width: 768px){
+    .menu-lateral-body{
+        display: none;
+    }
+}
+
+.menu-single {    
+    padding-top: 18px!important;     
+}
+//FIN Menu vertical
+
+
+
+// Menu Horizontal
+.menu-hor-body{
+    background: @color-dark1; 
+    //background-position: -400px -1100px;
+
+    .container-fluid{
+        max-height: 55px;
+        .nav.navbar-nav{
+            li{
+                ul{
+                    border-radius: 1px;
+                    .btn-menu-hor;
+                }
+            }
+        }
+    }
+}
+.navbar-collapse{    
+    a{
+        color: @color-light;
+        &:hover,
+        &:focus{
+            color: @color-dark;
+            background-color: @color-light;
+            span.icono{
+                    .icono-hover;
+                }
+        }        
+    }
+    .dropdown-menu{
+        padding: @none;
+        li{
+            background: @color-base;
+            &:hover{
+                background: @color-light1;
+            }
+            a{
+                color: @color-light;
+                width: 100%;
+                display: inline-block;
+            }
+            &:hover,
+            &:focus{
+                color: @color-dark;
+                background-color: @color-light1;
+             }
+        } 
+    } 
+}
+
+.icon-horiz{
+    margin-left: -15px;
+    margin-right: 5px;
+}
+ul.dropdown-menu>li>.icon-horiz{margin-left: 0px;}
+
+.navbar-toggle{
+    background: url(Images/iconos-light.png);
+    background-position-x: 90px;
+    background-position-y: 75px;
+    background-size: 915px;
+}
+
+//.menu-single-horiz{
+  //  .menu-single-a;
+    //padding-top: 20px!important;
+//}
+
+@media (max-width: 768px){
+    .icon-horiz{
+        margin-left: -5px;
+    }
+    ul.dropdown-menu > li > .icon-horiz {
+        margin-left: 15px;
+    }
+    .menu-hor-body{
+        .container-fluid{
+            max-height: none;        
+        }
+    }
+}
+// FIN Menu Horizontal
+
+
+/*Cajones
+.header-box{
+    background: url(Images/back-box.jpg) no-repeat 0 0;
+    background-size: 110px 48px;
+    width: 110px;
+    height: 49px;
+    float: left;
+    margin: 2px 10%;
+    opacity: .8;
+    &:hover,
+    &:focus,
+    &:active,
+    &:visited{
+        background: url(Images/back-box-open.png) no-repeat 0 0;
+        background-size: 110px 48px;
+        width: 110px;
+        height: 49px;
+        float: left;
+        margin: 2px 10%;
+    }
+
+    >p{
+        text-align: center;
+    }
+}*/

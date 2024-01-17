@@ -1,0 +1,188 @@
+﻿@{
+    ViewBag.Title = "Administración de Vehículos"; 
+}
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
+        //
+    });
+
+    function load() {
+        $("#ProgressDialog").dialog("open");
+        $.ajax({
+            url: '@Url.Action("LoadMakes")',
+            data: "{}",
+            type: "POST",
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data, status) {
+                loadGrid(data);
+                $("#ProgressDialog").dialog("close");
+            }
+
+        });
+
+    };
+
+    function loadGrid(makes) {
+
+        $('#lstResults').jqGrid('GridUnload');
+        $("#lstResults").jqGrid({
+            height: 100,
+            url: '@Url.Action("LoadVehicles")',
+            datatype: "json",
+            mtype: 'POST',
+            postData:
+                    {
+                        //description: $("#Description").val(),
+                        rowNum: 5
+                    },
+            colNames: ['Id', 'Marca', 'Modelo', 'Año', 'Precio', 'Editar', 'Eliminar'],
+            colModel: [
+                        { index: 'IDVehicle', name: 'IDVehicle', sortable: true, key: true, hidden: true },
+                        { index: 'IDMake', name: 'IDMake', width: 150, align: 'left', sortable: true, editable: true, editrules: { required: true }, edittype: 'select', formatter: 'select', editoptions: { value: makes } },
+                        { index: 'Name', name: 'Name', width: 150, align: 'left', sortable: true, editable: true, editrules: { required: true } },
+                        { index: 'Model', name: 'Model', width: 150, align: 'left', sortable: true, editable: true, editrules: { required: true } },
+                        { index: 'Price', name: 'Price', width: 150, align: 'left', sortable: true, editable: true, editrules: { required: true } },
+                        {
+                            name: 'Edit', width: 40, formatter: function (cellvalue, options, rowObject) {
+                                return '<a class="ui-icon ui-icon-pencil" href="VehicleEdit/VehicleEdit?Id=' + rowObject[0] + '">' + "Edit" + '</a>';
+                            }
+                        },
+                        {
+                            name: 'myac', width: 45, align: 'center', fixed: true, sortable: false, resize: false, formatter: 'actions', formatoptions: {
+                                editformbutton: false,
+                                delOptions: {
+                                    width: '800px',
+                                    modal: true,
+                                    closeAfterAdd: true,
+                                    url: '@Url.Action("Delete")'
+                                },
+                                editbutton: false
+                                    @*editOptions:  {  width: '800px',  
+                                                    modal: true,
+                                                    closeAfterEdit: true,
+                                                    url: '@Url.Action("Edit")' 
+                                                    },*@
+                            },
+                        }
+            ],
+            rowNum: 5,
+            rowList: [5, 10, 20],
+            pager: jQuery('#pager'),
+            sortname: 'IDMake',
+            viewrecords: true,
+            gridview: true,
+            caption: 'Vehículos', //Titulo de Tabla
+            sortorder: "asc",
+            height: 124,
+            width: 690,
+            postData: {
+                descript: document.getElementById('txtDesc').value,
+                filtro: document.getElementById('cmbFilter').value,
+                none: document.getElementById('noFilter').value
+            }
+        });
+        $('#lstResults').jqGrid('navGrid', '#pager',
+                      { add: false, del: false, edit: false, search: false },
+                      //edit options
+                      {
+                          width: '800px',
+                          modal: true,
+                          closeAfterEdit: true,
+                          url: '@Url.Action("Edit")'
+                      },
+                        // Add Options
+                        {
+                            width: '800px',
+                            modal: true,
+                            closeAfterAdd: true,
+                            url: '@Url.Action("Create")',
+                            beforeSubmit: function (postdata, formid) {
+                                if ($('#exec').val() == "") {
+                                    $('#exec').addClass("ui-state-highlight");
+                                    return [false, 'ERROR MESSAGE']; //error
+                                }
+                                return [true, '']; // no error
+                            },
+                        },
+                        {
+                            width: '800px',
+                            modal: true,
+                            closeAfterAdd: true,
+                            url: '@Url.Action("Delete")'
+                        },
+                        {}
+
+                  );
+                        $('#lstResults').navButtonAdd('#pager', {
+                            caption: "Agregar Vehiculo",
+                            buttonicon: "ui-icon ui-icon-plus",
+                            onClickButton: function () {
+                                location.href = 'VehicleInsertion/InsertVehicle';
+                            },
+                            position: "first"
+                        })
+                    }
+                    function NoFilter() {
+                        document.getElementById('noFilter').value = 'true';
+                        load();
+                    }
+
+                    function Filter() {
+                        document.getElementById('noFilter').value = 'false';
+                        load();
+                    }
+
+</script>
+<h1>
+    @ViewBag.Title
+</h1>
+<section class="content_box">
+
+    <div id="divResults" style="padding-bottom:10px">
+        <h2>
+            Buscador
+        </h2>
+        @using (Html.BeginForm("InsertVehicle", "VehicleInsertion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <fieldset>
+                <label>Descripción:</label>
+                <input type="text" id="txtDesc" /><br />
+            </fieldset>
+            <fieldset>
+                <select id="cmbFilter">
+                    <option value="Marca" selected="selected">Marca</option>
+                    <option value="Modelo">Modelo</option>
+                    <option value="Año">Año</option>
+                    <option value="Precio">Precio</option>
+                </select><br />
+            </fieldset>
+            <input type="button" onclick="Filter()" value="Buscar" />
+            <input type="button" onclick="NoFilter()" value="Listar Todo" />
+            <hidden id="noFilter" value="false"></hidden>
+        }      
+    </div>
+</section>
+<section class="content_box">
+    <div id="divResults">
+        <h2>Resultados
+        </h2>
+        <div id="jqgridd" align="center">
+            <table id="lstResults">
+                <tr>
+                    <td />
+                </tr>
+            </table>
+            <div id="pager">
+            </div>
+        </div>
+        <div>
+            <p class="box-buttons">
+            </p>
+            <div class="clear-r">
+            </div>
+        </div>
+    </div>
+</section>

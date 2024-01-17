@@ -1,0 +1,28 @@
+﻿@model Presentation.MVC.Models.LocalCultureModel
+@{
+    ViewBag.Title = MBAdministration.Users.Resources.ManageTitle;
+    ViewBag.SessionMessage = MBAdministration.Users.Resources.SessionMessage;
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>@ViewBag.SessionMessage @User.Identity.Name</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p class="message-success">@ViewBag.StatusMessage</p>
+            @Html.Partial("_ChangePasswordPartial", new Presentation.MVC.Models.LocalPasswordModel())
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <p class="message-success">@ViewBag.StatusMessage</p>
+            @Html.Partial("_ChangeCulturePartial")
+        </div>
+    </div>
+</div>

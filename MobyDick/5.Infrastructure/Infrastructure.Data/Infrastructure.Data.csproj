@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{06B9563D-CB93-42A9-A242-BF6D8D877CC5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Infrastructure.Data</RootNamespace>
+    <AssemblyName>Infrastructure.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administration\Partial\RepositoryBehavior.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryCheckpoint.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryCompany.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryCulture.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryFile.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryMembership.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryMenu.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryMenuModule.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryResources.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryRoleInBehavior.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryRoles.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Partial\RepositoryUsers.cs">
+      <DependentUpon>Repository.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\RepositoryResources.cs" />
+    <Compile Include="Administration\RepositoryFile.cs" />
+    <Compile Include="Administration\RepositoryMembership.cs" />
+    <Compile Include="Administration\RepositoryCheckpoint.cs" />
+    <Compile Include="Common\ExtensionDbContext.cs" />
+    <Compile Include="Administration\RepositoryCompany.cs" />
+    <Compile Include="Administration\RepositoryMenu.cs" />
+    <Compile Include="Administration\RepositoryRoles.cs" />
+    <Compile Include="Administration\RepositoryUsers.cs" />
+    <Compile Include="Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ModyDickEntities.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\4.Domain\Domain.Core\Domain.Core.csproj">
+      <Project>{9130241C-0C27-4895-A7BF-AA35B389ACBB}</Project>
+      <Name>Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Domain.Entities\Domain.Entities.csproj">
+      <Project>{C915FE64-1556-4710-B79E-BA55EE5D1CC8}</Project>
+      <Name>Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Domain.Resources\Domain.Resources.csproj">
+      <Project>{21b7ac5a-6e55-4695-96dd-b2fc9aad3ee7}</Project>
+      <Name>Domain.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\4.Domain\Domain\Domain.csproj">
+      <Project>{0F972E0D-A750-4D73-B759-3A0ABA8E4B29}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Cross.Security\Infrastructure.Cross.Security.csproj">
+      <Project>{c3a98305-8834-4772-b183-29f7c0b786e5}</Project>
+      <Name>Infrastructure.Cross.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Data.Core\Infrastructure.Data.Core.csproj">
+      <Project>{49076C04-EAEE-4A58-B85F-74783FEC2BA1}</Project>
+      <Name>Infrastructure.Data.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Repository\Partial\Repository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Administration\Partial\Repository.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

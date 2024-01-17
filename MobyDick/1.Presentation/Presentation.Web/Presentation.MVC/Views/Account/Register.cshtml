@@ -1,0 +1,70 @@
+﻿@model Presentation.MVC.Models.RegisterModel
+@{
+    ViewBag.Title = "Registrar";
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>
+                @ViewBag.Title
+            </h1>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Register", "Users", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Nombre)
+                    @Html.TextBoxFor(m => m.Nombre)
+                    @Html.ValidationMessageFor(m => m.Nombre)
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Apellido)
+                    @Html.TextBoxFor(m => m.Apellido)
+                    @Html.ValidationMessageFor(m => m.Apellido)
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.PasswordFor(m => m.ConfirmPassword)
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-button">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input name="Register" type="submit" value="Registrar" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Application.MainModule.Administration.RolesManagement.DTOMenuForDisplay>
+
+@ShowTree(Model)
+
+@helper ShowTree(IEnumerable<Application.MainModule.Administration.RolesManagement.DTOMenuForDisplay> Menues)
+{
+    if (Menues != null)
+    {
+        foreach (var item in Menues)
+        {
+
+            if (item.subMenues != null && item.subMenues.Any())
+            {
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <span class="icono" style="background-position: @(item.Axis_X)px @(item.Axis_Y)px;"></span>
+                        @item.Name
+                    </a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        @ShowTree(item.subMenues)
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="@Url.Action(item.Action, item.Controller, new { Area = item.Area })" id="@item.Id">
+                        <span class="icono icon-horiz" style="background-position: @(item.Axis_X)px @(item.Axis_Y)px;"></span>
+                        @item.Name
+                    </a>
+                </li>
+            }
+        }
+
+    }
+}

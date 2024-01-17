@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "test";
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h1>@ViewBag.Title</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5 col-md-offset-1 col-xs-offset-0">
+        <div class="form-group">
+            <p>
+                MobyDick es una plataforma integral .NET que contiene desde la administración de seguridad de la aplicación (accesos, perfiles, comportamientos, permisos), como la configuración del motor de lógica (operaciones y reglas) entre otras bondades. Es un framework de trabajo para desarrolladores con el objetivo de optimizar tiempos, esfuerzo y dinámica para el desarrollo de aplicaciones.
+            </p>
+            <p>
+                Bajo estas premisas se visualizará un desarrollo de un sistema de administración (Administración de Vehículos) para ejemplificar el alcance y prestaciones del framework.
+            </p>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="form-group">
+            <p>
+                <img src="~/Content/Images/mobydick3.png" class="img-responsive" />
+            </p>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/Charts")
+<script>
+    $(function () {
+        $(".chart").each(function () {
+            var _chart = $(this);
+
+            $(this).MobyDickChart({
+                title: $(_chart).data("chart-title"),
+                type: $(_chart).data("chart-type"),
+                legends: $(_chart).data("chart-legends"),
+                src: $(_chart).data("chart-src")
+            });
+
+        });
+    });
+
+</script>

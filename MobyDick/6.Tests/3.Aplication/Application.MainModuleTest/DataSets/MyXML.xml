@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MyDataset xmlns="http://tempuri.org/MyDataset.xsd">
+	<mobydick_Vehicle>
+		<IDVehicle>1</IDVehicle>
+		<Name>Camaro</Name>
+		<Model>1999</Model>
+		<Price>59</Price>
+		<IDMake>1</IDMake>
+		<IDEquipment>5</IDEquipment>
+		<IDImage>5</IDImage>
+	</mobydick_Vehicle>
+	<mobydick_Vehicle>
+		<IDVehicle>2</IDVehicle>
+		<Name>Optima</Name>
+		<Model>2012</Model>
+		<Price>120000</Price>
+		<IDMake>2</IDMake>
+		<IDEquipment>7</IDEquipment>
+		<IDImage>2</IDImage>
+	</mobydick_Vehicle>
+</MyDataset>

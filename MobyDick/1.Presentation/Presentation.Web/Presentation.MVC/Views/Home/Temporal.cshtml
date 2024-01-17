@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Temporal";
+}
+
+<script type="text/javascript">
+    $(function () {
+        //
+    });
+</script>
+
+<h1>Partial</h1>
+
+<div class="row">
+    <div class="col-md-12"><h2>Cargado desde AJAX</h2></div>
+    <div class="col-md-6">
+        <label>Label 1</label>
+        <input type="text" />
+    </div>
+    <div class="col-md-6">
+        <label>Label 2</label>
+        <input type="text" />
+    </div>
+    <div class="col-md-12">
+        <a href="javascript:openError1();" class="btn_secundario">Ver Mensaje de Error</a>
+        <a href="javascript:openAlert1();" class="btn_secundario">Ver Mensaje de Alerta</a>
+        <a href="javascript:closeMessage('popupCustom');" class="btn_secundario">Cerrar desde Código</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function openError1() {
+        $.MDmessage({
+            title: "Error",
+            message: "Éste es un mensaje de error de prueba. Lo valores están por default a excepción de éste texto",
+        });
+    };
+
+    function openAlert1() {
+        $.MDmessage({
+            messageType: "alert",
+            title: "Alerta",
+            message: "Éste es un mensaje de alerta de prueba. Lo valores están por default a excepción de éste texto",
+            btnokText: "Ok"
+        });
+    };
+</script>

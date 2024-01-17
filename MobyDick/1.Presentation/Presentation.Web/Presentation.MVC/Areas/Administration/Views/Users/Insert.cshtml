@@ -1,0 +1,157 @@
+﻿@model Presentation.MVC.Models.RegisterModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = MBAdministration.Users.Resources.UserAdministration;
+    ViewBag.SubTitle = MBAdministration.Users.Resources.NewUser;
+}
+
+<div class="col-xs-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>@ViewBag.SubTitle</h4>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Insert", "Users", FormMethod.Post, new { id = "form", enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.Label(@Default.Resources.Picture)
+                    <input id="input-700" name="UploadFile" type="file" class="file-loading">
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Nombre)
+                    @Html.TextBoxFor(m => m.Nombre)
+                    @Html.ValidationMessageFor(m => m.Nombre)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Apellido)
+                    @Html.TextBoxFor(m => m.Apellido)
+                    @Html.ValidationMessageFor(m => m.Apellido)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName)
+                    @Html.TextBoxFor(m => m.UserName)
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ConfirmPassword)
+                    @Html.PasswordFor(m => m.ConfirmPassword)
+                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email)
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IdCulture)
+                    @Html.MDSelectListFor(m => m.IdCulture, Model.Cultures)
+                    @Html.ValidationMessageFor(m => m.IdCulture)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 panel-button">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.ActionButtonSave(new { id = "save" })
+                        @Html.ActionButtonBack("List", "Users")
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+<script>
+    $(function () {
+        $("#save").click(function () {
+            if (!$('#form').valid()) {
+                return
+            }
+
+            var formData = $('#form').serialize();
+            var files = $("#input-700").get(0).files
+
+            var data = new FormData();
+            for (i = 0; i < files.length; i++) {
+                data.append("file", files[i]);
+            }
+
+            data.append("dto", formData);
+
+            $.ajax({
+                url: '@Url.Action("Insert", "Users")',
+                type: 'POST',
+                data: data,
+                async: false,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (returndata) {
+                    location.href = "@Url.Action("List", "Users")"
+                },
+                error: function () {
+                    MostrarMensaje(result.PartialView)
+                }
+            });
+        });
+    })
+
+    $("#input-700").fileinput({
+        initialPreview: [
+        "<img src='@Url.Action("GetFile", "Users", new { Area = "Administration" , id = 0})' class='file-preview-image' alt='User' title='User'>",
+        ],
+        overwriteInitial: true,
+        browseClass: "btn btn-success",
+        browseLabel: ResourcesFileInput.browseLabel,
+        browseIcon: '<i class="glyphicon glyphicon-picture"></i>',
+        removeClass: "btn btn-danger",
+        removeLabel: "Delete",
+        removeIcon: '<i class="glyphicon glyphicon-trash"></i>',
+        uploadClass: "btn btn-info",
+        uploadLabel: "Upload",
+        uploadIcon: '<i class="glyphicon glyphicon-upload"></i>',
+        browseClass: "btn btn-primary btn-block",
+        showCaption: false,
+        showRemove: false,
+        maxFileSize: 200,
+        maxFileCount: 1,
+        previewFileType: "image",
+        allowedFileTypes: ["image"],
+
+        showUpload: false
+    });
+</script>

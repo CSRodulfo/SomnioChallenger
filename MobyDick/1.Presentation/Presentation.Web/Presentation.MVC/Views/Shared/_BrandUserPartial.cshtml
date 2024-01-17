@@ -1,0 +1,13 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <text>
+        <div class="col-xs-3 col-sm-2 col-md-1 pull-right navbar-brand client">
+            <img src="@Url.Action("Logo", "Navigation", new { Area = "" })"  />
+        </div>
+
+    </text>
+}
+else
+{
+    
+}

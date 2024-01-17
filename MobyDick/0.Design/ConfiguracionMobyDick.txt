@@ -1,0 +1,15 @@
+Inicio de la Aplicaicon MobyDick
+
+Herramientas Auxiliares para la generacion de Codigo Automatizado
+1- EF 4.1
+2- EF 4.x DbConext Generator
+3- EntitiesToDTOs 
+4- Microsoft SQL Server Data Tools para VS2012
+
+Herramientas/Agregados para compilación de CSS (estilos)
+1- Instalar en el Extension Manager el "Mindscape Web Workbench" o Web Essentials 2013
+2- Reiniciar VS
+3- Desde el administrador de paquetes NuGet sumar el plugin "dotless" al Presenter de Web (solo a ese)
+Referencias Web:
+	. http://preprogrammed.wordpress.com/2011/12/02/less-with-net-mvc-part-1-installing-less/ (agregados para compilar stylesheets LESS)
+	. http://lesselements.com/ (librería para simplificar la aplicación de CSS3)

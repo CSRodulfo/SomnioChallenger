@@ -1,0 +1,1070 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MobyDickModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="56" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="IdFile" Type="int" />
+          <Property Name="op" Type="int" Nullable="false" />
+          <Property Name="stamp" Type="datetime" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+          <Property Name="IdCulture" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Behavior">
+          <Key>
+            <PropertyRef Name="IDBehavior" />
+          </Key>
+          <Property Name="IDBehavior" Type="int" Nullable="false" />
+          <Property Name="BehaviorName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="op" Type="int" Nullable="false" />
+          <Property Name="stamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Checkpoint">
+          <Key>
+            <PropertyRef Name="IdCheckpoint" />
+          </Key>
+          <Property Name="IdCheckpoint" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IpService" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="deleted" Type="bit" Nullable="false" />
+          <Property Name="op" Type="int" Nullable="false" />
+          <Property Name="stamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Company">
+          <Key>
+            <PropertyRef Name="IdCompany" />
+          </Key>
+          <Property Name="IdCompany" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CUIT" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Number" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="Logo" Type="int" />
+          <Property Name="op" Type="int" Nullable="false" />
+          <Property Name="stamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Culture">
+          <Key>
+            <PropertyRef Name="IdCulture" />
+          </Key>
+          <Property Name="IdCulture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="webpages_File">
+          <Key>
+            <PropertyRef Name="IdFile" />
+          </Key>
+          <Property Name="IdFile" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileData" Type="varbinary(max)" Nullable="false" />
+          <Property Name="MimeType" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="FileName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="op" Type="int" Nullable="false" />
+          <Property Name="stamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordMobile" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+          <Property Name="op" Type="int" />
+          <Property Name="stamp" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_Menu">
+          <Key>
+            <PropertyRef Name="IDMenu" />
+          </Key>
+          <Property Name="IDMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDMenuModule" Type="int" />
+          <Property Name="IDParent" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Area" Type="varchar" MaxLength="50" />
+          <Property Name="Controller" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Orden" Type="int" Nullable="false" />
+          <Property Name="Axis_X" Type="int" Nullable="false" />
+          <Property Name="Axis_Y" Type="int" Nullable="false" />
+          <Property Name="op" Type="int" Nullable="false" />
+          <Property Name="stamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_MenuInBehavior">
+          <Key>
+            <PropertyRef Name="IDMenu" />
+            <PropertyRef Name="IDBehavior" />
+          </Key>
+          <Property Name="IDMenu" Type="int" Nullable="false" />
+          <Property Name="IDBehavior" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_MenuInRoles">
+          <Key>
+            <PropertyRef Name="IDRole" />
+            <PropertyRef Name="IDMenu" />
+          </Key>
+          <Property Name="IDRole" Type="int" Nullable="false" />
+          <Property Name="IDMenu" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_MenuModule">
+          <Key>
+            <PropertyRef Name="IDMenuModule" />
+          </Key>
+          <Property Name="IDMenuModule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="op" Type="int" Nullable="false" />
+          <Property Name="stamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Resources">
+          <Key>
+            <PropertyRef Name="IdResource" />
+          </Key>
+          <Property Name="IdResource" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCulture" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="IDMenu" Type="int" />
+          <Property Name="op" Type="int" Nullable="false" />
+          <Property Name="stamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_RoleInBehavior">
+          <Key>
+            <PropertyRef Name="IDRoleInBehavior" />
+          </Key>
+          <Property Name="IDRoleInBehavior" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDRole" Type="int" Nullable="false" />
+          <Property Name="IDBehavior" Type="int" Nullable="false" />
+          <Property Name="Authorization" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="op" Type="int" Nullable="false" />
+          <Property Name="stamp" Type="datetime" Nullable="false" />
+          <Property Name="EnableViewDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Company_webpages_File">
+          <End Role="webpages_File" Type="Self.webpages_File" Multiplicity="0..1" />
+          <End Role="webpages_Company" Type="Self.webpages_Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_File">
+              <PropertyRef Name="IdFile" />
+            </Principal>
+            <Dependent Role="webpages_Company">
+              <PropertyRef Name="Logo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Culture_Resources">
+          <End Role="webpages_Culture" Type="Self.webpages_Culture" Multiplicity="1" />
+          <End Role="webpages_Resources" Type="Self.webpages_Resources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Culture">
+              <PropertyRef Name="IdCulture" />
+            </Principal>
+            <Dependent Role="webpages_Resources">
+              <PropertyRef Name="IdCulture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Menu_Resources">
+          <End Role="webpages_Menu" Type="Self.webpages_Menu" Multiplicity="0..1" />
+          <End Role="webpages_Resources" Type="Self.webpages_Resources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Menu">
+              <PropertyRef Name="IDMenu" />
+            </Principal>
+            <Dependent Role="webpages_Resources">
+              <PropertyRef Name="IDMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_webpages_Culture">
+          <End Role="webpages_Culture" Type="Self.webpages_Culture" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Culture">
+              <PropertyRef Name="IdCulture" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdCulture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_webpages_File">
+          <End Role="webpages_File" Type="Self.webpages_File" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_File">
+              <PropertyRef Name="IdFile" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdFile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_Membership_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="webpages_Membership" Type="Self.webpages_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_Menu_webpages_Menu">
+          <End Role="webpages_Menu" Type="Self.webpages_Menu" Multiplicity="0..1" />
+          <End Role="webpages_Menu1" Type="Self.webpages_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Menu">
+              <PropertyRef Name="IDMenu" />
+            </Principal>
+            <Dependent Role="webpages_Menu1">
+              <PropertyRef Name="IDParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_Menu_webpages_MenuModule">
+          <End Role="webpages_MenuModule" Type="Self.webpages_MenuModule" Multiplicity="0..1" />
+          <End Role="webpages_Menu" Type="Self.webpages_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_MenuModule">
+              <PropertyRef Name="IDMenuModule" />
+            </Principal>
+            <Dependent Role="webpages_Menu">
+              <PropertyRef Name="IDMenuModule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_MenuInBehavior_webpages_Behavior">
+          <End Role="webpages_Behavior" Type="Self.webpages_Behavior" Multiplicity="1" />
+          <End Role="webpages_MenuInBehavior" Type="Self.webpages_MenuInBehavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Behavior">
+              <PropertyRef Name="IDBehavior" />
+            </Principal>
+            <Dependent Role="webpages_MenuInBehavior">
+              <PropertyRef Name="IDBehavior" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_MenuInBehavior_webpages_Menu">
+          <End Role="webpages_Menu" Type="Self.webpages_Menu" Multiplicity="1" />
+          <End Role="webpages_MenuInBehavior" Type="Self.webpages_MenuInBehavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Menu">
+              <PropertyRef Name="IDMenu" />
+            </Principal>
+            <Dependent Role="webpages_MenuInBehavior">
+              <PropertyRef Name="IDMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_MenuInRoles_webpages_Menu">
+          <End Role="webpages_Menu" Type="Self.webpages_Menu" Multiplicity="1" />
+          <End Role="webpages_MenuInRoles" Type="Self.webpages_MenuInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Menu">
+              <PropertyRef Name="IDMenu" />
+            </Principal>
+            <Dependent Role="webpages_MenuInRoles">
+              <PropertyRef Name="IDMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_MenuInRoles_webpages_Roles">
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_MenuInRoles" Type="Self.webpages_MenuInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_MenuInRoles">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_RoleInBehavior_webpages_Behavior">
+          <End Role="webpages_Behavior" Type="Self.webpages_Behavior" Multiplicity="1" />
+          <End Role="webpages_RoleInBehavior" Type="Self.webpages_RoleInBehavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Behavior">
+              <PropertyRef Name="IDBehavior" />
+            </Principal>
+            <Dependent Role="webpages_RoleInBehavior">
+              <PropertyRef Name="IDBehavior" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_RoleInBehavior_webpages_Roles">
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_RoleInBehavior" Type="Self.webpages_RoleInBehavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_RoleInBehavior">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_UsersInRoles_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_UsersInRoles_webpages_Roles">
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MobyDickModelStoreContainer">
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Behavior" EntityType="Self.webpages_Behavior" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Checkpoint" EntityType="Self.webpages_Checkpoint" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Company" EntityType="Self.webpages_Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Culture" EntityType="Self.webpages_Culture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_File" EntityType="Self.webpages_File" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Menu" EntityType="Self.webpages_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_MenuInBehavior" EntityType="Self.webpages_MenuInBehavior" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_MenuInRoles" EntityType="Self.webpages_MenuInRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_MenuModule" EntityType="Self.webpages_MenuModule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Resources" EntityType="Self.webpages_Resources" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_RoleInBehavior" EntityType="Self.webpages_RoleInBehavior" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="Self.webpages_UsersInRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Company_webpages_File" Association="Self.FK_Company_webpages_File">
+            <End Role="webpages_File" EntitySet="webpages_File" />
+            <End Role="webpages_Company" EntitySet="webpages_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Culture_Resources" Association="Self.FK_Culture_Resources">
+            <End Role="webpages_Culture" EntitySet="webpages_Culture" />
+            <End Role="webpages_Resources" EntitySet="webpages_Resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Menu_Resources" Association="Self.FK_Menu_Resources">
+            <End Role="webpages_Menu" EntitySet="webpages_Menu" />
+            <End Role="webpages_Resources" EntitySet="webpages_Resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_webpages_Culture" Association="Self.FK_Users_webpages_Culture">
+            <End Role="webpages_Culture" EntitySet="webpages_Culture" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_webpages_File" Association="Self.FK_Users_webpages_File">
+            <End Role="webpages_File" EntitySet="webpages_File" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_Membership_Users" Association="Self.FK_webpages_Membership_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="webpages_Membership" EntitySet="webpages_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_Menu_webpages_Menu" Association="Self.FK_webpages_Menu_webpages_Menu">
+            <End Role="webpages_Menu" EntitySet="webpages_Menu" />
+            <End Role="webpages_Menu1" EntitySet="webpages_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_Menu_webpages_MenuModule" Association="Self.FK_webpages_Menu_webpages_MenuModule">
+            <End Role="webpages_MenuModule" EntitySet="webpages_MenuModule" />
+            <End Role="webpages_Menu" EntitySet="webpages_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_MenuInBehavior_webpages_Behavior" Association="Self.FK_webpages_MenuInBehavior_webpages_Behavior">
+            <End Role="webpages_Behavior" EntitySet="webpages_Behavior" />
+            <End Role="webpages_MenuInBehavior" EntitySet="webpages_MenuInBehavior" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_MenuInBehavior_webpages_Menu" Association="Self.FK_webpages_MenuInBehavior_webpages_Menu">
+            <End Role="webpages_Menu" EntitySet="webpages_Menu" />
+            <End Role="webpages_MenuInBehavior" EntitySet="webpages_MenuInBehavior" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_MenuInRoles_webpages_Menu" Association="Self.FK_webpages_MenuInRoles_webpages_Menu">
+            <End Role="webpages_Menu" EntitySet="webpages_Menu" />
+            <End Role="webpages_MenuInRoles" EntitySet="webpages_MenuInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_MenuInRoles_webpages_Roles" Association="Self.FK_webpages_MenuInRoles_webpages_Roles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_MenuInRoles" EntitySet="webpages_MenuInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_RoleInBehavior_webpages_Behavior" Association="Self.FK_webpages_RoleInBehavior_webpages_Behavior">
+            <End Role="webpages_Behavior" EntitySet="webpages_Behavior" />
+            <End Role="webpages_RoleInBehavior" EntitySet="webpages_RoleInBehavior" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_RoleInBehavior_webpages_Roles" Association="Self.FK_webpages_RoleInBehavior_webpages_Roles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_RoleInBehavior" EntitySet="webpages_RoleInBehavior" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_UsersInRoles_Users" Association="Self.FK_webpages_UsersInRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_UsersInRoles_webpages_Roles" Association="Self.FK_webpages_UsersInRoles_webpages_Roles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MobyDickModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MobyDickEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="webpages_Membership" EntityType="MobyDickModel.Membership" />
+          <EntitySet Name="Users" EntityType="MobyDickModel.Users" />
+          <EntitySet Name="webpages_Behavior" EntityType="MobyDickModel.Behavior" />
+          <EntitySet Name="webpages_File" EntityType="MobyDickModel.File" />
+          <EntitySet Name="webpages_Menu" EntityType="MobyDickModel.Menu" />
+          <EntitySet Name="webpages_MenuModule" EntityType="MobyDickModel.MenuModule" />
+          <EntitySet Name="webpages_RoleInBehavior" EntityType="MobyDickModel.RoleInBehavior" />
+          <EntitySet Name="webpages_Roles" EntityType="MobyDickModel.Roles" />
+          <AssociationSet Name="FK_Users_webpages_File" Association="MobyDickModel.FK_Users_webpages_File">
+            <End Role="webpages_File" EntitySet="webpages_File" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_RoleInBehavior_webpages_Behavior" Association="MobyDickModel.FK_webpages_RoleInBehavior_webpages_Behavior">
+            <End Role="webpages_Behavior" EntitySet="webpages_Behavior" />
+            <End Role="webpages_RoleInBehavior" EntitySet="webpages_RoleInBehavior" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_Menu_webpages_Menu" Association="MobyDickModel.FK_webpages_Menu_webpages_Menu">
+            <End Role="webpages_Menu" EntitySet="webpages_Menu" />
+            <End Role="webpages_Menu1" EntitySet="webpages_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_Menu_webpages_MenuSystem" Association="MobyDickModel.FK_webpages_Menu_webpages_MenuSystem">
+            <End Role="webpages_MenuModule" EntitySet="webpages_MenuModule" />
+            <End Role="webpages_Menu" EntitySet="webpages_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_RoleInBehavior_webpages_Roles" Association="MobyDickModel.FK_webpages_RoleInBehavior_webpages_Roles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_RoleInBehavior" EntitySet="webpages_RoleInBehavior" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_MenuInBehavior" Association="MobyDickModel.webpages_MenuInBehavior">
+            <End Role="webpages_Behavior" EntitySet="webpages_Behavior" />
+            <End Role="webpages_Menu" EntitySet="webpages_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_MenuInRoles" Association="MobyDickModel.webpages_MenuInRoles">
+            <End Role="webpages_Menu" EntitySet="webpages_Menu" />
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="MobyDickModel.webpages_UsersInRoles">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+          </AssociationSet>
+          <EntitySet Name="webpages_Company" EntityType="MobyDickModel.Company" />
+          <AssociationSet Name="FK_Company_webpages_File" Association="MobyDickModel.FK_Company_webpages_File">
+            <End Role="webpages_File" EntitySet="webpages_File" />
+            <End Role="Company" EntitySet="webpages_Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_Membership_Users" Association="MobyDickModel.FK_webpages_Membership_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Membership" EntitySet="webpages_Membership" />
+          </AssociationSet>
+          <EntitySet Name="webpages_Culture" EntityType="MobyDickModel.Culture" />
+          <AssociationSet Name="FK_Users_webpages_Culture" Association="MobyDickModel.FK_Users_webpages_Culture">
+            <End Role="webpages_Culture" EntitySet="webpages_Culture" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="webpages_Resources" EntityType="MobyDickModel.Resources" />
+          <AssociationSet Name="FK_Menu_Resources" Association="MobyDickModel.FK_Menu_Resources">
+            <End Role="Menu" EntitySet="webpages_Menu" />
+            <End Role="webpages_Resources" EntitySet="webpages_Resources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Culture_Resources" Association="MobyDickModel.FK_Culture_Resources">
+            <End Role="Culture" EntitySet="webpages_Culture" />
+            <End Role="Resources" EntitySet="webpages_Resources" />
+          </AssociationSet>
+          <EntitySet Name="webpages_Checkpoint" EntityType="MobyDickModel.Checkpoint" />
+          </EntityContainer>
+        <EntityType Name="Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Precision="3" />
+          <Property Type="String" Name="ConfirmationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsConfirmed" />
+          <Property Type="DateTime" Name="LastPasswordFailureDate" Precision="3" />
+          <Property Type="Int32" Name="PasswordFailuresSinceLastSuccess" Nullable="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PasswordChangedDate" Precision="3" />
+          <Property Type="String" Name="PasswordSalt" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PasswordVerificationToken" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="PasswordVerificationTokenExpirationDate" Precision="3" />
+          <Property Name="PasswordMobile" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="op" Type="Int32" />
+          <Property Name="stamp" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="MobyDickModel.FK_webpages_Membership_Users" FromRole="Membership" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="56" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdFile" Type="Int32" />
+          <Property Name="op" Type="Int32" Nullable="false" />
+          <Property Name="stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="File" Relationship="MobyDickModel.FK_Users_webpages_File" FromRole="Users" ToRole="webpages_File" />
+          <NavigationProperty Name="Roles" Relationship="MobyDickModel.webpages_UsersInRoles" FromRole="Users" ToRole="webpages_Roles" />
+          <NavigationProperty Name="webpages_Membership" Relationship="MobyDickModel.FK_webpages_Membership_Users" FromRole="Users" ToRole="Membership" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <Property Name="IdCulture" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="webpages_Culture" Relationship="MobyDickModel.FK_Users_webpages_Culture" FromRole="Users" ToRole="webpages_Culture" />
+        </EntityType>
+        <EntityType Name="Behavior">
+          <Key>
+            <PropertyRef Name="IDBehavior" />
+          </Key>
+          <Property Name="IDBehavior" Type="Int32" Nullable="false" />
+          <Property Name="BehaviorName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="op" Type="Int32" Nullable="false" />
+          <Property Name="stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RoleInBehavior" Relationship="MobyDickModel.FK_webpages_RoleInBehavior_webpages_Behavior" FromRole="webpages_Behavior" ToRole="webpages_RoleInBehavior" />
+          <NavigationProperty Name="Menu" Relationship="MobyDickModel.webpages_MenuInBehavior" FromRole="webpages_Behavior" ToRole="webpages_Menu" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="IdFile" />
+          </Key>
+          <Property Name="IdFile" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="FileData" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="MimeType" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="op" Type="Int32" Nullable="false" />
+          <Property Name="stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="MobyDickModel.FK_Users_webpages_File" FromRole="webpages_File" ToRole="Users" />
+          <NavigationProperty Name="webpages_Company" Relationship="MobyDickModel.FK_Company_webpages_File" FromRole="webpages_File" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="IDMenu" />
+          </Key>
+          <Property Name="IDMenu" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="IDMenuModule" Type="Int32" />
+          <Property Name="IDParent" Type="Int32" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Controller" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Orden" Type="Int32" Nullable="false" />
+          <Property Name="Axis_X" Type="Int32" Nullable="false" />
+          <Property Name="Axis_Y" Nullable="false" Type="Int32" />
+          <Property Name="op" Type="Int32" Nullable="false" />
+          <Property Name="stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SubMenues" Relationship="MobyDickModel.FK_webpages_Menu_webpages_Menu" FromRole="webpages_Menu" ToRole="webpages_Menu1" />
+          <NavigationProperty Name="ParentMenu" Relationship="MobyDickModel.FK_webpages_Menu_webpages_Menu" FromRole="webpages_Menu1" ToRole="webpages_Menu" />
+          <NavigationProperty Name="MenuModule" Relationship="MobyDickModel.FK_webpages_Menu_webpages_MenuSystem" FromRole="webpages_Menu" ToRole="webpages_MenuModule" />
+          <NavigationProperty Name="Behavior" Relationship="MobyDickModel.webpages_MenuInBehavior" FromRole="webpages_Menu" ToRole="webpages_Behavior" />
+          <NavigationProperty Name="Roles" Relationship="MobyDickModel.webpages_MenuInRoles" FromRole="webpages_Menu" ToRole="webpages_Roles" />
+          <NavigationProperty Name="webpages_Resources" Relationship="MobyDickModel.FK_Menu_Resources" FromRole="Menu" ToRole="webpages_Resources" />
+        </EntityType>
+        <EntityType Name="MenuModule">
+          <Key>
+            <PropertyRef Name="IDMenuModule" />
+          </Key>
+          <Property Name="IDMenuModule" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Menu" Relationship="MobyDickModel.FK_webpages_Menu_webpages_MenuSystem" FromRole="webpages_MenuModule" ToRole="webpages_Menu" />
+          <Property Name="op" Type="Int32" Nullable="false" />
+          <Property Name="stamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="RoleInBehavior">
+          <Key>
+            <PropertyRef Name="IDRoleInBehavior" />
+          </Key>
+          <Property Name="IDRoleInBehavior" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="IDRole" Type="Int32" Nullable="false" />
+          <Property Name="IDBehavior" Type="Int32" Nullable="false" />
+          <Property Name="Authorization" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Behavior" Relationship="MobyDickModel.FK_webpages_RoleInBehavior_webpages_Behavior" FromRole="webpages_RoleInBehavior" ToRole="webpages_Behavior" />
+          <NavigationProperty Name="Roles" Relationship="MobyDickModel.FK_webpages_RoleInBehavior_webpages_Roles" FromRole="webpages_RoleInBehavior" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="op" Type="Int32" Nullable="false" />
+          <Property Name="stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RoleInBehavior" Relationship="MobyDickModel.FK_webpages_RoleInBehavior_webpages_Roles" FromRole="webpages_Roles" ToRole="webpages_RoleInBehavior" />
+          <NavigationProperty Name="Menu" Relationship="MobyDickModel.webpages_MenuInRoles" FromRole="webpages_Roles" ToRole="webpages_Menu" />
+          <NavigationProperty Name="Users" Relationship="MobyDickModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="Users" />
+          <Property Name="EnableViewDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Users_webpages_File">
+          <End Type="MobyDickModel.File" Role="webpages_File" Multiplicity="0..1" />
+          <End Type="MobyDickModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_File">
+              <PropertyRef Name="IdFile" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdFile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_RoleInBehavior_webpages_Behavior">
+          <End Type="MobyDickModel.Behavior" Role="webpages_Behavior" Multiplicity="1" />
+          <End Type="MobyDickModel.RoleInBehavior" Role="webpages_RoleInBehavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Behavior">
+              <PropertyRef Name="IDBehavior" />
+            </Principal>
+            <Dependent Role="webpages_RoleInBehavior">
+              <PropertyRef Name="IDBehavior" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_Menu_webpages_Menu">
+          <End Type="MobyDickModel.Menu" Role="webpages_Menu" Multiplicity="0..1" />
+          <End Type="MobyDickModel.Menu" Role="webpages_Menu1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Menu">
+              <PropertyRef Name="IDMenu" />
+            </Principal>
+            <Dependent Role="webpages_Menu1">
+              <PropertyRef Name="IDParent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_Menu_webpages_MenuSystem">
+          <End Type="MobyDickModel.MenuModule" Role="webpages_MenuModule" Multiplicity="0..1" />
+          <End Type="MobyDickModel.Menu" Role="webpages_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_MenuModule">
+              <PropertyRef Name="IDMenuModule" />
+            </Principal>
+            <Dependent Role="webpages_Menu">
+              <PropertyRef Name="IDMenuModule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_RoleInBehavior_webpages_Roles">
+          <End Type="MobyDickModel.Roles" Role="webpages_Roles" Multiplicity="1" />
+          <End Type="MobyDickModel.RoleInBehavior" Role="webpages_RoleInBehavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_RoleInBehavior">
+              <PropertyRef Name="IDRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="webpages_MenuInBehavior">
+          <End Type="MobyDickModel.Behavior" Role="webpages_Behavior" Multiplicity="*" />
+          <End Type="MobyDickModel.Menu" Role="webpages_Menu" Multiplicity="*" />
+        </Association>
+        <Association Name="webpages_MenuInRoles">
+          <End Type="MobyDickModel.Menu" Role="webpages_Menu" Multiplicity="*" />
+          <End Type="MobyDickModel.Roles" Role="webpages_Roles" Multiplicity="*" />
+        </Association>
+        <Association Name="webpages_UsersInRoles">
+          <End Type="MobyDickModel.Users" Role="Users" Multiplicity="*" />
+          <End Type="MobyDickModel.Roles" Role="webpages_Roles" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="IdCompany" />
+          </Key>
+          <Property Name="IdCompany" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CUIT" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Logo" Type="Int32" />
+          <Property Name="op" Type="Int32" Nullable="false" />
+          <Property Name="stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="webpages_File" Relationship="MobyDickModel.FK_Company_webpages_File" FromRole="Company" ToRole="webpages_File" />
+        </EntityType>
+        <Association Name="FK_Company_webpages_File">
+          <End Type="MobyDickModel.File" Role="webpages_File" Multiplicity="0..1" />
+          <End Type="MobyDickModel.Company" Role="Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_File">
+              <PropertyRef Name="IdFile" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="Logo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_Membership_Users">
+          <End Type="MobyDickModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="MobyDickModel.Membership" Role="Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Culture">
+          <Key>
+            <PropertyRef Name="IdCulture" />
+          </Key>
+          <Property Name="IdCulture" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="MobyDickModel.FK_Users_webpages_Culture" FromRole="webpages_Culture" ToRole="Users" />
+          <Property Name="Code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Resources" Relationship="MobyDickModel.FK_Culture_Resources" FromRole="Culture" ToRole="Resources" />
+        </EntityType>
+        <Association Name="FK_Users_webpages_Culture">
+          <End Type="MobyDickModel.Culture" Role="webpages_Culture" Multiplicity="1" />
+          <End Type="MobyDickModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Culture">
+              <PropertyRef Name="IdCulture" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="IdCulture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Resources">
+          <Key>
+            <PropertyRef Name="IdResource" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="IDMenu" Type="Int32" />
+          <NavigationProperty Name="Menu" Relationship="MobyDickModel.FK_Menu_Resources" FromRole="webpages_Resources" ToRole="Menu" />
+          <Property Name="IdResource" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="IdCulture" Type="Int32" Nullable="false" />
+          <Property Name="op" Type="Int32" Nullable="false" />
+          <Property Name="stamp" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Culture" Relationship="MobyDickModel.FK_Culture_Resources" FromRole="Resources" ToRole="Culture" />
+        </EntityType>
+        <Association Name="FK_Menu_Resources">
+          <End Type="MobyDickModel.Menu" Role="Menu" Multiplicity="0..1" />
+          <End Type="MobyDickModel.Resources" Role="webpages_Resources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Menu">
+              <PropertyRef Name="IDMenu" />
+            </Principal>
+            <Dependent Role="webpages_Resources">
+              <PropertyRef Name="IDMenu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Culture_Resources">
+          <End Type="MobyDickModel.Culture" Role="Culture" Multiplicity="1" />
+          <End Type="MobyDickModel.Resources" Role="Resources" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Culture">
+              <PropertyRef Name="IdCulture" />
+            </Principal>
+            <Dependent Role="Resources">
+              <PropertyRef Name="IdCulture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Checkpoint">
+          <Key>
+            <PropertyRef Name="IdCheckpoint" />
+          </Key>
+          <Property Name="IdCheckpoint" Type="Int32" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IpService" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <Property Name="op" Type="Int32" Nullable="false" />
+          <Property Name="stamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MobyDickModelStoreContainer" CdmEntityContainer="MobyDickEntities">
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="MobyDickModel.Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="stamp" ColumnName="stamp" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="PasswordMobile" ColumnName="PasswordMobile" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MobyDickModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IdCulture" ColumnName="IdCulture" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="stamp" ColumnName="stamp" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="IdFile" ColumnName="IdFile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Behavior">
+            <EntityTypeMapping TypeName="MobyDickModel.Behavior">
+              <MappingFragment StoreEntitySet="webpages_Behavior">
+                <ScalarProperty Name="stamp" ColumnName="stamp" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="BehaviorName" ColumnName="BehaviorName" />
+                <ScalarProperty Name="IDBehavior" ColumnName="IDBehavior" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_File">
+            <EntityTypeMapping TypeName="MobyDickModel.File">
+              <MappingFragment StoreEntitySet="webpages_File">
+                <ScalarProperty Name="stamp" ColumnName="stamp" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="FileData" ColumnName="FileData" />
+                <ScalarProperty Name="IdFile" ColumnName="IdFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Menu">
+            <EntityTypeMapping TypeName="MobyDickModel.Menu">
+              <MappingFragment StoreEntitySet="webpages_Menu">
+                <ScalarProperty Name="stamp" ColumnName="stamp" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="Axis_Y" ColumnName="Axis_Y" />
+                <ScalarProperty Name="Axis_X" ColumnName="Axis_X" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IDParent" ColumnName="IDParent" />
+                <ScalarProperty Name="IDMenuModule" ColumnName="IDMenuModule" />
+                <ScalarProperty Name="IDMenu" ColumnName="IDMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_MenuModule">
+            <EntityTypeMapping TypeName="MobyDickModel.MenuModule">
+              <MappingFragment StoreEntitySet="webpages_MenuModule">
+                <ScalarProperty Name="stamp" ColumnName="stamp" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IDMenuModule" ColumnName="IDMenuModule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_RoleInBehavior">
+            <EntityTypeMapping TypeName="MobyDickModel.RoleInBehavior">
+              <MappingFragment StoreEntitySet="webpages_RoleInBehavior">
+                <ScalarProperty Name="Authorization" ColumnName="Authorization" />
+                <ScalarProperty Name="IDBehavior" ColumnName="IDBehavior" />
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+                <ScalarProperty Name="IDRoleInBehavior" ColumnName="IDRoleInBehavior" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="MobyDickModel.Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="EnableViewDeleted" ColumnName="EnableViewDeleted" />
+                <ScalarProperty Name="stamp" ColumnName="stamp" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_MenuInBehavior" TypeName="MobyDickModel.webpages_MenuInBehavior" StoreEntitySet="webpages_MenuInBehavior">
+            <EndProperty Name="webpages_Menu">
+              <ScalarProperty Name="IDMenu" ColumnName="IDMenu" />
+            </EndProperty>
+            <EndProperty Name="webpages_Behavior">
+              <ScalarProperty Name="IDBehavior" ColumnName="IDBehavior" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="webpages_MenuInRoles" TypeName="MobyDickModel.webpages_MenuInRoles" StoreEntitySet="webpages_MenuInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="IDRole" />
+            </EndProperty>
+            <EndProperty Name="webpages_Menu">
+              <ScalarProperty Name="IDMenu" ColumnName="IDMenu" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="MobyDickModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="webpages_Company">
+            <EntityTypeMapping TypeName="MobyDickModel.Company">
+              <MappingFragment StoreEntitySet="webpages_Company">
+                <ScalarProperty Name="stamp" ColumnName="stamp" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CUIT" ColumnName="CUIT" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Culture">
+            <EntityTypeMapping TypeName="MobyDickModel.Culture">
+              <MappingFragment StoreEntitySet="webpages_Culture">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IdCulture" ColumnName="IdCulture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Resources">
+            <EntityTypeMapping TypeName="MobyDickModel.Resources">
+              <MappingFragment StoreEntitySet="webpages_Resources">
+                <ScalarProperty Name="stamp" ColumnName="stamp" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="IdCulture" ColumnName="IdCulture" />
+                <ScalarProperty Name="IdResource" ColumnName="IdResource" />
+                <ScalarProperty Name="IDMenu" ColumnName="IDMenu" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Checkpoint">
+            <EntityTypeMapping TypeName="MobyDickModel.Checkpoint">
+              <MappingFragment StoreEntitySet="webpages_Checkpoint">
+                <ScalarProperty Name="stamp" ColumnName="stamp" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="IpService" ColumnName="IpService" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="IdCheckpoint" ColumnName="IdCheckpoint" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="55e05aabe3324adcb780c781a9424ebd" Name="Authetification" ZoomLevel="85">
+        <EntityTypeShape EntityType="MobyDickModel.Users" Width="1.5" PointX="9.625" PointY="7.25" />
+        <EntityTypeShape EntityType="MobyDickModel.Behavior" Width="1.5" PointX="6.125" PointY="1.5" />
+        <EntityTypeShape EntityType="MobyDickModel.File" Width="1.5" PointX="11.75" PointY="7.5" />
+        <EntityTypeShape EntityType="MobyDickModel.Menu" Width="2.125" PointX="6.125" PointY="5" />
+        <EntityTypeShape EntityType="MobyDickModel.MenuModule" Width="1.5" PointX="3.875" PointY="6" />
+        <EntityTypeShape EntityType="MobyDickModel.RoleInBehavior" Width="1.5" PointX="9.375" PointY="1.5" />
+        <EntityTypeShape EntityType="MobyDickModel.Roles" Width="2.25" PointX="9" PointY="4.375" />
+        <AssociationConnector Association="MobyDickModel.FK_Users_webpages_File" />
+        <AssociationConnector Association="MobyDickModel.FK_webpages_RoleInBehavior_webpages_Behavior" />
+        <AssociationConnector Association="MobyDickModel.FK_webpages_Menu_webpages_Menu" />
+        <AssociationConnector Association="MobyDickModel.FK_webpages_Menu_webpages_MenuSystem" />
+        <AssociationConnector Association="MobyDickModel.FK_webpages_RoleInBehavior_webpages_Roles" />
+        <AssociationConnector Association="MobyDickModel.webpages_MenuInBehavior" />
+        <AssociationConnector Association="MobyDickModel.webpages_MenuInRoles" />
+        <AssociationConnector Association="MobyDickModel.webpages_UsersInRoles" />
+        <EntityTypeShape EntityType="MobyDickModel.Membership" Width="1.5" PointX="7.5" PointY="10.5" />
+        <EntityTypeShape EntityType="MobyDickModel.Company" Width="1.5" PointX="11.75" PointY="3.875" />
+        <AssociationConnector Association="MobyDickModel.FK_Company_webpages_File" />
+        <AssociationConnector Association="MobyDickModel.FK_webpages_Membership_Users" />
+        <EntityTypeShape EntityType="MobyDickModel.Culture" Width="1.5" PointX="3.875" PointY="9.625" />
+        <AssociationConnector Association="MobyDickModel.FK_Users_webpages_Culture" />
+        <EntityTypeShape EntityType="MobyDickModel.Resources" Width="1.5" PointX="5.75" PointY="12.375" />
+        <AssociationConnector Association="MobyDickModel.FK_Menu_Resources" />
+        <AssociationConnector Association="MobyDickModel.FK_Culture_Resources" />
+        <EntityTypeShape EntityType="MobyDickModel.Checkpoint" Width="1.5" PointX="0.75" PointY="0.75" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

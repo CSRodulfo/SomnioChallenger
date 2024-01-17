@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Gestión de Seguridad"; 
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <h1>
+            @ViewBag.Title
+        </h1>
+    </div>
+</div>
+
+<section class="content_box">
+    <h2>
+        Lista
+    </h2>
+    <!-- Tree #3 -->
+    <div class="trees" id="tree3"></div>
+    <form action="javascript:void(0)">
+        <a href="#" class="btn_secundario" onclick="SaveValues()">Guardar</a>
+    </form>
+</section>
+<section class="content_box">
+    <h2>
+        Seleccionados
+    </h2>
+    <p>Selected keys: <span id="echoSelection3">-</span></p>
+    <p>Selected root keys: <span id="echoSelectionRootKeys3">-</span></p>
+    <p>Selected root nodes: <span id="echoSelectionRoots3">-</span></p>
+    <p>Focused item: <span id="echoFocused">-</span></p>
+</section>
+
+
+<script type="text/javascript">
+    var treeData = [
+      { title: "Modo Presentación", select: true, key: "preModOff" },
+      {
+          title: "Administrador", isFolder: true, key: "user_admin",
+          children: [
+            {
+                title: "Lista Vehículos",
+                children: [
+                  { title: "Ver", key: "id3.1.1", select: true },
+                  { title: "Editar", key: "id3.1.2", select: true }
+                ]
+            },
+            {
+                title: "Contenidos",
+                children: [
+                  { title: "Acerca de", key: "id3.2.1", select: true },
+                  { title: "Contacto", key: "id3.2.2", select: true }
+                ]
+            }
+          ]
+      },
+      {
+          title: "Anónimo", isFolder: true, key: "user_anon",
+          children: [
+            {
+                title: "Lista Vehículos",
+                children: [
+                  { title: "Ver", key: "id3.1.1" },
+                  { title: "Editar", key: "id3.1.2" }
+                ]
+            },
+            {
+                title: "Contenidos",
+                children: [
+                  { title: "Acerca de", key: "id3.2.1", select: true },
+                  { title: "Contacto", key: "id3.2.2", select: true }
+                ]
+            }
+          ]
+      }
+    ];
+    $(function () {
+        $("#tree3").dynatree({
+            checkbox: true,
+            selectMode: 3,
+            children: treeData,
+            onSelect: function (select, node) {
+                // Get a list of all selected nodes, and convert to a key array:
+                var selKeys = $.map(node.tree.getSelectedNodes(), function (node) {
+                    return node.data.key;
+                });
+                $("#echoSelection3").text(selKeys.join(", "));
+
+                // Get a list of all selected TOP nodes
+                var selRootNodes = node.tree.getSelectedNodes(true);
+                // ... and convert to a key array:
+                var selRootKeys = $.map(selRootNodes, function (node) {
+                    return node.data.key;
+                });
+                $("#echoSelectionRootKeys3").text(selRootKeys.join(", "));
+                $("#echoSelectionRoots3").text(selRootNodes.join(", "));
+            },
+            onDblClick: function (node, event) {
+                node.toggleSelect();
+            },
+            onKeydown: function (node, event) {
+                if (event.which == 32) {
+                    node.toggleSelect();
+                    return false;
+                }
+            },
+            // The following options are only required, if we have more than one tree on one page:
+            //        initId: "treeData",
+            cookieId: "dynatree-Cb3",
+            idPrefix: "dynatree-Cb3-"
+        });
+        $("a.dynatree-title").click(function () {
+            $("#echoFocused").text($(this).text());
+        });
+        $("#tree3").dynatree("getRoot").visit(function (node) {
+            node.expand(true);
+        });
+    });
+
+    function SaveValues() {
+        alert($("#echoSelection3").text());
+    };
+
+    $(".dynatree-node").click(function () {
+    });
+</script>

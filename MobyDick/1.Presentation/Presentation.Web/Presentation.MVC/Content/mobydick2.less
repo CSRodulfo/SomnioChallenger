@@ -1,0 +1,445 @@
+﻿// Less Reset
+@import "bootstrap/bootstrap.less";
+@import "elements.less";
+@import "mdjqueryvalidation.less";
+@import "datepicker.less";
+@import "autocomplete.less";
+@import "jqgrid.less";
+@import "mdmessages.less";
+@import "variables-mobydick.less";
+@import "menu.less";
+
+html{
+    height: 100%;
+}
+
+body {
+    color: @font-color;
+    font-family: @font-family;
+    background: url(Images/greyzz.png) repeat;
+    height: 100%;
+}
+
+/*Encabezado*/
+header {
+    background: lighten(@brand-color, 10%);
+    min-height: 52px;
+}
+
+/*#head-content-wrapper {
+    height: 48px;
+    background: @brand-color;
+    position: relative;
+}
+
+/*Logo*/
+#brand-logo {
+    margin: 0;
+    height: 48px;
+    vertical-align: middle;
+    padding-left: 14px;
+}
+
+#brand-logo img {
+    display: inline-block;
+    line-height: 48px;
+    vertical-align: middle;
+}
+
+#brand-logo span {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+#body-wrapper {
+    background: #f0f0f0;
+    position: relative;
+}
+
+/*Footer*/
+footer {
+    clear: both;
+    background: @brand-color;
+    position: relative;
+}
+
+#footer_content_wrapper {
+    //width: 90%;
+    //margin: 0 auto;
+    padding: 6px 10px;
+    color: #fff;
+    font-size: 0.94em;
+    //position: relative;
+}
+
+//AGREGADOS A BOOTSTRAP BASE
+h1 {
+    color: @brand-color;
+    font-weight: 300;
+}
+
+//Trees (Pasar a trees.less?)
+.trees {
+    border-top: 3px solid @brand-color;
+}
+
+
+//Botones
+.btn-nuevo{
+    color: @color-btn-font;
+    background-color: @color-btn;
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0px 3px 3px;
+    transition: none;
+    border: none;
+    display: inline-block;
+    outline: 0;
+    position: relative;
+    z-index: 1;
+    padding: 6px 12px;
+    text-decoration: none;
+    margin-right: 5px;
+    outline: 5px auto @color-btn!important;
+
+    &:hover{
+        top: 2px;
+        box-shadow: 0px 1px 1px;
+        color: @color-btn-font;
+        text-decoration: none;
+        background-color: @color-btn;
+        border-color: @color-btn;
+        outline: 5px auto @color-btn!important;
+    }
+
+    &:active,
+    &:focus{
+        top: 3px;
+        box-shadow: 0 0;
+        border-color: @color-btn;
+        background-color: @color-btn;
+        color: @color-btn-font;
+        outline: 5px auto @color-btn!important;
+    }
+}
+
+.btn-nuevo-1{
+    color: @color-btn-font;
+    background-color: #f2f3f3;
+    border-radius: 1px;
+    box-shadow: 0px 3px 3px;
+    transition: none;
+    border: 1px solid @color-btn-font;
+    display: inline-block;
+    outline: 0;
+    position: relative;
+    z-index: 1;
+    padding: 6px 12px;
+    text-decoration: none;
+    margin-bottom: 10px;
+
+    &:hover{
+        top: 2px;
+        box-shadow: 0px 1px 1px;
+        color: @color-btn-font;
+        text-decoration: none;
+    }
+
+    &:active{
+        top: 3px;
+        box-shadow: 0 0;
+        border: 1px solid @color-btn-font;
+        text-decoration: none;
+    }
+}
+
+//Paneles
+.panel-search{
+    .paneles;
+}
+.panel-header{
+    .panel-header;
+    h1{
+        display: inline-block;
+        float: right;
+        color: white;
+        font-size: 1.3em;
+        margin-top: 1%;
+    }
+}
+
+.panel-button{
+    float: right;
+    input,
+    button,
+    a{
+        .btn-nuevo;
+    }
+    form,
+    .row{
+        float: right;
+    }
+}
+
+.panel-footer{
+    .paneles;
+    padding-top: 0px;
+    h1{
+        display: inline-block;
+        float: left;
+        color: white;
+        font-size: 1.1em;
+        margin-top: 0.5%;
+        label{
+            margin-bottom: 0px;
+            font-weight: 300;
+        }
+    }
+    .panel-header{
+        max-height: 35px;
+        margin-bottom: 15px;
+    }
+}
+
+.chart{
+    .panel.panel-default{
+        .paneles;
+         min-height: 387px;
+        .panel-heading{
+            .panel-header;
+        }
+    }
+}
+
+.ui-jqgrid.ui-widget-content{
+    .paneles;
+    padding-bottom: 0px;
+}
+
+.ui-widget-header{
+    .panel-header-app;
+    a{
+        color: @color-light0;
+        &:hover,
+        &:focus,
+        &:active{
+            color: @brand-color1
+        }
+    }
+    .ui-jqgrid-titlebar {
+        line-height: 28px;
+        font-size: 16px;
+        text-transform: none;
+        font-weight: initial;
+    }
+}
+
+.ui-fancytree.fancytree-container{
+    .paneles;
+}
+
+.plupload_wrapper .plupload_container{
+    .paneles;
+    padding: 1px;
+
+    .plupload_header{
+        .panel-header-app;
+        .plupload_header_content{
+            background: url(Images/cod_barra.png) no-repeat;
+            background-position: 10px;
+        }
+    }
+    .plupload_filelist_footer{
+        min-height: 42px;
+    }
+}
+
+.ui-jqgrid-titlebar {
+    font-size: 15px!important;
+    text-transform: none!important;
+    font-weight: 300!important;
+}
+
+//FancyTree
+
+.fancytree-container .fancytree-ico-e span.fancytree-icon{
+    background-position: 1px -16px;
+    &:hover,
+    &:active,
+    &:focus{
+        background-position: 1px -16px!important;
+    }
+}
+
+.fancytree-ico-c span.fancytree-icon{
+    background-position: -31px -109px;
+    &:hover,
+    &:active,
+    &:focus{
+        background-position: -31px -96px!important;
+    }
+}
+
+//FancyTree
+
+.imgBoxed{
+    max-height: 400px;
+    max-width: 600px;
+    margin-bottom: 15px;
+}
+
+.imgWrapper{
+    max-width: 600px;
+}
+
+.calendar{
+    max-width: 240px;
+}
+.icono-calendar{    
+    .glyphicon-icon;
+    background-position: 419px -173px;    
+    margin-top: -33px;
+    border: 1px solid @color-btn;
+    border-radius: 2px;
+    background-color: @color-btn;
+    &:hover{
+        cursor: pointer;
+        background-color: @color-base;
+        border: 1px solid @color-base;
+    }
+}
+
+//file-input
+
+.file-preview-thumbnails {
+    display: inline-block;
+    width: 100%;
+}
+
+    .file-preview-thumbnails > .file-preview-frame {
+        border: none;
+        box-shadow: none;
+        width: 100%;
+        margin: 0;
+        display: inline-block;
+        min-height: 215px;
+    }
+
+.file-preview-empty {
+    background: url(images/package.png) no-repeat 15px 30px;
+    height: 210px;
+    background-size: 90%;
+}
+
+.file-preview-user {
+    background: url(images/user.png) no-repeat 40px 12px;
+    height: 210px;
+    background-size: 72%;
+}
+
+.file-preview-image {
+    max-width: 90%;
+    max-height: 210px;
+    height: 210px;
+}
+
+.file-drop-zone{
+    border: 0px;
+}
+
+.close.fileinput-remove, .file-upload-indicator>.glyphicon, .file-footer-buttons>.kv-file-upload{
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .file-preview-user {
+        background: url(images/user.png) no-repeat 300px 12px;
+        height: 210px;
+        background-size: 25%;
+    }
+    .file-preview-empty {
+        background: url(images/package.png) no-repeat 300px 30px;
+        height: 210px;
+        background-size: 25%;
+    }
+}
+
+//file-input
+
+//Select2
+
+.select2-results .select2-highlighted{
+    background-color: darken(@brand-color, 10%)!important;
+}
+
+textarea{
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid rgb(197, 197, 197);
+    padding: 5px 10px;
+}
+
+#registerLink{
+    border-right: 2px solid lighten(@brand-color, 90%);
+    margin-right: -16px;
+    &:hover{
+        border-right: 2px solid darken(@brand-color, 25%) !important;
+    }
+}
+
+#loginLink,
+#registerLink{
+    color: lighten(@brand-color, 90%);
+    background-color: fade(darken(@brand-color, 25%),80%);    
+    height: 59px;
+    margin-top: -2px;
+    padding: 10px;
+    border-left: 2px solid lighten(@brand-color, 90%);
+    text-decoration: none;
+    line-height: 38px;
+    min-width: 80px;
+    text-align: center;
+
+    &:hover{
+        color: darken(@brand-color, 25%) !important;
+        text-decoration: none!important;
+        background: lighten(@brand-color, 90%);
+        line-height: 30px;
+        border-left: 2px solid darken(@brand-color, 25%) !important;
+    }
+}
+
+.nav-tabs{
+    > li{
+        > a{
+            background: fade(@nav-tabs-link-hover-border-color, 20%);
+          &:hover,
+          &:focus {           
+            outline: none!important;
+          }
+        }
+    }
+}
+
+.navbar-default .client img {
+  max-height: 35px;
+  max-width: 110px;
+  float: right;
+}
+
+.item-disabled-not-available {
+  background-color: red;
+  border: 2px solid black;
+    display: block;
+  height: 10px;
+  margin: 0 auto;
+  width: 10px;
+}
+.item-disabled-available {
+  background-color: green;
+  border: 2px solid black;
+  display: block;
+  height: 10px;
+  margin: 0 auto;
+  width: 10px;
+}

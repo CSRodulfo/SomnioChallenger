@@ -1,0 +1,908 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{19739850-D373-4037-8A3B-97FA23DB106B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Presentation.AppTelerik</RootNamespace>
+    <AssemblyName>Presentation.AppTelerik</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>\\merpin\TrackTire\SmartRetail\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <InstallUrl>http://merpin/smartretail/</InstallUrl>
+    <TargetCulture>es-AR</TargetCulture>
+    <ProductName>SmartRetail</ProductName>
+    <PublisherName>SmartRetail</PublisherName>
+    <SuiteName>SmartRetail</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Practices.CompositeUI">
+      <HintPath>$(SolutionDir)packages\TelerikWinCompositeUI.2012.1.321.20\lib\Microsoft.Practices.CompositeUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.CompositeUI.WinForms">
+      <HintPath>$(SolutionDir)packages\TelerikWinCompositeUI.2012.1.321.20\lib\Microsoft.Practices.CompositeUI.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ObjectBuilder">
+      <HintPath>$(SolutionDir)packages\TelerikWinCompositeUI.2012.1.321.20\lib\Microsoft.Practices.ObjectBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.GridView, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.RadChart, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.RadDock, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.RichTextBox, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2010Black, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="TelerikCommon, Version=2015.1.331.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Area\Administration\Security\Interfaces\IMembershipForm.cs" />
+    <Compile Include="Area\Administration\Security\Interfaces\IViewLogin.cs" />
+    <Compile Include="Area\Administration\Security\Model\MembershipForm.cs" />
+    <Compile Include="Area\Administration\Security\Presenter\pLogin.cs" />
+    <Compile Include="Area\Administration\Security\View\Login.cs" />
+    <Compile Include="Area\Administration\Security\View\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Area\Process\View\FormProcess.cs" />
+    <Compile Include="Area\Process\View\FormProcess.Designer.cs">
+      <DependentUpon>FormProcess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Controls\FormBase.cs" />
+    <Compile Include="Common\Controls\FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\IMVP.cs" />
+    <Compile Include="Common\ManagerService.cs" />
+    <Compile Include="Controls\mdTextBox.cs" />
+    <Compile Include="Controls\mdTextBox.Designer.cs">
+      <DependentUpon>mdTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IViewHome.cs" />
+    <Compile Include="Presenter\MDIHome.cs" />
+    <Compile Include="Presenter\MDIHome.Designer.cs">
+      <DependentUpon>MDIHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Area\Administration\Security\View\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Area\Process\View\FormProcess.resx">
+      <DependentUpon>FormProcess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\Controls\FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presenter\MDIHome.resx">
+      <DependentUpon>MDIHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\Dashboard.csv" />
+    <None Include="Resources\DJIA.csv" />
+    <None Include="Resources\DJIAD.csv" />
+    <None Include="Resources\DJIAM.csv" />
+    <None Include="Resources\MediaPlayerBlackPageView.tssp" />
+    <None Include="Resources\OhlcData.csv" />
+    <None Include="Resources\RealEstateAgency.csv" />
+    <None Include="Resources\Telemetry.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+      <TransformOnBuild>true</TransformOnBuild>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\3.Application\Application.MainModule\Application.MainModule.csproj">
+      <Project>{1b83eff2-1ca7-4862-bd2e-1ce58b4bec3e}</Project>
+      <Name>Application.MainModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\5.Infrastructure\Infrastructure.Cross.IoC\Infrastructure.Cross.IoC.csproj">
+      <Project>{209d70a8-ac13-4d0c-a5c9-2d02c8c3388e}</Project>
+      <Name>Infrastructure.Cross.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Presentation.Service\Presentation.ServiceDistribution\Presentation.ServiceDistribution.csproj">
+      <Project>{d8e7fcbe-b291-4d8f-b241-a3130d97d9d1}</Project>
+      <Name>Presentation.ServiceDistribution</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
+    <Content Include="Images\bk_head_form.jpg" />
+    <Content Include="Images\default_car.jpg" />
+    <Content Include="Images\exclamation_red.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Resources\01.png" />
+    <Content Include="Resources\02.png" />
+    <Content Include="Resources\03.png" />
+    <Content Include="Resources\04.png" />
+    <Content Include="Resources\05.png" />
+    <Content Include="Resources\06.png" />
+    <Content Include="Resources\07.png" />
+    <Content Include="Resources\08.png" />
+    <Content Include="Resources\09.png" />
+    <Content Include="Resources\1.png" />
+    <Content Include="Resources\1RibbonMenuNew.gif" />
+    <Content Include="Resources\1RibbonMenuNew2.png" />
+    <Content Include="Resources\1RibbonMenuNewMagenta.png" />
+    <Content Include="Resources\1_New.gif" />
+    <Content Include="Resources\2.png" />
+    <Content Include="Resources\2RibbonMenuOpen.gif" />
+    <Content Include="Resources\2RibbonMenuOpen2.png" />
+    <Content Include="Resources\2RibbonMenuOpenMagenta.png" />
+    <Content Include="Resources\2_Open.gif" />
+    <Content Include="Resources\3.png" />
+    <Content Include="Resources\3RibbonMenuSave.gif" />
+    <Content Include="Resources\3RibbonMenuSave2.png" />
+    <Content Include="Resources\3RibbonMenuSaveMagenta.png" />
+    <Content Include="Resources\3_Save.gif" />
+    <Content Include="Resources\4.png" />
+    <Content Include="Resources\4RibbonMenuSaveAs.gif" />
+    <Content Include="Resources\4RibbonMenuSaveAs2.png" />
+    <Content Include="Resources\4RibbonMenuSaveAsMagenta.png" />
+    <Content Include="Resources\4_Save_As.gif" />
+    <Content Include="Resources\5RibbonbarMenuPrint.gif" />
+    <Content Include="Resources\5RibbonbarMenuPrint2.png" />
+    <Content Include="Resources\5RibbonbarMenuPrintMagenta.png" />
+    <Content Include="Resources\5_Print.gif" />
+    <Content Include="Resources\6RibbonMenuPrepare.gif" />
+    <Content Include="Resources\6RibbonMenuPrepare2.png" />
+    <Content Include="Resources\6RibbonMenuPrepareMagenta.png" />
+    <Content Include="Resources\6_Prepare.gif" />
+    <Content Include="Resources\7RibbonMenuSend.gif" />
+    <Content Include="Resources\7RibbonMenuSend2.png" />
+    <Content Include="Resources\7RibbonMenuSendMagenta.png" />
+    <Content Include="Resources\7_Send.gif" />
+    <Content Include="Resources\8RibbonMenuPublish.gif" />
+    <Content Include="Resources\8RibbonMenuPublish2.png" />
+    <Content Include="Resources\8RibbonMenuPublishMagenta.png" />
+    <Content Include="Resources\8_Publish.gif" />
+    <Content Include="Resources\9RibbonMenuClose.gif" />
+    <Content Include="Resources\9RibbonMenuClose2.png" />
+    <Content Include="Resources\9RibbonMenuCloseMagenta.png" />
+    <Content Include="Resources\9_Close.gif" />
+    <Content Include="Resources\about_paint.png" />
+    <Content Include="Resources\Alarm.bmp" />
+    <Content Include="Resources\Alarm2.png" />
+    <Content Include="Resources\Alerts2.png" />
+    <Content Include="Resources\AndrewFuller.png" />
+    <Content Include="Resources\AnneDodsworth.png" />
+    <Content Include="Resources\Application.png" />
+    <Content Include="Resources\Area.png" />
+    <Content Include="Resources\arrow-down1.png" />
+    <Content Include="Resources\arrow-left.png" />
+    <Content Include="Resources\arrow-left1.png" />
+    <Content Include="Resources\arrow-right.png" />
+    <Content Include="Resources\arrow-right1.png" />
+    <Content Include="Resources\arrow-up2.png" />
+    <Content Include="Resources\arrow.gif" />
+    <Content Include="Resources\arrow.png" />
+    <Content Include="Resources\arrow1.png" />
+    <Content Include="Resources\arrow_left.png" />
+    <Content Include="Resources\arrow_left_hover.png" />
+    <Content Include="Resources\arrow_left_pressed.png" />
+    <Content Include="Resources\arrow_right.png" />
+    <Content Include="Resources\arrow_right_hover.png" />
+    <Content Include="Resources\arrow_right_pressed.png" />
+    <Content Include="Resources\background.png" />
+    <Content Include="Resources\background1.png" />
+    <Content Include="Resources\backstage_blogpost.png" />
+    <Content Include="Resources\backstage_existing_template.png" />
+    <Content Include="Resources\backstage_my_templates.png" />
+    <Content Include="Resources\backstage_new.png" />
+    <Content Include="Resources\backstage_recent.png" />
+    <Content Include="Resources\backstage_sample_templates.png" />
+    <Content Include="Resources\ballons-image.jpg" />
+    <Content Include="Resources\Bar.png" />
+    <Content Include="Resources\BE.png" />
+    <Content Include="Resources\BezierLine.png" />
+    <Content Include="Resources\bigStarOff.png" />
+    <Content Include="Resources\bigStarOn.png" />
+    <Content Include="Resources\BindingNavigatorAddNewItem.Image.png" />
+    <Content Include="Resources\BindingNavigatorAddNewItem.Image1.png" />
+    <Content Include="Resources\BindingNavigatorDeleteItem.Image.png" />
+    <Content Include="Resources\BindingNavigatorDeleteItem.Image1.png" />
+    <Content Include="Resources\BindingNavigatorMoveFirstItem.Image.png" />
+    <Content Include="Resources\BindingNavigatorMoveLastItem.Image.png" />
+    <Content Include="Resources\BindingNavigatorMoveNextItem.Image.png" />
+    <Content Include="Resources\BindingNavigatorMovePreviousItem.Image.png" />
+    <Content Include="Resources\Black.png" />
+    <Content Include="Resources\black_rect.bmp" />
+    <Content Include="Resources\blog_post.png" />
+    <Content Include="Resources\Blue.png" />
+    <Content Include="Resources\BMW_Big.png" />
+    <Content Include="Resources\BMW_Small.png" />
+    <Content Include="Resources\BobSmill.png" />
+    <Content Include="Resources\boss.png" />
+    <Content Include="Resources\bottomBg.png" />
+    <Content Include="Resources\bottomMiddle.png" />
+    <Content Include="Resources\BR.png" />
+    <Content Include="Resources\brush1.png" />
+    <Content Include="Resources\brush2.png" />
+    <Content Include="Resources\brush3.png" />
+    <Content Include="Resources\brush4.png" />
+    <Content Include="Resources\brush5.png" />
+    <Content Include="Resources\brush6.png" />
+    <Content Include="Resources\brush7.png" />
+    <Content Include="Resources\brush8.png" />
+    <Content Include="Resources\brush9.png" />
+    <Content Include="Resources\Bubble.png" />
+    <Content Include="Resources\bug-logo.png" />
+    <Content Include="Resources\Build.png" />
+    <Content Include="Resources\BuildEvents.png" />
+    <Content Include="Resources\BUL.png" />
+    <Content Include="Resources\button.png" />
+    <Content Include="Resources\button1.png" />
+    <Content Include="Resources\button2.png" />
+    <Content Include="Resources\buttonBack.png" />
+    <Content Include="Resources\buttonDelete.png" />
+    <Content Include="Resources\buttonNavigation.PNG" />
+    <Content Include="Resources\buttonNavigationSmall3.PNG" />
+    <Content Include="Resources\buttonNew.png" />
+    <Content Include="Resources\buttonNext.png" />
+    <Content Include="Resources\buttonPause.png" />
+    <Content Include="Resources\buttonPlay.png" />
+    <Content Include="Resources\buttonRepeat.png" />
+    <Content Include="Resources\buttonShuffle.png" />
+    <Content Include="Resources\buttonStop.png" />
+    <Content Include="Resources\CA.png" />
+    <Content Include="Resources\calendar.png" />
+    <Content Include="Resources\Calendar1.png" />
+    <Content Include="Resources\Camera48.png" />
+    <Content Include="Resources\Candlestick.png" />
+    <Content Include="Resources\CarouselSettings_Close.png" />
+    <Content Include="Resources\CarouselSettings_Max.png" />
+    <Content Include="Resources\CarouselSettings_Min.png" />
+    <Content Include="Resources\CarouselSettings_NextBtn.png" />
+    <Content Include="Resources\CarouselSettings_PrevBtn.png" />
+    <Content Include="Resources\carousel_first_look_bg.png" />
+    <Content Include="Resources\carousel_leftArrow.png" />
+    <Content Include="Resources\carousel_rightArrow.png" />
+    <Content Include="Resources\cd_drive.png" />
+    <Content Include="Resources\CH.png" />
+    <Content Include="Resources\chart.png" />
+    <Content Include="Resources\chevron-down.png" />
+    <Content Include="Resources\chevron-up.png" />
+    <Content Include="Resources\Circle.bmp" />
+    <Content Include="Resources\Clock Alarm.png" />
+    <Content Include="Resources\close.png" />
+    <Content Include="Resources\close1.png" />
+    <Content Include="Resources\close2.png" />
+    <Content Include="Resources\CloseSolution.bmp" />
+    <Content Include="Resources\CN.png" />
+    <Content Include="Resources\ComboFirstLookBG.png" />
+    <Content Include="Resources\ComboFirstLookSortAsc.png" />
+    <Content Include="Resources\ComboFirstLookSortDesc.png" />
+    <Content Include="Resources\Configuration Tools12.png" />
+    <Content Include="Resources\Contacts.png" />
+    <Content Include="Resources\content.png" />
+    <Content Include="Resources\ControlDefault.png" />
+    <Content Include="Resources\copy.gif" />
+    <Content Include="Resources\Copy2.png" />
+    <Content Include="Resources\Copy3.png" />
+    <Content Include="Resources\crayon.png" />
+    <Content Include="Resources\crop.png" />
+    <Content Include="Resources\Cut.bmp" />
+    <Content Include="Resources\cut.gif" />
+    <Content Include="Resources\Cut2.png" />
+    <Content Include="Resources\Cut3.png" />
+    <Content Include="Resources\data.xml" />
+    <Content Include="Resources\data1.xml" />
+    <Content Include="Resources\DE.png" />
+    <Content Include="Resources\Debug.png" />
+    <Content Include="Resources\DeleteAppointment.png" />
+    <Content Include="Resources\delete_disable.png" />
+    <Content Include="Resources\desktop.bmp" />
+    <Content Include="Resources\details-icon.png" />
+    <Content Include="Resources\docking.png" />
+    <Content Include="Resources\Document.png" />
+    <Content Include="Resources\documents.bmp" />
+    <Content Include="Resources\DraftFolder.png" />
+    <Content Include="Resources\drive.bmp" />
+    <Content Include="Resources\EditTask16.png" />
+    <Content Include="Resources\edit_color.png" />
+    <Content Include="Resources\EG.png" />
+    <Content Include="Resources\email.png" />
+    <Content Include="Resources\EmilySmile.png" />
+    <Content Include="Resources\eraser.png" />
+    <Content Include="Resources\examplebody.bmp" />
+    <Content Include="Resources\Exclamation.png" />
+    <Content Include="Resources\exit.png" />
+    <Content Include="Resources\exit2.png" />
+    <Content Include="Resources\exitButton.png" />
+    <Content Include="Resources\Eyedropper.png" />
+    <Content Include="Resources\Favorites12.png" />
+    <Content Include="Resources\fill.png" />
+    <Content Include="Resources\fill_screen.png" />
+    <Content Include="Resources\fill_zoom.png" />
+    <Content Include="Resources\first_look_screen.png" />
+    <Content Include="Resources\floppy_drive.png" />
+    <Content Include="Resources\FL_Close.png" />
+    <Content Include="Resources\FL_Max.png" />
+    <Content Include="Resources\FL_min.png" />
+    <Content Include="Resources\folder.bmp" />
+    <Content Include="Resources\Folder.png" />
+    <Content Include="Resources\Folder1.png" />
+    <Content Include="Resources\folder_xp.png" />
+    <Content Include="Resources\footballPlayer.png" />
+    <Content Include="Resources\Format Align Center.png" />
+    <Content Include="Resources\Format Align Left.png" />
+    <Content Include="Resources\Format Align Right.png" />
+    <Content Include="Resources\Format Bold.png" />
+    <Content Include="Resources\Format Bold1.png" />
+    <Content Include="Resources\Format Headings.png" />
+    <Content Include="Resources\Format Italics.png" />
+    <Content Include="Resources\Format Numbering.png" />
+    <Content Include="Resources\Format Underline.png" />
+    <Content Include="Resources\FR.png" />
+    <Content Include="Resources\free_form_selection.png" />
+    <Content Include="Resources\from_scanner_camera.png" />
+    <Content Include="Resources\Gant.png" />
+    <Content Include="Resources\GantPrevious.png" />
+    <Content Include="Resources\Gantt100.png" />
+    <Content Include="Resources\Gantt25.png" />
+    <Content Include="Resources\Gantt50.png" />
+    <Content Include="Resources\GanttAdd.png" />
+    <Content Include="Resources\GanttAddMilestone.png" />
+    <Content Include="Resources\GanttDelete.png" />
+    <Content Include="Resources\GanttMonth.png" />
+    <Content Include="Resources\GanttNext.png" />
+    <Content Include="Resources\GanttWeek.png" />
+    <Content Include="Resources\GanttYear.png" />
+    <Content Include="Resources\Globe.png" />
+    <Content Include="Resources\go.png" />
+    <Content Include="Resources\go1.png" />
+    <Content Include="Resources\green.png" />
+    <Content Include="Resources\GridFeaturesBrowser.xml" />
+    <Content Include="Resources\gridview.png" />
+    <Content Include="Resources\hard_drive.png" />
+    <Content Include="Resources\Help12.png" />
+    <Content Include="Resources\History12.png" />
+    <Content Include="Resources\Home2.png" />
+    <Content Include="Resources\HomeMovePlan.xml" />
+    <Content Include="Resources\image_gallerySmall.png" />
+    <Content Include="Resources\IN.png" />
+    <Content Include="Resources\InboxFolder.png" />
+    <Content Include="Resources\info.png" />
+    <Content Include="Resources\info1.png" />
+    <Content Include="Resources\info2.png" />
+    <Content Include="Resources\insert.gif" />
+    <Content Include="Resources\insert1.gif" />
+    <Content Include="Resources\insert2.gif" />
+    <Content Include="Resources\insert3.gif" />
+    <Content Include="Resources\insert4.gif" />
+    <Content Include="Resources\insert5.gif" />
+    <Content Include="Resources\invert_selection_disable.png" />
+    <Content Include="Resources\issues.png" />
+    <Content Include="Resources\JP.png" />
+    <Content Include="Resources\JunkFolder.png" />
+    <Content Include="Resources\launch.png" />
+    <Content Include="Resources\lb_arr_down.png" />
+    <Content Include="Resources\lb_arr_up.png" />
+    <Content Include="Resources\lb_bg.png" />
+    <Content Include="Resources\lb_m1.png" />
+    <Content Include="Resources\lb_m2.png" />
+    <Content Include="Resources\lb_m3.png" />
+    <Content Include="Resources\lb_m4.png" />
+    <Content Include="Resources\leftpane.bmp" />
+    <Content Include="Resources\leftpanedown.bmp" />
+    <Content Include="Resources\Line.png" />
+    <Content Include="Resources\line1.png" />
+    <Content Include="Resources\list-icon.png" />
+    <Content Include="Resources\logo.bmp" />
+    <Content Include="Resources\lowerCase1.png" />
+    <Content Include="Resources\Mail.png" />
+    <Content Include="Resources\MailNew.png" />
+    <Content Include="Resources\MailOpened.png" />
+    <Content Include="Resources\marker.png" />
+    <Content Include="Resources\MarketSchedule.xml" />
+    <Content Include="Resources\maximize.png" />
+    <Content Include="Resources\mediaPlayer.bmp" />
+    <Content Include="Resources\MediaPlayerAnimated.xml" />
+    <Content Include="Resources\MediaPlayerAnimatedBlack.xml" />
+    <Content Include="Resources\MediaTitleBar.xml" />
+    <Content Include="Resources\MediaTitleBarBlack.xml" />
+    <Content Include="Resources\menuButton.png" />
+    <Content Include="Resources\MenuButtonTheme.xml" />
+    <Content Include="Resources\MenuFirstLook.xml" />
+    <Content Include="Resources\MenuFirstLook_Button.xml" />
+    <Content Include="Resources\menu_firstlook_bg.png" />
+    <Content Include="Resources\minimize.png" />
+    <Content Include="Resources\mscoffice_ClipArt.png" />
+    <Content Include="Resources\mscoffice_zoom.png" />
+    <Content Include="Resources\msIcon1.bmp" />
+    <Content Include="Resources\msIcon3.bmp" />
+    <Content Include="Resources\msoffice_Bookmark.png" />
+    <Content Include="Resources\msoffice_Bookmark_16.png" />
+    <Content Include="Resources\msoffice_ChangeStyles32.png" />
+    <Content Include="Resources\msoffice_chart.png" />
+    <Content Include="Resources\msoffice_CrossReference.png" />
+    <Content Include="Resources\msoffice_DateTime.png" />
+    <Content Include="Resources\msoffice_doc.png" />
+    <Content Include="Resources\msoffice_DropCap.png" />
+    <Content Include="Resources\msoffice_equation.png" />
+    <Content Include="Resources\msoffice_expandspace.png" />
+    <Content Include="Resources\msoffice_findnext.png" />
+    <Content Include="Resources\msoffice_Footer.png" />
+    <Content Include="Resources\msoffice_Footer1.png" />
+    <Content Include="Resources\msoffice_Footer2.png" />
+    <Content Include="Resources\msoffice_Header.png" />
+    <Content Include="Resources\msoffice_highlight.png" />
+    <Content Include="Resources\msoffice_highlight1.png" />
+    <Content Include="Resources\msoffice_inserthyperlink.png" />
+    <Content Include="Resources\msoffice_linecolor.png" />
+    <Content Include="Resources\msoffice_list-numbered-tb.png" />
+    <Content Include="Resources\msoffice_menu_blog.png" />
+    <Content Include="Resources\msoffice_menu_digitalsignature.png" />
+    <Content Include="Resources\msoffice_menu_documentserver.png" />
+    <Content Include="Resources\msoffice_menu_documentworkspace.png" />
+    <Content Include="Resources\msoffice_menu_encryptdocument.png" />
+    <Content Include="Resources\msoffice_menu_markasfinal.png" />
+    <Content Include="Resources\msoffice_menu_restrictpermisions.png" />
+    <Content Include="Resources\msoffice_Object.png" />
+    <Content Include="Resources\msoffice_pastehyperlink.png" />
+    <Content Include="Resources\msoffice_pointer.png" />
+    <Content Include="Resources\msoffice_QuickParts.png" />
+    <Content Include="Resources\msoffice_ruler.png" />
+    <Content Include="Resources\msoffice_rulers_HorizontalRuler.png" />
+    <Content Include="Resources\msoffice_rulers_VerticalRuler.png" />
+    <Content Include="Resources\msoffice_SignatureLine.png" />
+    <Content Include="Resources\msoffice_SmartArt.png" />
+    <Content Include="Resources\msoffice_sortasc.png" />
+    <Content Include="Resources\msoffice_Strikethrough16.png" />
+    <Content Include="Resources\msoffice_symbols.png" />
+    <Content Include="Resources\MusicCollection.xml" />
+    <Content Include="Resources\myComputer.bmp" />
+    <Content Include="Resources\natural-pencil.png" />
+    <Content Include="Resources\Navigation 1 Left2.png" />
+    <Content Include="Resources\Navigation 2 Left2.png" />
+    <Content Include="Resources\Navigation_2_Left2.png" />
+    <Content Include="Resources\Navigation_2_Right2.png" />
+    <Content Include="Resources\new.bmp" />
+    <Content Include="Resources\new.gif" />
+    <Content Include="Resources\new1.png" />
+    <Content Include="Resources\new2.png" />
+    <Content Include="Resources\new_paste_16.png" />
+    <Content Include="Resources\new_paste_32.png" />
+    <Content Include="Resources\NL.png" />
+    <Content Include="Resources\Notes.png" />
+    <Content Include="Resources\no_outline.png" />
+    <Content Include="Resources\NursingSchedule.xml" />
+    <Content Include="Resources\Office2010Black.png" />
+    <Content Include="Resources\Office2010Blue.png" />
+    <Content Include="Resources\Office2010Silver.png" />
+    <Content Include="Resources\oil.png" />
+    <Content Include="Resources\Opaque.png" />
+    <Content Include="Resources\open.gif" />
+    <Content Include="Resources\Open.png" />
+    <Content Include="Resources\open32.png" />
+    <Content Include="Resources\optionsButton.png" />
+    <Content Include="Resources\OutboxFolder.png" />
+    <Content Include="Resources\outline.png" />
+    <Content Include="Resources\OutlookViewCalendar.png" />
+    <Content Include="Resources\OutlookViewContacts.png" />
+    <Content Include="Resources\OutlookViewMail.png" />
+    <Content Include="Resources\OutlookViewNotes.png" />
+    <Content Include="Resources\OutlookViewTasks.png" />
+    <Content Include="Resources\pageLayout.gif" />
+    <Content Include="Resources\pageLayout1.gif" />
+    <Content Include="Resources\pageLayout2.gif" />
+    <Content Include="Resources\pageLayout3.gif" />
+    <Content Include="Resources\pageLayout4.gif" />
+    <Content Include="Resources\pageLayout5.gif" />
+    <Content Include="Resources\PageSetup.bmp" />
+    <Content Include="Resources\paint-bucket.png" />
+    <Content Include="Resources\paste.gif" />
+    <Content Include="Resources\Paste5.png" />
+    <Content Include="Resources\Paste6.png" />
+    <Content Include="Resources\paste_form.png" />
+    <Content Include="Resources\pause.png" />
+    <Content Include="Resources\pdf_doc_icon.png" />
+    <Content Include="Resources\pdf_xps_doc.png" />
+    <Content Include="Resources\pen.png" />
+    <Content Include="Resources\pic1.png" />
+    <Content Include="Resources\pic2.png" />
+    <Content Include="Resources\pic3.png" />
+    <Content Include="Resources\pic4.png" />
+    <Content Include="Resources\Pie.png" />
+    <Content Include="Resources\pin.png" />
+    <Content Include="Resources\plain_text.png" />
+    <Content Include="Resources\PlanetsBG.png" />
+    <Content Include="Resources\play.png" />
+    <Content Include="Resources\plus.bmp" />
+    <Content Include="Resources\Plus1.png" />
+    <Content Include="Resources\Point.png" />
+    <Content Include="Resources\print.bmp" />
+    <Content Include="Resources\print.gif" />
+    <Content Include="Resources\print1.png" />
+    <Content Include="Resources\Printer 312.png" />
+    <Content Include="Resources\Printer.png" />
+    <Content Include="Resources\progressbar.png" />
+    <Content Include="Resources\properties.png" />
+    <Content Include="Resources\propertyStoreCars.png" />
+    <Content Include="Resources\PT.png" />
+    <Content Include="Resources\Publish.png" />
+    <Content Include="Resources\RadButton.bmp" />
+    <Content Include="Resources\radButtonElement11.Image2.png" />
+    <Content Include="Resources\RadCalendar.bmp" />
+    <Content Include="Resources\RadCarousel.bmp" />
+    <Content Include="Resources\RadCheckBox.bmp" />
+    <Content Include="Resources\RadComboBox.bmp" />
+    <Content Include="Resources\RadContextMenuManager.bmp" />
+    <Content Include="Resources\RadDateTimePicker.bmp" />
+    <Content Include="Resources\RadDropDownButton.bmp" />
+    <Content Include="Resources\RadForm.bmp" />
+    <Content Include="Resources\RadGroupBox.bmp" />
+    <Content Include="Resources\RadLabel.bmp" />
+    <Content Include="Resources\RadMaskedEditBox.bmp" />
+    <Content Include="Resources\RadMenu.bmp" />
+    <Content Include="Resources\RadPanel.bmp" />
+    <Content Include="Resources\RadPanelBar.bmp" />
+    <Content Include="Resources\radPanelDemoHolder.BackgroundImage.png" />
+    <Content Include="Resources\RadProgressBar.bmp" />
+    <Content Include="Resources\RadRadioButton.bmp" />
+    <Content Include="Resources\RadRepeatButton.bmp" />
+    <Content Include="Resources\RadRibbonBar.bmp" />
+    <Content Include="Resources\RadRotatorWinF.png" />
+    <Content Include="Resources\RadSplitButton.bmp" />
+    <Content Include="Resources\RadSplitContainer.bmp" />
+    <Content Include="Resources\RadTabStrip.bmp" />
+    <Content Include="Resources\RadTextBox.bmp" />
+    <Content Include="Resources\RadTitleBarVista.xml" />
+    <Content Include="Resources\RadToolStripVista.xml" />
+    <Content Include="Resources\RadTrackBar.bmp" />
+    <Content Include="Resources\rectangle.png" />
+    <Content Include="Resources\rect_select.png" />
+    <Content Include="Resources\RecurrenceAppointment.png" />
+    <Content Include="Resources\Recycle Bin2.png" />
+    <Content Include="Resources\RecycleBin.png" />
+    <Content Include="Resources\red.png" />
+    <Content Include="Resources\RedFlag.png" />
+    <Content Include="Resources\Redo2.png" />
+    <Content Include="Resources\Redo3.png" />
+    <Content Include="Resources\Refernce Paths.png" />
+    <Content Include="Resources\Refresh.bmp" />
+    <Content Include="Resources\refresh11.png" />
+    <Content Include="Resources\Refresh2.png" />
+    <Content Include="Resources\refresh3.png" />
+    <Content Include="Resources\reminder-icon.png" />
+    <Content Include="Resources\Reminder48.png" />
+    <Content Include="Resources\resize.png" />
+    <Content Include="Resources\RibbonMenuNewMagenta.png" />
+    <Content Include="Resources\RibbonMenuOpenMagenta.png" />
+    <Content Include="Resources\RibbonMenuSaveAsMagenta.png" />
+    <Content Include="Resources\RibbonMenuSaveMagenta.png" />
+    <Content Include="Resources\ribbon_Bubble.png" />
+    <Content Include="Resources\ribbon_center_png.png" />
+    <Content Include="Resources\ribbon_close.png" />
+    <Content Include="Resources\ribbon_contactus_big.png" />
+    <Content Include="Resources\ribbon_fill.png" />
+    <Content Include="Resources\ribbon_getting_started_big.png" />
+    <Content Include="Resources\ribbon_help_big.png" />
+    <Content Include="Resources\ribbon_maximize.png" />
+    <Content Include="Resources\ribbon_minimize.png" />
+    <Content Include="Resources\ribbon_pagesetup.png" />
+    <Content Include="Resources\ribbon_print.png" />
+    <Content Include="Resources\ribbon_print_preview.png" />
+    <Content Include="Resources\ribbon_tile.png" />
+    <Content Include="Resources\Root.png" />
+    <Content Include="Resources\rotate1.png" />
+    <Content Include="Resources\rotate2.png" />
+    <Content Include="Resources\rotate3.png" />
+    <Content Include="Resources\rotate4.png" />
+    <Content Include="Resources\rotate41.png" />
+    <Content Include="Resources\rotate5.png" />
+    <Content Include="Resources\rss2.png" />
+    <Content Include="Resources\RU.png" />
+    <Content Include="Resources\rules.png" />
+    <Content Include="Resources\Save All.png" />
+    <Content Include="Resources\save.gif" />
+    <Content Include="Resources\save.png" />
+    <Content Include="Resources\Save1.png" />
+    <Content Include="Resources\SaveAll.bmp" />
+    <Content Include="Resources\SaveAppointment.png" />
+    <Content Include="Resources\save_as.png" />
+    <Content Include="Resources\save_as1.png" />
+    <Content Include="Resources\Screenshot.jpg" />
+    <Content Include="Resources\SE.png" />
+    <Content Include="Resources\search.png" />
+    <Content Include="Resources\search11.png" />
+    <Content Include="Resources\Search2.png" />
+    <Content Include="Resources\search3.png" />
+    <Content Include="Resources\SearchFolder.png" />
+    <Content Include="Resources\Security.png" />
+    <Content Include="Resources\security_icon.png" />
+    <Content Include="Resources\select.png" />
+    <Content Include="Resources\select_all.png" />
+    <Content Include="Resources\send_email.png" />
+    <Content Include="Resources\SentFolder.png" />
+    <Content Include="Resources\separator.gif" />
+    <Content Include="Resources\Services.png" />
+    <Content Include="Resources\set_as_desktop.png" />
+    <Content Include="Resources\Shapes.png" />
+    <Content Include="Resources\sign_in.png" />
+    <Content Include="Resources\Silver.png" />
+    <Content Include="Resources\sitefinity2.png" />
+    <Content Include="Resources\size-1px1.png" />
+    <Content Include="Resources\size-3px1.png" />
+    <Content Include="Resources\size-5px.png" />
+    <Content Include="Resources\size-8px.png" />
+    <Content Include="Resources\size.png" />
+    <Content Include="Resources\solid_color.png" />
+    <Content Include="Resources\Sort Ascending.bmp" />
+    <Content Include="Resources\Sort Descending.bmp" />
+    <Content Include="Resources\SP.png" />
+    <Content Include="Resources\SplineArea.png" />
+    <Content Include="Resources\SplineLine.png" />
+    <Content Include="Resources\splitcont_firstlook_mail_replayall.png" />
+    <Content Include="Resources\splitcon_firstlook_addressbook.png" />
+    <Content Include="Resources\splitcon_firstlook_categorize_big.png" />
+    <Content Include="Resources\splitcon_firstlook_cleanup.png" />
+    <Content Include="Resources\splitcon_firstlook_Delete.png" />
+    <Content Include="Resources\splitcon_firstlook_Delete_small.png" />
+    <Content Include="Resources\splitcon_firstlook_done.png" />
+    <Content Include="Resources\splitcon_firstlook_flag.png" />
+    <Content Include="Resources\splitcon_firstlook_forwardTeam.png" />
+    <Content Include="Resources\splitcon_firstlook_ignore.png" />
+    <Content Include="Resources\splitcon_firstlook_junk.png" />
+    <Content Include="Resources\splitcon_firstlook_mail_replay.png" />
+    <Content Include="Resources\splitcon_firstlook_mail_reply.png" />
+    <Content Include="Resources\splitcon_firstlook_mail_write_16.png" />
+    <Content Include="Resources\splitcon_firstlook_mail_write_48.png" />
+    <Content Include="Resources\splitcon_firstlook_meetingreply.png" />
+    <Content Include="Resources\splitcon_firstlook_moreactions_big.png" />
+    <Content Include="Resources\splitcon_firstlook_moveto.png" />
+    <Content Include="Resources\splitcon_firstlook_move_big.png" />
+    <Content Include="Resources\splitcon_firstlook_newitems_big.png" />
+    <Content Include="Resources\splitcon_firstlook_readunread_big.png" />
+    <Content Include="Resources\splitcon_firstlook_related.png" />
+    <Content Include="Resources\splitcon_firstlook_replydelete.png" />
+    <Content Include="Resources\splitcon_firstlook_rules_big.png" />
+    <Content Include="Resources\splitcon_firstlook_teamemail.png" />
+    <Content Include="Resources\splitcon_firstlook_teammeeting.png" />
+    <Content Include="Resources\Spread_AlignBottom.png" />
+    <Content Include="Resources\Spread_AlignMiddle.png" />
+    <Content Include="Resources\Spread_AlignTop.png" />
+    <Content Include="Resources\Spread_Bold.png" />
+    <Content Include="Resources\Spread_Border.png" />
+    <Content Include="Resources\Spread_Border1.png" />
+    <Content Include="Resources\Spread_CF.png" />
+    <Content Include="Resources\Spread_Color.png" />
+    <Content Include="Resources\Spread_Comma.png" />
+    <Content Include="Resources\Spread_Copy.png" />
+    <Content Include="Resources\Spread_Copy2.png" />
+    <Content Include="Resources\Spread_CS.png" />
+    <Content Include="Resources\Spread_Cut.png" />
+    <Content Include="Resources\Spread_Decrease.png" />
+    <Content Include="Resources\Spread_DecreaseIndent.png" />
+    <Content Include="Resources\Spread_Dollar.png" />
+    <Content Include="Resources\Spread_FontColor.png" />
+    <Content Include="Resources\Spread_Format.png" />
+    <Content Include="Resources\Spread_Format1.png" />
+    <Content Include="Resources\Spread_FT.png" />
+    <Content Include="Resources\Spread_Function.png" />
+    <Content Include="Resources\Spread_Function2.png" />
+    <Content Include="Resources\Spread_Increase.png" />
+    <Content Include="Resources\Spread_IncreaseIdent.png" />
+    <Content Include="Resources\Spread_Italic.png" />
+    <Content Include="Resources\Spread_MenuNew.png" />
+    <Content Include="Resources\Spread_MenuOpen.png" />
+    <Content Include="Resources\Spread_MenuSave.png" />
+    <Content Include="Resources\Spread_MenuSaveAs.png" />
+    <Content Include="Resources\Spread_Num1.png" />
+    <Content Include="Resources\Spread_Num2.png" />
+    <Content Include="Resources\Spread_Orientation.png" />
+    <Content Include="Resources\Spread_Paste.png" />
+    <Content Include="Resources\Spread_Percent.png" />
+    <Content Include="Resources\Spread_TextCenter.png" />
+    <Content Include="Resources\Spread_TextLeft.png" />
+    <Content Include="Resources\Spread_TextRight.png" />
+    <Content Include="Resources\Spread_Underline.png" />
+    <Content Include="Resources\StackedArea.png" />
+    <Content Include="Resources\StackedArea100.png" />
+    <Content Include="Resources\StackedBar100.png" />
+    <Content Include="Resources\StackedSplineArea.png" />
+    <Content Include="Resources\StackedSplineArea100.png" />
+    <Content Include="Resources\StakedBar.png" />
+    <Content Include="Resources\star.png" />
+    <Content Include="Resources\star1.png" />
+    <Content Include="Resources\stop.png" />
+    <Content Include="Resources\stop1.png" />
+    <Content Include="Resources\Style1.gif" />
+    <Content Include="Resources\Style2.gif" />
+    <Content Include="Resources\Style3.gif" />
+    <Content Include="Resources\Style4.gif" />
+    <Content Include="Resources\Style5.gif" />
+    <Content Include="Resources\Style6.gif" />
+    <Content Include="Resources\Symbol Stop2.png" />
+    <Content Include="Resources\Tasks.png" />
+    <Content Include="Resources\Telerik.png" />
+    <Content Include="Resources\TelerikWeddingPlanner.xml" />
+    <Content Include="Resources\telerik_icon.png" />
+    <Content Include="Resources\telerik_icon1.png" />
+    <Content Include="Resources\text.png" />
+    <Content Include="Resources\textbox-bg.png" />
+    <Content Include="Resources\textboxbackground.jpg" />
+    <Content Include="Resources\thumbnail_active.png" />
+    <Content Include="Resources\tiles-icon.png" />
+    <Content Include="Resources\topleft.bmp" />
+    <Content Include="Resources\topmiddle.bmp" />
+    <Content Include="Resources\topright.bmp" />
+    <Content Include="Resources\transparent.png" />
+    <Content Include="Resources\treeview.png" />
+    <Content Include="Resources\triangle.png" />
+    <Content Include="Resources\turned_rectangle.png" />
+    <Content Include="Resources\TV_car.png" />
+    <Content Include="Resources\TV_email.png" />
+    <Content Include="Resources\TV_folders.png" />
+    <Content Include="Resources\TV_gradient.png" />
+    <Content Include="Resources\TV_music.png" />
+    <Content Include="Resources\TV_search.png" />
+    <Content Include="Resources\undo.png" />
+    <Content Include="Resources\Undo1.png" />
+    <Content Include="Resources\up_arrow.png" />
+    <Content Include="Resources\US.png" />
+    <Content Include="Resources\USB Drive.png" />
+    <Content Include="Resources\versions.png" />
+    <Content Include="Resources\VistaExplorerBottomRight.bmp" />
+    <Content Include="Resources\VistaExplorerBottomRight1.bmp" />
+    <Content Include="Resources\VistaFileClose.bmp" />
+    <Content Include="Resources\VistaFileMax.bmp" />
+    <Content Include="Resources\VistaFileMin.bmp" />
+    <Content Include="Resources\VSBSplash.png" />
+    <Content Include="Resources\vsb_big.png" />
+    <Content Include="Resources\watercolor.png" />
+    <Content Include="Resources\WeddingPlanner.xml" />
+    <Content Include="Resources\white_rect.bmp" />
+    <Content Include="Resources\WindowsUpdate.bmp" />
+    <Content Include="Resources\WinFormsIcon.ico" />
+    <Content Include="Resources\WizardFirstLookTitle.png" />
+    <Content Include="Resources\WizardWelcomeImage.png" />
+    <Content Include="Resources\WordExample-bg.png" />
+    <Content Include="Resources\xps_doc_icon.png" />
+    <Content Include="Resources\yellow.png" />
+    <Content Include="Resources\zoom.png" />
+    <Content Include="Resources\zoom_negative.png" />
+    <Content Include="Resources\zoom_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Area\Process\Interfaces\" />
+    <Folder Include="Area\Process\Model\" />
+    <Folder Include="Area\Process\Presenter\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SlowCheetahTargets Condition=" '$(SlowCheetahTargets)'=='' ">$(LOCALAPPDATA)\Microsoft\MSBuild\SlowCheetah\v1\SlowCheetah.Transforms.targets</SlowCheetahTargets>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AppTelerik.Program</StartupObject>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v12.0\Web\Microsoft.Web.Publishing.targets" />
+  <Target Name="AfterBuild">
+    <!--<TransformXml Source="@(AppConfigWithTargetPath)" Transform="$(ProjectConfigTransformFileName)" Destination="@(AppConfigWithTargetPath->'$(OutDir)%(TargetPath)')" />-->
+  </Target>
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v12.0\Web\Microsoft.Web.Publishing.Tasks.dll" />
+  <Target Name="AfterCompile" Condition="exists('app.$(Configuration).config')">
+    <!-- Generate transformed app config in the intermediate directory -->
+    <TransformXml Source="app.config" Destination="$(IntermediateOutputPath)$(TargetFileName).config" Transform="app.$(Configuration).config" />
+    <!-- Force build process to use the transformed configuration file from now on. -->
+    <ItemGroup>
+      <AppConfigWithTargetPath Remove="app.config" />
+      <AppConfigWithTargetPath Include="$(IntermediateOutputPath)$(TargetFileName).config">
+        <TargetPath>$(TargetFileName).config</TargetPath>
+      </AppConfigWithTargetPath>
+    </ItemGroup>
+  </Target>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+</Project>

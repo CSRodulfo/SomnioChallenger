@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - MobyDick</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/smartMenus")
+    @*@Styles.Render("~/Content/bootstrap")*@
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/MobyDickGrid")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery-ui")
+    @Scripts.Render("~/bundles/jqgrid")
+    @Scripts.Render("~/bundles/validate")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/mobydick")
+    @Scripts.Render("~/bundles/Plugins")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Site")
+    @Scripts.Render("~/bundles/MobyDickGrid")
+    @Scripts.Render("~/bundles/MobyDickFancyTree")
+    @Scripts.Render("~/bundles/smartMenus")
+    @Scripts.Render("~/bundles/plupload")
+</head>
+<body>
+    @Html.Action("NavigationHeader", "Navigation", new { area = "" })
+    @if (Request.IsAuthenticated)
+    {
+        <text>
+            <div class="container-fluid" id="body-wrapper" style="padding-top:30px">
+                @RenderBody()
+            </div>
+        </text>
+    }
+    <footer>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1" id="footer_content_wrapper">
+                    <p>Mobydick &copy; 2015</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .user-icon,
+        .navbar-brand.client {
+            display: none !important;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+        $(function () {
+            //Agrego la Clase para estilizar todos los controles a boostrap
+            $("input[type='text'], input[type='password'], input[type='email'], select").not(".ui-pg-selbox,.ui-pg-input").addClass('form-control');
+            $("input[type='button'], input[type='submit']").addClass('btn btn-primary');
+            $(".btn_secundario").addClass('btn btn-primary');
+            $(".button_ui").addClass('btn btn-primary');
+
+
+
+            setBodyHeight();
+
+
+            $(window).resize(setBodyHeight);
+
+            @if (TempData["TempMessage"] != null && TempData["ErrorCompleto"] != null)
+            {
+                <text>MostrarMensajeConError('@Html.Raw(TempData["TempMessage"])', '@Html.Raw(TempData["ErrorCompleto"])');</text>
+            }
+            else if (TempData["TempMessage"] != null)
+            {
+                <text>MostrarMensaje('@Html.Raw(TempData["TempMessage"])');</text>
+            }
+        });
+
+        function setBodyHeight() {
+            $("#body-wrapper").css("min-height", $(window).innerHeight() - $("header").height() - $("footer").height() - $(".menu-hor-body").height() + "px");
+        }
+
+    </script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,31 @@
+﻿using Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+
+namespace Application.MainModule.Administration.RolesManagement
+{
+    [DataContract()]
+    public partial class DTOMenuForTitle
+    {
+        [DataMember()]
+        public Int32 Id { get; set; }
+
+        [DataMember()]
+        public String Name { get; set; }
+
+        [DataMember()]
+        public string Controller { get; set; }
+
+        [DataMember()]
+        public string Action { get; set; }
+
+        [DataMember()]
+        public virtual DTOMenuForTitle parentMenu{ get; set; }
+
+        [DataMember()]
+        public string Area { get; set; }
+    }
+}
