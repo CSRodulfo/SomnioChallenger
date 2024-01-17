@@ -18,17 +18,19 @@ namespace Presentation.MVC.Controllers
     {
         ISecurityRoles _roleService = ManagerService.GetService<ISecurityRoles>();
 
+        [AllowAnonymous]
         public ActionResult NavigationMenu()
         {
             IManagerMenu service = ManagerService.GetService<IManagerMenu>();
 
             List<string> roles = _roleService.GetRolesForUser();
 
-            //List<DTOMenuForDisplay> _menuItems = ValidateMenu(roles, service.GetParentMenuesForDisplay());
+            List<DTOMenuForDisplay> _menuItems = ValidateMenu(roles, service.GetParentMenuesForDisplay());
 
             return PartialView("Partial/_Menu", null);
         }
 
+        [AllowAnonymous]
         public ActionResult NavigationMenuVertical()
         {
             IManagerMenu service = ManagerService.GetService<IManagerMenu>();
@@ -40,16 +42,18 @@ namespace Presentation.MVC.Controllers
             return PartialView("Partial/_MenuVertical", _menuItems);
         }
 
+        [AllowAnonymous]
         public ActionResult NavigationHeader()
         {
             return PartialView("Partial/_Header");
         }
 
+        [AllowAnonymous]
         private List<DTOMenuForDisplay> ValidateMenu(List<string> roles, List<DTOMenuForDisplay> menuItems)
         {
             List<DTOMenuForDisplay> itemsForRoles = (from mi in menuItems
                                                      from r in mi.Roles
-                                                     where roles.Contains(r.RoleName)
+                                                   
                                                      select mi).Distinct().ToList();
 
             foreach (DTOMenuForDisplay item in itemsForRoles)
@@ -63,6 +67,7 @@ namespace Presentation.MVC.Controllers
             return itemsForRoles;
         }
 
+        [AllowAnonymous]
         public ActionResult GetNavigationTitle()
         {
             string action = ControllerContext.ParentActionViewContext.RouteData.Values["action"].ToString();
@@ -85,6 +90,7 @@ namespace Presentation.MVC.Controllers
             return PartialView("Partial/_MenuTitle", titles);
         }
 
+        [AllowAnonymous]
         private List<DTOMenuForTitle> GetMenuTitle(List<DTOMenuForTitle> titles, DTOMenuForTitle menu)
         {
             if (menu != null)
