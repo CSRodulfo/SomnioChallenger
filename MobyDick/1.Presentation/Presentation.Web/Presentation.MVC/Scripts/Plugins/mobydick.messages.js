@@ -70,7 +70,7 @@ function MostrarMensajeConError(mensaje, mensajeError) {
             'title': null,
             'buttons': [],
             'btnok': true,
-            'btnokText': ResourcesMDmessage.btnokText,
+            'btnokText': "No ok",
             'btnYesText': ResourcesMDmessage.btnYesText,
             'btnNoText': ResourcesMDmessage.btnNoText,
             'message': ResourcesMDmessage.message,
