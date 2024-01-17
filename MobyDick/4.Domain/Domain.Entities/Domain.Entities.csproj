@@ -95,6 +95,7 @@
     <Compile Include="Roles.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Somnio\SomnioTable.cs" />
     <Compile Include="Users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
