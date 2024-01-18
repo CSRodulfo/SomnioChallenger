@@ -1,32 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using Domain.Core;
-using System.Linq.Expressions;
-using System.Data.Entity.Migrations;
+﻿using Domain.Core;
 using NHibernate;
-using System.Reflection.Emit;
-using System.Security.Policy;
+using System;
 using System.Collections;
-using NHibernate.Mapping;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Security.Policy;
 
-namespace Infrastructure.Data.Core
+namespace Infrastructure.Data.MySql
 {
     public class RepositoryMySql<TEntidad> : IRepository<TEntidad> where TEntidad : class
     {
         public IUnitOfWork UnitOfWork => throw new NotImplementedException();
 
-        ISessionFactory factory = new NHibernate.Cfg.Configuration().Configure().BuildSessionFactory();
+        ISessionFactory _factory;
 
-        public RepositoryMySql()
+        public RepositoryMySql() //ISessionFactory factory)
         {
+            _factory = NHibernateSessionUtil.InitializeSessionFactory(); ;
         }
 
         public void Insert(TEntidad entity)
         {
-            using (ISession session = factory.OpenSession())
+            using (ISession session = _factory.OpenSession())
             {
                 //var s = session.Load(typeof(entity), 1);
 
@@ -34,7 +29,7 @@ namespace Infrastructure.Data.Core
                 session.Flush();
                 session.Close();
             }
-            factory.Close();
+            _factory.Close();
         }
 
         public void Update(TEntidad entity)
@@ -52,13 +47,13 @@ namespace Infrastructure.Data.Core
         public TEntidad GetByID<T>(T id)
         {
             IList rtn;
-            using (ISession session = factory.OpenSession())
+            using (ISession session = _factory.OpenSession())
             {
                 ICriteria sc = session.CreateCriteria(typeof(Site));
                 rtn = sc.List();
                 session.Close();
             }
-            factory.Close();
+            _factory.Close();
             return (TEntidad)rtn[0];
         }
 

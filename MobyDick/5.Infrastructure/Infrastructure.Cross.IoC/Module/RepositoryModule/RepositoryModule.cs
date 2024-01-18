@@ -3,6 +3,7 @@ using Domain.Repository;
 using Domain.Somnio;
 using Infrastructure.Cross.IoC.Unity;
 using Infrastructure.Data.Administration;
+using Infrastructure.Data.MySql;
 using Microsoft.Practices.Unity;
 
 namespace Infrastructure.Cross.IoC.Module.RepositoryModule

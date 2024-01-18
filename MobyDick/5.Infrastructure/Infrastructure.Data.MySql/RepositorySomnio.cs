@@ -2,13 +2,14 @@
 using Domain.Resources.Libraries.PagedData;
 using Domain.Somnio;
 using Infrastructure.Data.Core;
+using NHibernate;
 using System.Linq;
 
-namespace Infrastructure.Data.Administration
+namespace Infrastructure.Data.MySql
 {
     public partial class RepositorySomnio : RepositoryMySql<SomnioTable>, IRepositorySomnio
     {
-        public RepositorySomnio(IQueriableUnitOfWork iUnitOfWork)  
+        public RepositorySomnio() 
         {
         }
 
