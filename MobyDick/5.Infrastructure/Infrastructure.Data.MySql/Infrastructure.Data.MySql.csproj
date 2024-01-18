@@ -81,9 +81,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NHibernateSessionUtil.cs" />
-    <Compile Include="RepositoryMySql.cs" />
-    <Compile Include="RepositorySomnio.cs" />
+    <Compile Include="Context\MySqlContext.cs" />
+    <Compile Include="Repository\RepositoryMySql.cs" />
+    <Compile Include="RepositorySpecific\RepositorySomnio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SomnioMap.cs" />
   </ItemGroup>

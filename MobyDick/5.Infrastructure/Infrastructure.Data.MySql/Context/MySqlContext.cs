@@ -6,13 +6,13 @@ using NHibernate.Tool.hbm2ddl;
 
 namespace Infrastructure.Data.MySql
 {
-    public class NHibernateSessionUtil
+    public class MySqlContext
     {
         private static ISessionFactory _sessionFactory;
 
         private static ISession _ISession;
 
-        private NHibernateSessionUtil()
+        private MySqlContext()
         {
             System.Diagnostics.Debug.WriteLine("NHibernateSessionUtil|NHibernateSessionUtil|start...");
         }
@@ -34,7 +34,7 @@ namespace Infrastructure.Data.MySql
             {
                 _sessionFactory = Fluently.Configure()
                     .Database(MySQLConfiguration.Standard.ConnectionString("Server = localhost; Port = 3306; Database =somnio; Uid = root; Pwd =password;").ShowSql())
-                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<NHibernateSessionUtil>())
+                    .Mappings(m => m.FluentMappings.AddFromAssemblyOf<MySqlContext>())
                     .ExposeConfiguration(cfg => new SchemaUpdate(cfg).Execute(true, true))
                     .BuildSessionFactory();
                 return SessionFactory;

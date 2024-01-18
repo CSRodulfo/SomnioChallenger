@@ -17,7 +17,7 @@ namespace Infrastructure.Data.MySql
 
         public RepositoryMySql() //ISessionFactory factory)
         {
-            _factory = NHibernateSessionUtil.InitializeSessionFactory();
+            _factory = MySqlContext.InitializeSessionFactory();
         }
 
         public void Insert(TEntidad entity)
