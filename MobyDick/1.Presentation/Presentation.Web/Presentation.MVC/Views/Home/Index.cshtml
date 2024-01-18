@@ -2,48 +2,179 @@
     ViewBag.Title = Default.Resources.Home;
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <h1>@ViewBag.Title</h1>
+
+
+<div class="col-md-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>@ViewBag.SubTitle</h4>
+        </div>
+    </div>
+
+
+    @using (Html.BeginForm("", "Roles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @ViewBag.RolDescription
+                    <input type="text" id="txtRoleName" />
+                </div>
+            </div>
+
+            <div class="panel-button">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.ActionButtonJsSearch("Search()")
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div id="divResults">
+                    <div id="jqgrid">
+                        <table id="list1"></table>
+                        <table id="list"></table>
+                        <div id="pager"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-3">
-        <div class="chart" data-chart-title="Line" data-chart-legends="true" data-chart-type="line" data-chart-src="@Url.Action("Line", "Home", new { Area = "" })"></div>
-    </div>
-    <div class="col-md-3">
-        <div class="chart" data-chart-title="Pie" data-chart-legends="true" data-chart-type="pie" data-chart-src="@Url.Action("Pie", "Home", new { Area = "" })"></div>
-    </div>
-    <div class="col-md-3">
-        <div class="chart" data-chart-title="Bar" data-chart-legends="true" data-chart-type="bar" data-chart-src="@Url.Action("Bar", "Home", new { Area = "" })"></div>
-    </div>
-    <div class="col-md-3">
-        <div class="chart" data-chart-title="Radar" data-chart-legends="true" data-chart-type="radar" data-chart-src="@Url.Action("Radar", "Home", new { Area = "" })"></div>
-    </div>
-    <div class="col-md-6">
-        <div class="chart" data-chart-title="PolarArea" data-chart-legends="true" data-chart-type="polararea" data-chart-src="@Url.Action("PolarArea", "Home", new { Area = "" })"></div>
-    </div>
-    <div class="col-md-6">
-        <div class="chart" data-chart-title="Doughnut" data-chart-legends="true" data-chart-type="doughnut" data-chart-src="@Url.Action("Doughnut", "Home", new { Area = "" })"></div>
+<div class="panel-button">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group pull-right">
+                @Html.ActionButtonHome()
+                @Html.ActionButtonNew("AddRecord()")
+                @Html.ActionButtonEdit(new { id = "btn_edit" })
+                @Html.ActionButtonDelete(new { id = "btn_del" })
+            </div>
+        </div>
     </div>
 </div>
 
+<script type="text/javascript">
 
-@Scripts.Render("~/bundles/Charts")
-<script>
-    $(function () {
-        $(".chart").each(function () {
-            var _chart = $(this);
-
-            $(this).MobyDickChart({
-                title: $(_chart).data("chart-title"),
-                type: $(_chart).data("chart-type"),
-                legends: $(_chart).data("chart-legends"),
-                src: $(_chart).data("chart-src")
-            });
-
-        });
+    $(document).ready(function () {
+        Search();
+        SetNoAction();
     });
 
+    function SetNoAction() {
+        var NoAction = "javascript:$.MDmessage({message: '" + paramFromView.selectFieldMessage + "'});";
+
+        $("#btn_edit").attr("onclick", NoAction);
+        $("#btn_del").attr("onclick", NoAction);
+        $("#btn_assign").attr("onclick", NoAction);
+    }
+
+    function Search() {
+        var urlAction = '@Url.Action("SearchRolesForList", "Home")';
+        loadGrid(urlAction);
+    }
+
+    function loadGrid(urlAction) {
+        $('#list1').jqGrid('GridUnload');
+        $("#list1").jqGrid({
+            autowidth: true,
+            shrinkToFit: true,
+            height: 150,
+            url: urlAction,
+            datatype: "json",
+            mtype: 'POST',
+            colNames: ['IDRole', 'AssignationState', paramFromView.RolDescription, paramFromView.VisualizeDeletedItems],
+            colModel: [
+                { name: 'RoleId', index: 'RoleId', width: 55, sortable: false, key: true, hidden: true, editable: true },
+                { name: "AssignationState", index: "AssignationState", width: 0, sortable: false, hidden: true, editable: true },
+                { name: 'RoleName', index: 'RoleName', width: 90, editable: true },
+                { name: 'EnableViewDeletedEntities', index: 'EnableViewDeletedEntities', width: 90, editable: true, edittype: "checkbox" },
+            ],
+            postData: {
+                roleNameFilter: document.getElementById('txtRoleName').value
+            },
+            rowNum: 20,
+
+            sortname: 'RoleId',
+            viewrecords: true,
+            sortorder: "asc",
+            onSelectRow: SetGridNavButtons,
+            ondblClickRow: DoubleClick,
+            loadComplete: SetNoAction,
+            caption: paramFromView.Results,
+            resizeStop: function () {
+                //setRelativeWidth("#list1");
+            }
+        });
+
+        $('#list1').jqGrid('navGrid', '#pager',
+                    //options
+                    { add: false, del: false, edit: false, search: false },
+                    // add options
+                    {}
+    );
+    };
+
+    function DoubleClick(id) {
+        var editAction = "javascript:EditRecord('" + id + "')";
+        location.href = editAction;
+    }
+    function SetGridNavButtons() {
+        var rolId = jQuery('#list1').jqGrid('getGridParam', 'selrow');
+
+        var deleteAction = "javascript:DeleteRecord('" + rolId + "')";
+        $("#btn_del").attr("onclick", deleteAction);
+
+        var editAction = "javascript:EditRecord('" + rolId + "')";
+        $("#btn_edit").attr("onclick", editAction);
+
+        var assignAction = "location.href='@Url.Action("AssignMenues", new { RoleId = "_rowId_" })'";
+        assignAction = assignAction.replace("_rowId_", rolId);
+        $("#btn_assign").attr("onclick", assignAction);
+    }
+
+    function AddRecord() {
+        $("#list1").jqGrid('editGridRow', 'new', {
+            addCaption: paramFromView.Nuevo, reloadAfterSubmit: true, url: '@Url.Action("Insert", "Roles")', closeAfterAdd: true, afterComplete: function (data) {
+                if (!data.responseJSON.Success) {
+
+                    MostrarMensaje(data.responseJSON.PartialView);
+                }
+            }
+        });
+    }
+    function DeleteRecord(rowid) {
+        jQuery("#list1").jqGrid('delGridRow', rowid, {
+            afterSubmit: function (response, postdata) { ExecuteMessagesSuccess(response.responseJSON); return [true, '', '']; },
+            width: '800px', modal: true, url: '@Url.Action("Delete")', closeAfterAdd: true
+        });
+    }
+    function EditRecord(rowid) {
+        $("#list1").jqGrid('editGridRow', rowid, {
+            editCaption: paramFromView.Editar, width: '800px', modal: true, closeAfterEdit: true, url: '@Url.Action("Edit")', afterComplete: function (data) {
+                if (!data.responseJSON.Success) {
+
+                    MostrarMensaje(data.responseJSON.PartialView);
+                }
+            }
+        });
+    }
+
+    var paramFromView = {
+        selectFieldMessage: '@Default.Resources.selectFieldMessage',
+        Results: '@Default.Resources.Results',
+        RolDescription : '@MBAdministration.Roles.Resources.RolDescription',
+        VisualizeDeletedItems: '@Default.Resources.VisualizeDeletedItems',
+        Nuevo: '@Default.Resources.BtnNew',
+        Editar: '@Default.Resources.BtnEdit',
+    }
 </script>

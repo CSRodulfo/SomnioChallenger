@@ -11,7 +11,7 @@ namespace Application.MainModule.Somnio
     public interface IServiceSomnio
     {
 
-        void GetAll();
+        List<DTOSomnioTable> GetAll();
 
     }
 }

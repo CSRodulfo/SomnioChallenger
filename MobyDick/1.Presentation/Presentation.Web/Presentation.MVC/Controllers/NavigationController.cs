@@ -34,11 +34,6 @@ namespace Presentation.MVC.Controllers
         [AllowAnonymous]
         public ActionResult NavigationMenuVertical()
         {
-            IServiceSomnio service2 = ManagerService.GetService<IServiceSomnio>();
-
-            service2.GetAll();
-
-
             IManagerMenu service = ManagerService.GetService<IManagerMenu>();
 
             List<string> roles = _roleService.GetRolesForUser();
