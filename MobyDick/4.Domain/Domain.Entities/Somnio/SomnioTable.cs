@@ -8,22 +8,7 @@ namespace Domain.Entities
 {
     public class SomnioTable
     {
-        private int id;
-        public virtual int Id
-        {
-            get { return id; }
-            set { id = value; }
-        }
-
-        private string name;
-        public virtual string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        public SomnioTable()
-        {
-        }
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
     }
 }

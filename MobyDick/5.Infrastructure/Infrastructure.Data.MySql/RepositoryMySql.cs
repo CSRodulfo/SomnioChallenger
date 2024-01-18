@@ -1,4 +1,5 @@
 ﻿using Domain.Core;
+using Domain.Entities;
 using NHibernate;
 using System;
 using System.Collections;
@@ -16,7 +17,7 @@ namespace Infrastructure.Data.MySql
 
         public RepositoryMySql() //ISessionFactory factory)
         {
-            _factory = NHibernateSessionUtil.InitializeSessionFactory(); ;
+            _factory = NHibernateSessionUtil.InitializeSessionFactory();
         }
 
         public void Insert(TEntidad entity)
@@ -49,7 +50,7 @@ namespace Infrastructure.Data.MySql
             IList rtn;
             using (ISession session = _factory.OpenSession())
             {
-                ICriteria sc = session.CreateCriteria(typeof(Site));
+                IQuery sc = session.CreateQuery("from SomnioTable");
                 rtn = sc.List();
                 session.Close();
             }

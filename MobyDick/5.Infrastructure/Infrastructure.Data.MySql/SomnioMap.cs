@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Data.MySql
 {
-    internal class SomnioMap : ClassMap<SomnioTable>
+    public class SomnioMap : ClassMap<SomnioTable>
     {
         public SomnioMap()
         {
@@ -20,7 +20,7 @@ namespace Infrastructure.Data.MySql
             
             //References(c => c.Address);
             //References<Address>(x => x.CustomerAddresstID).Column("CustomerAddresstID").ForeignKey("AddressID");
-            Table("Somnio");
+            Table("SomnioTable");
         }
     }
 }
