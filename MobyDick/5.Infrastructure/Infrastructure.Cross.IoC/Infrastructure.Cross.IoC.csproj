@@ -103,6 +103,10 @@
       <Project>{49076C04-EAEE-4A58-B85F-74783FEC2BA1}</Project>
       <Name>Infrastructure.Data.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure.Data.MySql\Infrastructure.Data.MySql.csproj">
+      <Project>{fcd77bf6-7407-462d-bf29-067bfe05d6a0}</Project>
+      <Name>Infrastructure.Data.MySql</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure.Data\Infrastructure.Data.csproj">
       <Project>{06B9563D-CB93-42A9-A242-BF6D8D877CC5}</Project>
       <Name>Infrastructure.Data</Name>

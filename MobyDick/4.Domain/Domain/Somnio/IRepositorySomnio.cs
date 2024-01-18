@@ -11,6 +11,7 @@ namespace Domain.Somnio
 {
     public interface IRepositorySomnio : IRepository<SomnioTable>
     {
+        void GetBySomnio();
 
     }
 }

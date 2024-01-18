@@ -1,6 +1,7 @@
 ﻿using Application.MainModule.Administration.Authentication;
 using Application.MainModule.Administration.Authorization;
 using Application.MainModule.Administration.RolesManagement.Interfaces;
+using Application.MainModule.Somnio;
 using Domain.Core;
 using Domain.MainModule.Administration;
 using Domain.MainModule.Administration.Security.Authentication;
@@ -18,6 +19,7 @@ namespace Infrastructure.Cross.IoC.Module.CoreModule
         {
             container.RegisterType<IQueriableUnitOfWork, MobyDickEntities>(new Microsoft.Practices.Unity.PerResolveLifetimeManager());
             container.RegisterType<IManagerMenu, ManagerMenu>();
+            container.RegisterType<IServiceSomnio, ServiceSomnio>();
             container.RegisterType<ISecurityRoles, SecurityRoles>();
             container.RegisterType<ISecurityMembership, SecurityMembership>("FORM", new InjectionConstructor(new ResolvedParameter<MembershipServiceForm>()));
             container.RegisterType<ISecurityMembership, SecurityMembership>("MVC", new InjectionConstructor(new ResolvedParameter<MembershipServiceMVC>()));

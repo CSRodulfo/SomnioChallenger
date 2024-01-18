@@ -10,6 +10,7 @@ using Application.MainModule.Administration.CompanyManagement.DTO;
 using System.IO;
 using System;
 using Application.MainModule.Administration.FileManagement.DTO;
+using Application.MainModule.Somnio;
 
 namespace Presentation.MVC.Controllers
 {
@@ -33,6 +34,11 @@ namespace Presentation.MVC.Controllers
         [AllowAnonymous]
         public ActionResult NavigationMenuVertical()
         {
+            IServiceSomnio service2 = ManagerService.GetService<IServiceSomnio>();
+
+            service2.GetAll();
+
+
             IManagerMenu service = ManagerService.GetService<IManagerMenu>();
 
             List<string> roles = _roleService.GetRolesForUser();
