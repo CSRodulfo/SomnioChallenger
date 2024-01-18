@@ -1,8 +1,10 @@
-﻿using Domain.Entities;
+﻿using Domain.Core;
+using Domain.Entities;
 using Domain.Resources.Libraries.PagedData;
 using Domain.Somnio;
 using Infrastructure.Data.Core;
 using NHibernate;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Infrastructure.Data.MySql
@@ -18,25 +20,24 @@ namespace Infrastructure.Data.MySql
             throw new System.NotImplementedException();
         }
 
-        //public PagedDataResult<Checkpoint> GetCheckpointsByPage(PagedDataParameters PagedParameters, string Code)
-        //{
-        //    IQueryable<Checkpoint> query = null; // _unitOfWork.CreateSet<Checkpoint>();
+        public PagedDataResult<Somnio> GetSomnioBy(PagedDataParameters PagedParameters, string id)
+        {
+            IQueryable<Somnio> query = base.GetAll().AsQueryable();
 
-        //    if (string.IsNullOrEmpty(Code) == false)
-        //        query = query.Where(u => u.Code.Contains(Code));
+            int total = query.Count();
 
-        //    int total = query.Count();
+            if (PagedParameters.OrderDirection == Domain.Resources.Define.OrderBy.Descendant)
+                query = query.OrderByDescending(w => w.Date);
+            else
+                query = query.OrderBy(w => w.Date);
 
-        //    if (PagedParameters.OrderDirection == Domain.Resources.Define.OrderBy.Descendant)
-        //        query = query.OrderByDescending(w => w.Code);
-        //    else
-        //        query = query.OrderBy(w => w.Code);
+            query = query.Skip((PagedParameters.Page - 1) * PagedParameters.Rows)
+                .Take(PagedParameters.Rows);
 
-        //    query = query.Skip((PagedParameters.Page - 1) * PagedParameters.Rows)
-        //        .Take(PagedParameters.Rows);
+            List<Somnio> result = query.ToList();
 
-        //    return new PagedDataResult<Checkpoint>(query.ToList(), total);
-        //}
+            return new PagedDataResult<Somnio>(result, total);
+        }
 
 
     }

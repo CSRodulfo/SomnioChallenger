@@ -4,6 +4,7 @@ using NHibernate;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Security.Policy;
 
@@ -24,8 +25,6 @@ namespace Infrastructure.Data.MySql
         {
             using (ISession session = _factory.OpenSession())
             {
-                //var s = session.Load(typeof(entity), 1);
-
                 session.Save(entity);
                 session.Flush();
                 session.Close();

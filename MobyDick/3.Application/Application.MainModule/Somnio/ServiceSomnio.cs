@@ -1,12 +1,16 @@
-﻿using Domain.Administration;
+﻿using Application.MainModule.Administration.RolesManagement;
+using Domain.Administration;
+using Domain.Resources.Libraries.PagedData;
 using Domain.Somnio;
+using Infrastructure.Data.Administration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Domain.Entities;
 
-namespace Application.MainModule.Somnio
+namespace Application.MainModule
 {
     public class ServiceSomnio : IServiceSomnio
     {
@@ -29,10 +33,29 @@ namespace Application.MainModule.Somnio
                 dTOSomnioTable.TotalCost = table.TotalCost;
                 dTOSomnioTable.Quantity = table.Quantity;
                 dTOSomnioTable.Date = table.Date;
-                    rtn.Add(dTOSomnioTable);
+                rtn.Add(dTOSomnioTable);
             }
 
             return rtn;
+        }
+
+        public PagedDataResult<DTOSomnioTable> GetSomnioBy(PagedDataParameters pagedParameters, string id)
+        {
+            PagedDataResult<Somnio> pagedData = _repositorySomnio.GetSomnioBy(pagedParameters, id);
+
+            List<DTOSomnioTable> rtn = new List<DTOSomnioTable>();
+
+            foreach (var table in pagedData.Results)
+            {
+                DTOSomnioTable dTOSomnioTable = new DTOSomnioTable();
+                dTOSomnioTable.Id = table.Id;
+                dTOSomnioTable.TotalCost = table.TotalCost;
+                dTOSomnioTable.Quantity = table.Quantity;
+                dTOSomnioTable.Date = table.Date;
+                rtn.Add(dTOSomnioTable);
+            }
+
+            return new PagedDataResult<DTOSomnioTable>(rtn, pagedData.TotalCount);
         }
     }
 }

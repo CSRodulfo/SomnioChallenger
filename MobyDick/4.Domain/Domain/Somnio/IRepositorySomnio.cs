@@ -12,6 +12,6 @@ namespace Domain.Somnio
     public interface IRepositorySomnio : IRepository<Entities.Somnio>
     {
         void GetBySomnio();
-
+        PagedDataResult<Entities.Somnio> GetSomnioBy(PagedDataParameters PagedParameters, string id);
     }
 }

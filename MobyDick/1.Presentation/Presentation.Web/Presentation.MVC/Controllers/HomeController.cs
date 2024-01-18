@@ -1,12 +1,11 @@
-﻿using Application.MainModule.Administration.RolesManagement;
-using Application.MainModule.Somnio;
-using Domain.Resources;
+﻿using Application.MainModule;
+using Application.MainModule.Administration.RolesManagement;
 using Domain.Resources.Libraries.PagedData;
 using Presentation.MVC.Areas.Administration.Models;
 using Presentation.MVC.Common;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Web.ApplicationServices;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -41,10 +40,12 @@ namespace Presentation.MVC.Controllers
         {
             try
             {
-                IServiceRolesManagement service = ManagerService.GetService<IServiceRolesManagement>();
+                IServiceSomnio service2 = ManagerService.GetService<IServiceSomnio>();
+                List<DTOSomnioTable> list = service2.GetAll();
 
                 PagedDataParameters pagedParameters = new PagedDataParameters(sidx, sord, page, rows);
-                PagedDataResult<DTORoleForList> result = service.GetRolesByPageAndName(pagedParameters, roleNameFilter);
+                PagedDataResult<DTOSomnioTable> result = service2.GetSomnioBy(pagedParameters, roleNameFilter);
+               // PagedDataResult<DTORoleForList> result = service.GetRolesByPageAndName(pagedParameters, roleNameFilter);
 
                 int total = result.TotalCount;
 
@@ -62,10 +63,10 @@ namespace Presentation.MVC.Controllers
                            {
                                cell = new string[]
                                    {
-                                       r.RoleId.ToString(),
-                                       r.AssignationState==Define.RoleAssignationState.Assigned?"../../Content/css/images/green-light.png":"../../Content/css/images/red-light.png",
-                                       r.RoleName,
-                                       "<img class='" + ( r.EnableViewDeleted=="on" ? "item-disabled-available" : "item-disabled-not-available") + "' text='"+ r.EnableViewDeleted.ToString()+ "' value='"+ r.EnableViewDeleted.ToString()+"'></img>"
+                                       r.Id.ToString(),
+                                       r.Quantity.ToString(),
+                                       r.TotalCost.ToString(),
+                                       r.Date.ToString()
                                    }
                            }
                 };

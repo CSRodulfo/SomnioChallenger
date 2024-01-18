@@ -1,8 +1,7 @@
-﻿using Application.MainModule.Administration.Authentication;
+﻿using Application.MainModule;
+using Application.MainModule.Administration.Authentication;
 using Application.MainModule.Administration.Authorization;
 using Application.MainModule.Administration.RolesManagement.Interfaces;
-using Application.MainModule.Somnio;
-using Domain.Core;
 using Domain.MainModule.Administration;
 using Domain.MainModule.Administration.Security.Authentication;
 using Infrastructure.Cross.IoC.Unity;

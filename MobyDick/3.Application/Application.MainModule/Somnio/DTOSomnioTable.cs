@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.MainModule.Somnio
+namespace Application.MainModule
 {
     public class DTOSomnioTable
     {
