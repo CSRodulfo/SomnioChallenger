@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class SomnioTable
+    public class Somnio
     {
         public virtual int Id { get; set; }
         public virtual string Name { get; set; }

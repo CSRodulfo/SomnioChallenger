@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Data.MySql
 {
-    public class SomnioMap : ClassMap<SomnioTable>
+    public class SomnioMap : ClassMap<Somnio>
     {
         public SomnioMap()
         {

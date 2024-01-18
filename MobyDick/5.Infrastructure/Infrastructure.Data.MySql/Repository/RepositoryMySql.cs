@@ -50,7 +50,7 @@ namespace Infrastructure.Data.MySql
             IList rtn;
             using (ISession session = _factory.OpenSession())
             {
-                IQuery sc = session.CreateQuery("from SomnioTable");
+                var sc = session.CreateCriteria(typeof(TEntidad));
                 rtn = sc.List();
                 session.Close();
             }

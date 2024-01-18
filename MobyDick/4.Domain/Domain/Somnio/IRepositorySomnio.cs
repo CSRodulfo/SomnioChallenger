@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Somnio
 {
-    public interface IRepositorySomnio : IRepository<SomnioTable>
+    public interface IRepositorySomnio : IRepository<Entities.Somnio>
     {
         void GetBySomnio();
 

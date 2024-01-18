@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Infrastructure.Data.MySql
 {
-    public partial class RepositorySomnio : RepositoryMySql<SomnioTable>, IRepositorySomnio
+    public partial class RepositorySomnio : RepositoryMySql<Somnio>, IRepositorySomnio
     {
         public RepositorySomnio() 
         {
