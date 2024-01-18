@@ -43,19 +43,7 @@ namespace Application.MainModule
         {
             PagedDataResult<Somnio> pagedData = _repositorySomnio.GetSomnioBy(pagedParameters, id);
 
-            List<DTOSomnioTable> rtn = new List<DTOSomnioTable>();
-
-            foreach (var table in pagedData.Results)
-            {
-                DTOSomnioTable dTOSomnioTable = new DTOSomnioTable();
-                dTOSomnioTable.Id = table.Id;
-                dTOSomnioTable.TotalCost = table.TotalCost;
-                dTOSomnioTable.Quantity = table.Quantity;
-                dTOSomnioTable.Date = table.Date;
-                rtn.Add(dTOSomnioTable);
-            }
-
-            return new PagedDataResult<DTOSomnioTable>(rtn, pagedData.TotalCount);
+            return new PagedDataResult<DTOSomnioTable>(AdapterSomnio.ToDTOs(pagedData.Results), pagedData.TotalCount);
         }
     }
 }

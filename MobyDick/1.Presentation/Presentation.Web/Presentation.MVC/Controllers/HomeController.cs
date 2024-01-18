@@ -22,30 +22,17 @@ namespace Presentation.MVC.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-
-            IServiceSomnio service2 = ManagerService.GetService<IServiceSomnio>();
-
-            service2.GetAll();
-
-
-            ManageRolesViewModel model = new ManageRolesViewModel();
-           
-            return View(model);
-
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
             return View();
         }
 
-        public ActionResult SearchRolesForList(string sidx, string sord, int page, int rows, string roleNameFilter)
+        public ActionResult SearchSomnio(string sidx, string sord, int page, int rows, string roleNameFilter)
         {
             try
             {
-                IServiceSomnio service2 = ManagerService.GetService<IServiceSomnio>();
-                List<DTOSomnioTable> list = service2.GetAll();
-
+                IServiceSomnio serviceSomnio = ManagerService.GetService<IServiceSomnio>();
                 PagedDataParameters pagedParameters = new PagedDataParameters(sidx, sord, page, rows);
-                PagedDataResult<DTOSomnioTable> result = service2.GetSomnioBy(pagedParameters, roleNameFilter);
-               // PagedDataResult<DTORoleForList> result = service.GetRolesByPageAndName(pagedParameters, roleNameFilter);
+                PagedDataResult<DTOSomnioTable> result = serviceSomnio.GetSomnioBy(pagedParameters, roleNameFilter);
 
                 int total = result.TotalCount;
 

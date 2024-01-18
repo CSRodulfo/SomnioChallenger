@@ -149,6 +149,7 @@
     <Compile Include="Administration\Authentication\DTO\DTO.cs" />
     <Compile Include="Administration\Authentication\ISecurityMembership.cs" />
     <Compile Include="Administration\Authentication\ISecurityRoles.cs" />
+    <Compile Include="Somnio\AdapterSomnio.cs" />
     <Compile Include="Somnio\DTOSomnioTable.cs" />
     <Compile Include="Somnio\IServiceSomnio.cs" />
     <Compile Include="Somnio\ServiceSomnio.cs" />
