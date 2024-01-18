@@ -9,6 +9,9 @@ namespace Domain.Entities
     public class Somnio
     {
         public virtual int Id { get; set; }
-        public virtual string Name { get; set; }
+        public virtual int Quantity { get; set; }
+        public virtual int TotalCost{ get; set; }
+        public virtual DateTime Date { get; set; }
+
     }
 }

@@ -14,13 +14,13 @@ namespace Infrastructure.Data.MySql
         {
             //LazyLoad();
             Id(x => x.Id);
-            Map(x => x.Name);
-            
-            //Map(x => x.Email).Not.Nullable().Length(50);
-            
+            Map(x => x.Quantity).Not.Nullable();
+            Map(x => x.TotalCost).Not.Nullable();
+            Map(x => x.Date).Not.Nullable();
+
             //References(c => c.Address);
             //References<Address>(x => x.CustomerAddresstID).Column("CustomerAddresstID").ForeignKey("AddressID");
-            Table("SomnioTable");
+            Table("tbl_Somnio");
         }
     }
 }

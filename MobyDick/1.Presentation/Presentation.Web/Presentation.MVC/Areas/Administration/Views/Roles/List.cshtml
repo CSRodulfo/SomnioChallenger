@@ -59,7 +59,6 @@
                 @Html.ActionButtonNew("AddRecord()")
                 @Html.ActionButtonEdit(new { id = "btn_edit" })
                 @Html.ActionButtonDelete(new { id = "btn_del" })
-                @Html.ActionButtonGeneric(MBAdministration.Roles.Resources.RolAssignMenu, new { id = "btn_assign" })
             </div>
         </div>
     </div>
@@ -90,7 +89,7 @@
         $("#list1").jqGrid({
             autowidth: true,
             shrinkToFit: true,
-            height: 122,
+            height: 150,
             url: urlAction,
             datatype: "json",
             mtype: 'POST',
@@ -104,9 +103,8 @@
             postData: {
                 roleNameFilter: document.getElementById('txtRoleName').value
             },
-            rowNum: 10,
-            rowList: [10, 20, 30],
-            pager: jQuery('#pager'),
+            rowNum: 20,
+
             sortname: 'RoleId',
             viewrecords: true,
             sortorder: "asc",

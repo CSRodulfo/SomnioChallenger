@@ -60,7 +60,15 @@ namespace Infrastructure.Data.MySql
 
         public List<TEntidad> GetAll()
         {
-            throw new NotImplementedException();
+            IList<TEntidad> rtn;
+            using (ISession session = _factory.OpenSession())
+            {
+                var sc = session.CreateCriteria(typeof(TEntidad));
+                rtn = sc.List<TEntidad>();
+                session.Close();
+            }
+            _factory.Close();
+            return (List<TEntidad>)rtn;
         }
 
         public List<TEntidad> GetAsNoTracking(Expression<Func<TEntidad, bool>> exp)

@@ -19,7 +19,7 @@ namespace Application.MainModule.Somnio
 
         public void GetAll()
         {
-            var a = _repositorySomnio.GetByID(1);
+            var a = _repositorySomnio.GetAll();
         }
     }
 }
