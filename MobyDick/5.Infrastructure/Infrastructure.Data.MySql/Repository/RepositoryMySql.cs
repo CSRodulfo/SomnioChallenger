@@ -1,12 +1,9 @@
 ﻿using Domain.Core;
-using Domain.Entities;
 using NHibernate;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Security.Policy;
 
 namespace Infrastructure.Data.MySql
 {

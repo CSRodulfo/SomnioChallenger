@@ -1,14 +1,8 @@
 ﻿using Application.MainModule.Administration.RolesManagement;
-using Domain.Administration;
+using Domain.Entities;
 using Domain.Resources.Libraries.PagedData;
 using Domain.Somnio;
-using Infrastructure.Data.Administration;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Entities;
 
 namespace Application.MainModule
 {
@@ -23,20 +17,8 @@ namespace Application.MainModule
 
         public List<DTOSomnioTable> GetAll()
         {
-            List<DTOSomnioTable> rtn = new List<DTOSomnioTable>();
-            var a = _repositorySomnio.GetAll();
-
-            foreach (var table in a)
-            {
-                DTOSomnioTable dTOSomnioTable = new DTOSomnioTable();
-                dTOSomnioTable.Id = table.Id;
-                dTOSomnioTable.TotalCost = table.TotalCost;
-                dTOSomnioTable.Quantity = table.Quantity;
-                dTOSomnioTable.Date = table.Date;
-                rtn.Add(dTOSomnioTable);
-            }
-
-            return rtn;
+            var repo = _repositorySomnio.GetAll();
+            return AdapterSomnio.ToDTOs(repo);
         }
 
         public PagedDataResult<DTOSomnioTable> GetSomnioBy(PagedDataParameters pagedParameters, string filterStrategy)
