@@ -1,11 +1,5 @@
-﻿using Application.MainModule.Administration.RolesManagement.DTO;
-using Application.MainModule.Administration.RolesManagement.DTOAdapters;
-using Domain.Resources.Libraries.PagedData;
-using System;
+﻿using Domain.Resources.Libraries.PagedData;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.MainModule
 {
