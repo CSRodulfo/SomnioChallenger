@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Domain.Entities;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Information;
 
 namespace Application.MainModule
 {
@@ -23,20 +24,8 @@ namespace Application.MainModule
 
         public List<DTOSomnioTable> GetAll()
         {
-            List<DTOSomnioTable> rtn = new List<DTOSomnioTable>();
-            var a = _repositorySomnio.GetAll();
-
-            foreach (var table in a)
-            {
-                DTOSomnioTable dTOSomnioTable = new DTOSomnioTable();
-                dTOSomnioTable.Id = table.Id;
-                dTOSomnioTable.TotalCost = table.TotalCost;
-                dTOSomnioTable.Quantity = table.Quantity;
-                dTOSomnioTable.Date = table.Date;
-                rtn.Add(dTOSomnioTable);
-            }
-
-            return rtn;
+            var repo = _repositorySomnio.GetAll();
+            return AdapterSomnio.ToDTOs(repo);
         }
 
         public PagedDataResult<DTOSomnioTable> GetSomnioBy(PagedDataParameters pagedParameters, string filterStrategy)
