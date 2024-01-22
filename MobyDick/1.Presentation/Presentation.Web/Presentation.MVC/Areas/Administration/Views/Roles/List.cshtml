@@ -103,8 +103,9 @@
             postData: {
                 roleNameFilter: document.getElementById('txtRoleName').value
             },
-            rowNum: 20,
-
+            rowNum: 10,
+            rowList: [10, 20, 30],
+            pager: jQuery('#pager'),
             sortname: 'RoleId',
             viewrecords: true,
             sortorder: "asc",

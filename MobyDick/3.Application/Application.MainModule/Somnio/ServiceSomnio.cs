@@ -39,9 +39,21 @@ namespace Application.MainModule
             return rtn;
         }
 
-        public PagedDataResult<DTOSomnioTable> GetSomnioBy(PagedDataParameters pagedParameters, string id)
+        public PagedDataResult<DTOSomnioTable> GetSomnioBy(PagedDataParameters pagedParameters, string filterStrategy)
         {
-            PagedDataResult<Somnio> pagedData = _repositorySomnio.GetSomnioBy(pagedParameters, id);
+            PagedDataResult<Somnio> pagedData = null;
+            if (filterStrategy == "CostFilter")
+            {
+                pagedData = _repositorySomnio.GetSomnioByCostFilter(pagedParameters);
+            }
+            else if (filterStrategy == "DateOrder")
+            {
+                pagedData = _repositorySomnio.GetSomnioByDateDesc(pagedParameters);
+            }
+            else
+            {
+                pagedData = _repositorySomnio.GetSomnioAll(pagedParameters);
+            }
 
             return new PagedDataResult<DTOSomnioTable>(AdapterSomnio.ToDTOs(pagedData.Results), pagedData.TotalCount);
         }

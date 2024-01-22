@@ -117,9 +117,9 @@ namespace MvcHtmlHelpers
         /// <param name="htmlHelper"></param>
         /// <param name="Javascript">Script a utilizar</param>
         /// <returns></returns>
-        public static MvcHtmlString ActionButtonJsSearch(this HtmlHelper htmlHelper, string Javascript)
+        public static MvcHtmlString ActionButtonJsSearch(this HtmlHelper htmlHelper, string Javascript, string buttonText )
         {
-            return ActionButtonJsSearch(htmlHelper, Javascript, null);
+            return ActionButtonJsSearch(htmlHelper, Javascript, buttonText, null);
         }
 
         /// <summary>
@@ -129,10 +129,10 @@ namespace MvcHtmlHelpers
         /// <param name="Javascript">Script a utilizar</param>
         /// <param name="htmlAttributes"></param>
         /// <returns></returns>
-        public static MvcHtmlString ActionButtonJsSearch(this HtmlHelper htmlHelper, string Javascript, object htmlAttributes)
+        public static MvcHtmlString ActionButtonJsSearch(this HtmlHelper htmlHelper, string Javascript, string buttonText, object htmlAttributes)
         {
             var rtHtmlAttributes = new RouteValueDictionary(htmlAttributes);
-            return ActionButtonInternal(Default.Resources.BtnSearch, string.Empty, Javascript, rtHtmlAttributes);
+            return ActionButtonInternal(buttonText, string.Empty, Javascript, rtHtmlAttributes);
         }
 
         /// <summary>

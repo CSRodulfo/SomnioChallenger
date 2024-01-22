@@ -53,7 +53,7 @@ namespace Presentation.MVC.Controllers
                                        r.Id.ToString(),
                                        r.Quantity.ToString(),
                                        r.TotalCost.ToString(),
-                                       r.Date.ToString()
+                                       r.Date.ToString("d/MMMM/yyyy").Replace("/", " de ")
                                    }
                            }
                 };

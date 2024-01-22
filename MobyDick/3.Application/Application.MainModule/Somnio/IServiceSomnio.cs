@@ -13,6 +13,6 @@ namespace Application.MainModule
     {
 
         List<DTOSomnioTable> GetAll();
-        PagedDataResult<DTOSomnioTable> GetSomnioBy(PagedDataParameters pagedParameters, string id);
+        PagedDataResult<DTOSomnioTable> GetSomnioBy(PagedDataParameters pagedParameters, string filterStrategy);
     }
 }

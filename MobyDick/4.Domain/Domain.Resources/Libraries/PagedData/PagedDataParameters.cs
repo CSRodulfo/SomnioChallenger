@@ -58,17 +58,9 @@ namespace Domain.Resources.Libraries.PagedData
         /// <summary>
         /// Campo por el cual se realizara el orden
         /// </summary>
-        public string OrderField
-        {
-            get
-            { return _orderField; }
-        }
+        public string OrderField { get; set; }
 
-        public Define.OrderBy OrderDirection
-        {
-            get
-            { return _orderDirection; }
-        }
+        public Define.OrderBy OrderDirection { get; set; }
 
         /// <summary>
         /// Cantidad de Paginas
