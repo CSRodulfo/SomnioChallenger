@@ -2,48 +2,168 @@
     ViewBag.Title = Default.Resources.Home;
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <h1>@ViewBag.Title</h1>
+<div class="col-md-12 panel-search">
+    <div class="row">
+        <div class="col-md-12 panel-header">
+            <h1>@ViewBag.Title</h1>
+            <h4>@ViewBag.SubTitle</h4>
+        </div>
+    </div>
+
+
+    @using (Html.BeginForm("", "Roles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+           
+                </div>
+            </div>
+
+            <div class="panel-button" style="float:none">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="text-center">
+
+                            @Html.ActionButtonJsSearch("CostFilter()", "Total Cost > 1000")
+                            @Html.ActionButtonJsSearch("DateOrder()", "Date Desc")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div id="divResults">
+                    <div id="jqgrid">
+                        <table id="list1"></table>
+                        <div id="pager"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-md-3">
-        <div class="chart" data-chart-title="Line" data-chart-legends="true" data-chart-type="line" data-chart-src="@Url.Action("Line", "Home", new { Area = "" })"></div>
-    </div>
-    <div class="col-md-3">
-        <div class="chart" data-chart-title="Pie" data-chart-legends="true" data-chart-type="pie" data-chart-src="@Url.Action("Pie", "Home", new { Area = "" })"></div>
-    </div>
-    <div class="col-md-3">
-        <div class="chart" data-chart-title="Bar" data-chart-legends="true" data-chart-type="bar" data-chart-src="@Url.Action("Bar", "Home", new { Area = "" })"></div>
-    </div>
-    <div class="col-md-3">
-        <div class="chart" data-chart-title="Radar" data-chart-legends="true" data-chart-type="radar" data-chart-src="@Url.Action("Radar", "Home", new { Area = "" })"></div>
-    </div>
-    <div class="col-md-6">
-        <div class="chart" data-chart-title="PolarArea" data-chart-legends="true" data-chart-type="polararea" data-chart-src="@Url.Action("PolarArea", "Home", new { Area = "" })"></div>
-    </div>
-    <div class="col-md-6">
-        <div class="chart" data-chart-title="Doughnut" data-chart-legends="true" data-chart-type="doughnut" data-chart-src="@Url.Action("Doughnut", "Home", new { Area = "" })"></div>
+<div class="panel-button">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group pull-right">
+                @Html.ActionButtonHome()
+                @Html.ActionButtonNew("AddRecord()")
+                @Html.ActionButtonEdit(new { id = "btn_edit" })
+                @Html.ActionButtonDelete(new { id = "btn_del" })
+            </div>
+        </div>
     </div>
 </div>
 
+<script type="text/javascript">
 
-@Scripts.Render("~/bundles/Charts")
-<script>
-    $(function () {
-        $(".chart").each(function () {
-            var _chart = $(this);
-
-            $(this).MobyDickChart({
-                title: $(_chart).data("chart-title"),
-                type: $(_chart).data("chart-type"),
-                legends: $(_chart).data("chart-legends"),
-                src: $(_chart).data("chart-src")
-            });
-
-        });
+    $(document).ready(function () {
+        Search();
+        SetNoAction();
     });
 
+    function SetNoAction() {
+        var NoAction = "javascript:$.MDmessage({message: '" + paramFromView.selectFieldMessage + "'});";
+
+        $("#btn_edit").attr("onclick", NoAction);
+        $("#btn_del").attr("onclick", NoAction);
+        $("#btn_assign").attr("onclick", NoAction);
+    }
+
+    function Search() {
+        var urlAction = '@Url.Action("SearchSomnio", "Home")';
+        loadGrid(urlAction, 'All');
+    }
+
+    function CostFilter() {
+        var urlAction = '@Url.Action("SearchSomnio", "Home")';
+        loadGrid(urlAction, 'CostFilter');
+    }
+
+     function DateOrder() {
+        var urlAction = '@Url.Action("SearchSomnio", "Home")';
+        loadGrid(urlAction, 'DateOrder');
+    }
+
+    function loadGrid(urlAction, filter) {
+        $('#list1').jqGrid('GridUnload');
+        $("#list1").jqGrid({
+            autowidth: true,
+            shrinkToFit: true,
+            height: 300,
+            url: urlAction,
+            datatype: "json",
+            mtype: 'POST',
+            colNames: ['Id', 'Number of Items', 'Total cost', 'Date'],
+            colModel: [
+                {
+                    name: 'Id', index: 'Id', width: 55, sortable: true, key: true, formatter: 'integer', formatoptions: { defaultValue: 'No Value Set', thousandsSeparator: ',' }
+                },
+                {
+                    name: "Quantity", index: "Quantity", width: 0, sortable: true, formatter: 'integer', formatoptions: { defaultValue: 'No Value Set', thousandsSeparator: ',' },
+
+                },
+                {
+                    name: 'TotalCost', index: 'TotalCost', width: 90, formatter: 'currency',
+                    formatoptions: { decimalSeparator: '', decimalPlaces: 0, thousandsSeparator: '', prefix: '$' }
+                },
+                {
+                    name: 'Date', index: 'Date', width: 90, sortable: true
+                },
+            ],
+            postData: {
+                strategyFilter: filter
+            },
+            rowNum: 30,
+            sortname: 'Id',
+            viewrecords: true,
+            sortorder: "asc",
+            loadComplete: SetNoAction,
+            caption: 'Histórico de compras'
+        });
+
+        $('#list1').jqGrid('navGrid', '#pager',
+                    //options
+                    { add: false, del: false, edit: false, search: true },
+                    // add options
+                    {}
+    );
+    };
+
+    function DoubleClick(id) {
+        var editAction = "javascript:EditRecord('" + id + "')";
+        location.href = editAction;
+    }
+    function SetGridNavButtons() {
+        var rolId = jQuery('#list1').jqGrid('getGridParam', 'selrow');
+
+        var deleteAction = "javascript:DeleteRecord('" + rolId + "')";
+        $("#btn_del").attr("onclick", deleteAction);
+
+        var editAction = "javascript:EditRecord('" + rolId + "')";
+        $("#btn_edit").attr("onclick", editAction);
+
+        var assignAction = "location.href='@Url.Action("AssignMenues", new { RoleId = "_rowId_" })'";
+        assignAction = assignAction.replace("_rowId_", rolId);
+        $("#btn_assign").attr("onclick", assignAction);
+    }
+
+  
+
+    var paramFromView = {
+        selectFieldMessage: '@Default.Resources.selectFieldMessage',
+        Results: '@Default.Resources.Results',
+        RolDescription : '@MBAdministration.Roles.Resources.RolDescription',
+        VisualizeDeletedItems: '@Default.Resources.VisualizeDeletedItems',
+        Nuevo: '@Default.Resources.BtnNew',
+        Editar: '@Default.Resources.BtnEdit',
+    }
 </script>

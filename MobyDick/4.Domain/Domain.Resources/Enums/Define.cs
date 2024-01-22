@@ -10,7 +10,7 @@ namespace Domain.Resources
         public enum OrderBy
         {
             Ascendant = 1,
-            Descendant = 2
+            Descendent = 2
         }
 
         public enum RoleAssignationState

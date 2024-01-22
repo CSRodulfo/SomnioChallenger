@@ -1,4 +1,11 @@
-﻿using Presentation.MVC.Common;
+﻿using Application.MainModule;
+using Application.MainModule.Administration.RolesManagement;
+using Domain.Resources.Libraries.PagedData;
+using Presentation.MVC.Areas.Administration.Models;
+using Presentation.MVC.Common;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -11,160 +18,52 @@ namespace Presentation.MVC.Controllers
             base.Initialize(requestContext);
         }
 
-        [AllowAnonymous]
-        public JsonResult Line()
-        {
-            var data = new{
-                    labels = new string[] {"label 1","label 2","label 3","label 4"},
-                    datasets = new[] {
-                        new {
-                                label= "My First dataset",
-                                fillColor= "rgba(220,220,220,0.2)",
-                                strokeColor= "rgba(220,220,220,1)",
-                                pointColor= "rgba(220,220,220,1)",
-                                pointStrokeColor= "#fff",
-                                pointHighlightFill= "#fff",
-                                pointHighlightStroke= "rgba(220,220,220,1)",
-                                data= new int[] {70, 40, 30,60}
-                            }
-                    }                 
-            };
-
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
-
-        [AllowAnonymous]
-        public JsonResult Pie()
-        {
-            int i = 0;
-
-            var data = new[]{
-                new {
-                    label = "primero",
-                    value = 20,
-                    color = new string[] { "#F7464A", "#46BFBD", "#FDB45C", "#6CC195", "#A779C6" }[i],
-                    highlight = new string[] { "#FF5A5E", "#5AD3D1", "#FFC870", "#98E2BC", "#C79EE2" }[i++],
-                    },
-                    new {
-                    label = "segundo",
-                    value = 80,
-                    color = new string[] { "#F7464A", "#46BFBD", "#FDB45C", "#6CC195", "#A779C6" }[i],
-                    highlight = new string[] { "#FF5A5E", "#5AD3D1", "#FFC870", "#98E2BC", "#C79EE2" }[i++],
-                    }
-            };
-
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
-        
-        
-        [AllowAnonymous]
-        public JsonResult PolarArea()
-        {
-            int i = 0;
-
-            var data = new[]{
-                new {
-                    label = "primero",
-                    value = 20,
-                    color = new string[] { "#F7464A", "#46BFBD", "#FDB45C", "#6CC195", "#A779C6" }[i],
-                    highlight = new string[] { "#FF5A5E", "#5AD3D1", "#FFC870", "#98E2BC", "#C79EE2" }[i++],
-                    },
-                    new {
-                    label = "segundo",
-                    value = 80,
-                    color = new string[] { "#F7464A", "#46BFBD", "#FDB45C", "#6CC195", "#A779C6" }[i],
-                    highlight = new string[] { "#FF5A5E", "#5AD3D1", "#FFC870", "#98E2BC", "#C79EE2" }[i++],
-                    }
-            };
-
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
-
-        [AllowAnonymous]
-        public JsonResult Doughnut()
-        {
-            int i = 0;
-
-            var data = new[]{
-                new {
-                    label = "primero",
-                    value = 20,
-                    color = new string[] { "#F7464A", "#46BFBD", "#FDB45C", "#6CC195", "#A779C6" }[i],
-                    highlight = new string[] { "#FF5A5E", "#5AD3D1", "#FFC870", "#98E2BC", "#C79EE2" }[i++],
-                    },
-                    new {
-                    label = "segundo",
-                    value = 80,
-                    color = new string[] { "#F7464A", "#46BFBD", "#FDB45C", "#6CC195", "#A779C6" }[i],
-                    highlight = new string[] { "#FF5A5E", "#5AD3D1", "#FFC870", "#98E2BC", "#C79EE2" }[i++],
-                    }
-            };
-
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
-
-        [AllowAnonymous]
-        public JsonResult Bar()
-        {
-            var data = new
-            {
-                labels = new string[] { "label 1", "label 2", "label 3", "label 4" },
-                datasets = new[] {
-                        new {
-                                label= "My First dataset",
-                                fillColor= "rgba(220,220,220,0.2)",
-                                strokeColor= "rgba(220,220,220,1)",
-                                pointColor= "rgba(220,220,220,1)",
-                                pointStrokeColor= "#fff",
-                                pointHighlightFill= "#fff",
-                                pointHighlightStroke= "rgba(220,220,220,1)",
-                                data= new int[] {70, 40, 30,60}
-                            }
-                    }
-            };
-
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
-
-
-        [AllowAnonymous]
-        public JsonResult Radar()
-        {
-            var data = new
-            {
-                labels = new string[] { "label 1", "label 2", "label 3", "label 4" },
-                datasets = new[] {
-                        new {
-                                label= "My First dataset",
-                                fillColor= "rgba(220,220,220,0.2)",
-                                strokeColor= "rgba(220,220,220,1)",
-                                pointColor= "rgba(220,220,220,1)",
-                                pointStrokeColor= "#fff",
-                                pointHighlightFill= "#fff",
-                                pointHighlightStroke= "rgba(220,220,220,1)",
-                                data= new int[] {70, 40, 30,60}
-                            },
-                            new {
-                                label= "My second dataset",
-                                fillColor= "rgba(220,220,220,0.2)",
-                                strokeColor= "rgba(220,220,220,1)",
-                                pointColor= "rgba(220,220,220,1)",
-                                pointStrokeColor= "#fff",
-                                pointHighlightFill= "#fff",
-                                pointHighlightStroke= "rgba(220,220,220,1)",
-                                data= new int[] {10, 50, 20,124}
-                            }
-                    }
-            };
-
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
-
+  
         [AllowAnonymous]
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
             return View();
+        }
+
+        public ActionResult SearchSomnio(string sidx, string sord, int page, int rows, string strategyFilter)
+        {
+            try
+            {
+                IServiceSomnio serviceSomnio = ManagerService.GetService<IServiceSomnio>();
+                PagedDataParameters pagedParameters = new PagedDataParameters(sidx, sord, page, rows);
+                PagedDataResult<DTOSomnioTable> result = serviceSomnio.GetSomnioBy(pagedParameters, strategyFilter);
+
+                int total = result.TotalCount;
+
+                if (total == 0)
+                    return this.PartialViewJson(new JsonMenssage { Menssage = Default.Resources.searchMessage });
+
+                int totalPages = (int)Math.Ceiling((decimal)total / (decimal)rows);
+                var data = new
+                {
+                    total = totalPages,
+                    page = page,
+                    records = total,
+                    rows = from r in result.Results
+                           select new
+                           {
+                               cell = new string[]
+                                   {
+                                       r.Id.ToString(),
+                                       r.Quantity.ToString(),
+                                       r.TotalCost.ToString(),
+                                       r.Date.ToString("d/MMMM/yyyy").Replace("/", " de ")
+                                   }
+                           }
+                };
+
+                return Json(data);
+            }
+            catch (Exception ex)
+            {
+                return this.PartialViewJson(new JsonMenssage { Menssage = ex.Message });
+            }
         }
 
         [AllowAnonymous]

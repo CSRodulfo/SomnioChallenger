@@ -31,7 +31,7 @@ namespace Infrastructure.Data.Administration
 
             int total = query.Count();
 
-            if (PagedParameters.OrderDirection == Domain.Resources.Define.OrderBy.Descendant)
+            if (PagedParameters.OrderDirection == Domain.Resources.Define.OrderBy.Descendent)
                query = query.OrderByDescending(w => w.RoleName);
             else
                 query = query.OrderBy(w => w.RoleName);

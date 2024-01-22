@@ -14,7 +14,7 @@ namespace Domain.Resources.Libraries.PagedData
         private Define.OrderBy _orderDirection;
 
         public PagedDataParametersExcel(string orderField, string orderDirection)
-            : this(orderField, orderDirection == "asc" ? Define.OrderBy.Ascendant : Define.OrderBy.Descendant)
+            : this(orderField, orderDirection == "asc" ? Define.OrderBy.Ascendant : Define.OrderBy.Descendent)
         {
         }
 
@@ -51,7 +51,7 @@ namespace Domain.Resources.Libraries.PagedData
                 case Domain.Resources.Define.OrderBy.Ascendant:
                     return new FullDataAsc(this);
 
-                case Domain.Resources.Define.OrderBy.Descendant:
+                case Domain.Resources.Define.OrderBy.Descendent:
                     return new FullDataAsc(this);
 
                 default:

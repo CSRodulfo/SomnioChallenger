@@ -43,7 +43,7 @@ namespace Domain.Resources.Libraries.PagedData
                 case Domain.Resources.Define.OrderBy.Ascendant:
                     return new FullDataAsc(parameters);
 
-                case Domain.Resources.Define.OrderBy.Descendant:
+                case Domain.Resources.Define.OrderBy.Descendent:
                     return new FullDataAsc(parameters);
 
                 default:

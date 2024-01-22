@@ -1,15 +1,15 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+﻿using Application.MainModule.Administration.Authentication;
 using Application.MainModule.Administration.Authorization;
-using Application.MainModule.Administration.Authentication;
-using Presentation.MVC.Common;
-using Application.MainModule.Administration.RolesManagement;
 using Application.MainModule.Administration.CompanyManagement;
 using Application.MainModule.Administration.CompanyManagement.DTO;
-using System.IO;
-using System;
 using Application.MainModule.Administration.FileManagement.DTO;
+using Application.MainModule.Administration.RolesManagement;
+using Presentation.MVC.Common;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace Presentation.MVC.Controllers
 {

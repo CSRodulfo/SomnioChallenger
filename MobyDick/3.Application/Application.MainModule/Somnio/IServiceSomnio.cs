@@ -1,0 +1,18 @@
+﻿using Application.MainModule.Administration.RolesManagement.DTO;
+using Application.MainModule.Administration.RolesManagement.DTOAdapters;
+using Domain.Resources.Libraries.PagedData;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Application.MainModule
+{
+    public interface IServiceSomnio
+    {
+
+        List<DTOSomnioTable> GetAll();
+        PagedDataResult<DTOSomnioTable> GetSomnioBy(PagedDataParameters pagedParameters, string filterStrategy);
+    }
+}

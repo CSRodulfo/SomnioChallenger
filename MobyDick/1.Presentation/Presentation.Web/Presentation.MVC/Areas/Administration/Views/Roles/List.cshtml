@@ -59,7 +59,6 @@
                 @Html.ActionButtonNew("AddRecord()")
                 @Html.ActionButtonEdit(new { id = "btn_edit" })
                 @Html.ActionButtonDelete(new { id = "btn_del" })
-                @Html.ActionButtonGeneric(MBAdministration.Roles.Resources.RolAssignMenu, new { id = "btn_assign" })
             </div>
         </div>
     </div>
@@ -90,7 +89,7 @@
         $("#list1").jqGrid({
             autowidth: true,
             shrinkToFit: true,
-            height: 122,
+            height: 150,
             url: urlAction,
             datatype: "json",
             mtype: 'POST',

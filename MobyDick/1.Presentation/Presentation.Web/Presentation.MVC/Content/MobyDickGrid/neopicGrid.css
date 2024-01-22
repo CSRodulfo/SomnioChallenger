@@ -82,7 +82,7 @@
 .ui-jqgrid-titlebar {
     line-height: 24px;
     font-size: 13px;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
     font-weight: bold;
 }
 
