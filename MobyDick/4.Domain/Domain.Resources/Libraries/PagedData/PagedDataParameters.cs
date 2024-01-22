@@ -40,7 +40,7 @@ namespace Domain.Resources.Libraries.PagedData
         {
             _rows = rows;
             _page = page;
-            _orderDirection = sord == "asc" ? Define.OrderBy.Ascendant : Define.OrderBy.Descendant;
+            _orderDirection = sord == "asc" ? Define.OrderBy.Ascendant : Define.OrderBy.Descendent;
             _orderField = orderfield;
         }
 
@@ -58,9 +58,17 @@ namespace Domain.Resources.Libraries.PagedData
         /// <summary>
         /// Campo por el cual se realizara el orden
         /// </summary>
-        public string OrderField { get; set; }
+        public string OrderField
+        {
+            get { return _orderField; }
+            set { _orderField = value; }
+        }
 
-        public Define.OrderBy OrderDirection { get; set; }
+        public Define.OrderBy OrderDirection
+        {
+            get { return _orderDirection; }
+            set { _orderDirection = value; }
+        }
 
         /// <summary>
         /// Cantidad de Paginas
@@ -87,7 +95,7 @@ namespace Domain.Resources.Libraries.PagedData
                 case Domain.Resources.Define.OrderBy.Ascendant:
                     return new FullPagedDataAsc(this);
 
-                case Domain.Resources.Define.OrderBy.Descendant:
+                case Domain.Resources.Define.OrderBy.Descendent:
                     return new FullPagedDataDesc(this);
 
                 default:

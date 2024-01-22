@@ -26,13 +26,13 @@ namespace Presentation.MVC.Controllers
             return View();
         }
 
-        public ActionResult SearchSomnio(string sidx, string sord, int page, int rows, string roleNameFilter)
+        public ActionResult SearchSomnio(string sidx, string sord, int page, int rows, string strategyFilter)
         {
             try
             {
                 IServiceSomnio serviceSomnio = ManagerService.GetService<IServiceSomnio>();
                 PagedDataParameters pagedParameters = new PagedDataParameters(sidx, sord, page, rows);
-                PagedDataResult<DTOSomnioTable> result = serviceSomnio.GetSomnioBy(pagedParameters, roleNameFilter);
+                PagedDataResult<DTOSomnioTable> result = serviceSomnio.GetSomnioBy(pagedParameters, strategyFilter);
 
                 int total = result.TotalCount;
 

@@ -2,8 +2,6 @@
     ViewBag.Title = Default.Resources.Home;
 }
 
-
-
 <div class="col-md-12 panel-search">
     <div class="row">
         <div class="col-md-12 panel-header">
@@ -18,8 +16,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    @ViewBag.RolDescription
-                    <input type="text" id="txtRoleName" />
+           
                 </div>
             </div>
 
@@ -34,8 +31,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     }
 </div>
@@ -107,7 +102,7 @@
             url: urlAction,
             datatype: "json",
             mtype: 'POST',
-            colNames: ['Id', 'Quantity', 'TotalCost', 'Date'],
+            colNames: ['Id', 'Number of Items', 'Total cost', 'Date'],
             colModel: [
                 {
                     name: 'Id', index: 'Id', width: 55, sortable: true, key: true, formatter: 'integer', formatoptions: { defaultValue: 'No Value Set', thousandsSeparator: ',' }
@@ -125,7 +120,7 @@
                 },
             ],
             postData: {
-                roleNameFilter: filter
+                strategyFilter: filter
             },
             rowNum: 30,
             sortname: 'Id',
