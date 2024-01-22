@@ -19,4 +19,4 @@ C:\Sources\SomnioChallenger\MobyDick\1.Presentation\Presentation.Web\Presentatio
 C:\Sources\SomnioChallenger\MobyDick\3.Application\Application.MainModule\Somnio\
 C:\Sources\SomnioChallenger\MobyDick\5.Infrastructure\Infrastructure.Data.MySql\RepositorySpecific\
 C:\Sources\SomnioChallenger\MobyDick\5.Infrastructure\Infrastructure.Data.MySql\Repository\RepositoryMySql.cs
-
+C:\Sources\SomnioChallenger\MobyDick\data.csv
